@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
           "X-Title": "Nibras English",
         },
         body: JSON.stringify({
-          model: "qwen/qwen3.6-plus-preview:free",
+          model: "openrouter/free",
           messages: fullMessages,
           temperature: 0.7,
           max_tokens: 800,
