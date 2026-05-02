@@ -19,7 +19,6 @@ import { BookOpen, ArrowRight } from "lucide-react";
 
 interface VocabItem {
   word: string;
-  arabic: string;
   example: string;
 }
 
@@ -46,7 +45,7 @@ const wordOfDay = {
   word: "Resilience",
   partOfSpeech: "(Noun)",
   phonetic: "/r\u026A\u02C8z\u026Al.j\u0259ns/",
-  arabic: "\u0635\u0645\u0648\u062F (Sumud)",
+
   example: "The resilience of the Palestinian people inspires the whole world.",
 };
 
@@ -65,42 +64,34 @@ const interests: ContentData[] = [
     vocab: [
       {
         word: "infotainment system",
-        arabic: "\u0646\u0638\u0627\u0645 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0648\u0627\u0644\u062A\u0631\u0641\u064A\u0647",
         example: "The BMW 5 Series features an advanced infotainment system with navigation, voice commands, and wireless connectivity.",
       },
       {
         word: "collision avoidance",
-        arabic: "\u062A\u062C\u0646\u0628 \u0627\u0644\u0627\u0635\u0637\u062D\u0627\u0645",
         example: "Modern vehicles use radar and cameras for collision avoidance, helping prevent accidents on Amman\u2019s busy highways.",
       },
       {
         word: "fuel efficiency",
-        arabic: "\u0643\u0641\u0627\u0621\u0629 \u0627\u0633\u062A\u0647\u0644\u0627\u0643 \u0627\u0644\u0648\u0642\u0648\u062F",
         example: "Many Jordanian families prioritize fuel efficiency because fuel prices have risen steadily in recent years.",
       },
       {
         word: "adaptive cruise control",
-        arabic: "\u0646\u0638\u0627\u0645 \u0627\u0644\u062A\u062D\u0643\u0645 \u0627\u0644\u062A\u0643\u064A\u0641\u064A \u0628\u0627\u0644\u0633\u0631\u0639\u0629",
         example: "On long drives from Amman to Aqaba, adaptive cruise control automatically adjusts your speed to maintain a safe distance from the car ahead.",
       },
       {
         word: "regenerative braking",
-        arabic: "\u0627\u0644\u0643\u0628\u062D \u0627\u0644\u062A\u062C\u062F\u064A\u062F\u064A",
         example: "Hybrid vehicles use regenerative braking to convert kinetic energy back into battery power when the driver slows down.",
       },
       {
         word: "horsepower",
-        arabic: "\u0642\u0648\u0629 \u0627\u0644\u062D\u0635\u0627\u0646",
         example: "The BMW 5 Series delivers impressive horsepower while maintaining a smooth, comfortable ride through city traffic.",
       },
       {
         word: "blind spot",
-        arabic: "\u0627\u0644\u0646\u0642\u0637\u0629 \u0627\u0644\u0639\u0645\u064A\u0627\u0621",
         example: "Before changing lanes on the Airport Road in Amman, always check your blind spot carefully for motorcycles.",
       },
       {
         word: "anti-lock braking system",
-        arabic: "\u0646\u0638\u0627\u0645 \u0645\u0627\u0646\u0639 \u0627\u0644\u0627\u0646\u063A\u0644\u0627\u0642",
         example: "The anti-lock braking system prevents the wheels from locking up during sudden braking on wet roads.",
       },
     ],
@@ -127,42 +118,34 @@ const interests: ContentData[] = [
     vocab: [
       {
         word: "routine",
-        arabic: "\u0631\u0648\u062A\u064A\u0646 \u064A\u0648\u0645\u064A",
         example: "Ahmad follows the same routine every morning before class.",
       },
       {
         word: "resistance training",
-        arabic: "\u062A\u062F\u0631\u064A\u0628\u0627\u062A \u0627\u0644\u0645\u0642\u0627\u0648\u0645\u0629",
         example: "Resistance training helps build strong muscles over time.",
       },
       {
         word: "bicep curls",
-        arabic: "\u0639\u0645\u0644 \u0627\u0644\u0639\u0636\u0644\u0629 \u0627\u0644\u0628\u0627\u0626\u0646\u0629 \u0628\u0627\u0644\u062F\u0645\u0628\u0644",
         example: "She does three sets of bicep curls with light weights.",
       },
       {
         word: "focused",
-        arabic: "\u0645\u0631\u0643\u0632",
         example: "After his workout, Fadi feels more focused when he studies.",
       },
       {
         word: "progress",
-        arabic: "\u062A\u0642\u062F\u0645",
         example: "If you keep going to the gym, you will see progress in a few weeks.",
       },
       {
         word: "stretches",
-        arabic: "\u062A\u0645\u062F\u064A\u062F\u0627\u062A",
         example: "He starts with ten minutes of stretches to warm up his body.",
       },
       {
         word: "dumbbells",
-        arabic: "\u0623\u062B\u0642\u0627\u0644",
         example: "Resistance training uses bands and light dumbbells to make your muscles work harder.",
       },
       {
         word: "repetitions",
-        arabic: "\u062A\u0643\u0631\u0627\u0631\u0627\u062A",
         example: "He uses eight-kilogram weights and does three sets of twelve repetitions.",
       },
     ],
@@ -188,42 +171,34 @@ const interests: ContentData[] = [
     vocab: [
       {
         word: "Sumud",
-        arabic: "\u0635\u0645\u0648\u062F",
         example: "Sumud, often translated as steadfastness, is a deeply rooted resilience that permeates Palestinian daily life.",
       },
       {
         word: "ancestral",
-        arabic: "\u0623\u062C\u062F\u0627\u062F\u064A",
         example: "The olive trees symbolize an unbreakable bond between the people and their ancestral land.",
       },
       {
         word: "heritage",
-        arabic: "\u062A\u0631\u0627\u062B",
         example: "Palestine\u2019s historical heritage stretches back millennia, encompassing a rich tapestry of civilizations.",
       },
       {
         word: "olive harvest",
-        arabic: "\u0642\u0637\u0627\u0641 \u0627\u0644\u0632\u064A\u062A\u0648\u0646",
         example: "The olive harvest brought families together, where children learned patience and hard work under the autumn sun.",
       },
       {
         word: "resilience",
-        arabic: "\u0635\u0645\u0648\u062F / \u0645\u0631\u0627\u0641\u0642\u0629",
         example: "The resilience of the Palestinian people inspires the whole world.",
       },
       {
         word: " steadfastness",
-        arabic: "\u062B\u0628\u0627\u062A",
         example: "Sumud \u2014 steadfastness \u2014 remains unbroken despite decades of hardship.",
       },
       {
         word: "preservation",
-        arabic: "\u062D\u0641\u0638",
         example: "The preservation of ancient olive trees is both an environmental and cultural responsibility.",
       },
       {
         word: "displacement",
-        arabic: "\u062A\u0634\u0631\u064A\u062F",
         example: "Palestinian families demonstrate extraordinary resilience in the face of systematic displacement.",
       },
     ],
@@ -249,42 +224,34 @@ const interests: ContentData[] = [
     vocab: [
       {
         word: "startup",
-        arabic: "\u0634\u0631\u0643\u0629 \u0646\u0627\u0634\u0626\u0629",
         example: "Amman is becoming a hub for tech startups in the MENA region.",
       },
       {
         word: "entrepreneur",
-        arabic: "\u0631\u0627\u0626\u062F \u0623\u0639\u0645\u0627\u0644",
         example: "A young entrepreneur launched a delivery app that serves all neighborhoods in Amman.",
       },
       {
         word: "investment",
-        arabic: "\u0627\u0633\u062A\u062B\u0645\u0627\u0631",
         example: "Ethical investment portfolios increasingly screen out companies that profit from settlement expansion.",
       },
       {
         word: "commute",
-        arabic: "\u0627\u0644\u062A\u0646\u0642\u0644 / \u0631\u062D\u0644\u0629 \u0627\u0644\u0639\u0645\u0644",
         example: "The daily commute from Irbid to Amman can take over an hour during rush hour.",
       },
       {
         word: "deadline",
-        arabic: "\u0645\u0648\u0639\u062F \u0646\u0647\u0627\u0626\u064A",
         example: "We have to submit the business plan before the deadline on Friday.",
       },
       {
         word: "networking",
-        arabic: "\u0628\u0646\u0627\u0621 \u0639\u0644\u0627\u0642\u0627\u062A",
         example: "Networking events in Amman bring together entrepreneurs, investors, and mentors.",
       },
       {
         word: "pitch",
-        arabic: "\u0639\u0631\u0636 \u062A\u0642\u062F\u064A\u0645\u064A",
         example: "She prepared a strong pitch for the investors at the startup incubator in Jabal Amman.",
       },
       {
         word: "revenue",
-        arabic: "\u0625\u064A\u0631\u0627\u062F\u0627\u062A",
         example: "The company doubled its revenue in the second year by expanding to the Gulf market.",
       },
     ],
@@ -356,7 +323,6 @@ function VocabCard({ item, index }: { item: VocabItem; index: number }) {
         </h4>
         <span className="text-xs text-gray-400 shrink-0 mt-0.5">#{index + 1}</span>
       </div>
-      <p className="text-sm text-gray-500 mb-2">{item.arabic}</p>
       <p className="text-sm text-gray-600 italic bg-gray-50 p-2 rounded border-l-3 border-aqaba/50">
         &ldquo;{item.example}&rdquo;
       </p>
@@ -523,10 +489,7 @@ export default function Home() {
               <p className="text-xs sm:text-sm text-gray-600 italic mb-3">
                 {wordOfDay.partOfSpeech} &bull; {wordOfDay.phonetic}
               </p>
-              <p className="text-sm sm:text-base text-gray-700 mb-2">
-                <strong>Arabic:</strong> {wordOfDay.arabic}
-              </p>
-              <p className="text-xs sm:text-sm text-gray-600 bg-gray-50 p-2 rounded border-l-4 border-petra">
+              <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-2 rounded border-l-4 border-petra">
                 &ldquo;{wordOfDay.example}&rdquo;
               </p>
             </CardContent>
