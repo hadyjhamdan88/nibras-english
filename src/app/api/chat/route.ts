@@ -49,8 +49,7 @@ export async function POST(req: NextRequest) {
     if (!apiKey) {
       console.error("OPENROUTER_API_KEY is not set in environment variables");
       return NextResponse.json(
-        { reply: "The chatbot is not configured yet. Please try again later!" },
-        { status: 500 }
+        { reply: "The chatbot is not configured yet — the OPENROUTER_API_KEY environment variable is missing. Please add it to .env.local and restart the server." }
       );
     }
 
