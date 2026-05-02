@@ -3,8 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   allowedDevOrigins: [
-    "https://preview-chat-30830f16-ef2a-4e52-8277-3d77d4f9d4fa.space-z.ai",
-    "https://space.chatglm.site",
+    "preview-chat-30830f16-ef2a-4e52-8277-3d77d4f9d4fa.space-z.ai",
+    "space.chatglm.site",
+    "space-z.ai",
   ],
   async headers() {
     return [
