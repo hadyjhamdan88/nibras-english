@@ -914,16 +914,29 @@ function ChatBot() {
     setLoading(true);
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 25000);
+
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: newMessages }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
+
+      if (!res.ok) {
+        throw new Error(`Server responded with ${res.status}`);
+      }
       const data = await res.json();
-      const assistantMsg: ChatMessage = { role: "assistant", content: data.reply };
+      const reply = data.reply || data.error || "I couldn't process that. Please try again.";
+      const assistantMsg: ChatMessage = { role: "assistant", content: reply };
       setMessages((prev) => [...prev, assistantMsg]);
-    } catch {
-      setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, something went wrong. Please try again!" }]);
+    } catch (err: unknown) {
+      const msg = err instanceof Error && err.name === "AbortError"
+        ? "The request timed out. Please check your connection and try again."
+        : "Sorry, I couldn't reach the server. Please try again in a moment.";
+      setMessages((prev) => [...prev, { role: "assistant", content: msg }]);
     } finally {
       setLoading(false);
     }

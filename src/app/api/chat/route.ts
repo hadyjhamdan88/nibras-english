@@ -29,9 +29,12 @@ SPECIAL TOPICS:
 - Can provide vocabulary for specific topics (business, travel, university, automotive, fitness)
 - Can help with email writing, interview preparation, and professional English`;
 
+export const maxDuration = 30;
+
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const body = await req.json();
+    const messages = body.messages;
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
@@ -55,15 +58,16 @@ export async function POST(req: NextRequest) {
     });
 
     const reply =
-      completion.choices[0]?.message?.content ||
+      completion.choices?.[0]?.message?.content ||
       "Sorry, I could not generate a response. Please try again!";
 
     return NextResponse.json({ reply });
-  } catch (error) {
-    console.error("Chat API error:", error);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Chat API error:", message);
     return NextResponse.json(
-      { error: "Failed to get response from tutor" },
-      { status: 500 }
+      { reply: "I'm sorry, something went wrong on my end. Please try asking again!" },
+      { status: 200 }
     );
   }
 }
