@@ -58,10 +58,12 @@ interface InterestCategory {
 
 interface QuizQuestion {
   id: number;
-  level: string;
+  level: string; // "A1" | "A2" | "B1" | "B2" | "C1" | "C2"
+  type: "grammar" | "vocab" | "reading" | "pragmatic"; // NEW: question type tag
+  passage?: string; // NEW: optional reading passage (only for type: "reading")
   question: string;
-  options: string[];
-  correct: number;
+  options: string[]; // 4 options
+  correct: number; // index 0-3
   explanation: string;
 }
 
@@ -83,128 +85,227 @@ interface GrammarLesson {
    ═══════════════════════════════════════════════════════════════ */
 
 const placementQuestions: QuizQuestion[] = [
-  // A1 Level (5 questions) — correct answers: C, D, B, B, D
+  // ============== A1 (5 questions) ==============
   {
-    id: 1,
-    level: "A1",
-    question: "Your brother Ahmad just passed his exams. What do you say?",
-    options: ["I am drinking coffee now.", "She goes to school every day.", "Mabrouk! I am proud of you.", "They are playing football."],
+    id: 1, level: "A1", type: "grammar",
+    question: "Complete the sentence: My name ___ Layla and I am from Amman.",
+    options: ["are", "is", "am", "be"],
+    correct: 1,
+    explanation: "We use 'is' with he, she, it, and singular names. 'My name is Layla.'",
+  },
+  {
+    id: 2, level: "A1", type: "vocab",
+    question: "Which word means a place where you buy fresh bread?",
+    options: ["pharmacy", "library", "bakery", "garage"],
     correct: 2,
-    explanation: "Mabrouk means congratulations in Arabic. When someone achieves something, we say we are proud of them. The other options describe different situations.",
+    explanation: "A bakery is a shop that sells bread and pastries. In Jordan, you can find one on almost every street.",
   },
   {
-    id: 2,
-    level: "A1",
-    question: "Complete: My family ___ dinner together every Friday evening.",
-    options: ["eating", "ate", "eats", "eat"],
-    correct: 3,
-    explanation: "'My family' uses a plural verb in English, so we say 'eat' not 'eats'. This is different from Arabic where the verb comes before the subject.",
-  },
-  {
-    id: 3,
-    level: "A1",
-    question: "Which sentence is correct?",
-    options: ["We prays Fajr early in the morning.", "We pray Fajr early in the morning.", "We praying Fajr early in the morning.", "We is pray Fajr early in the morning."],
+    id: 3, level: "A1", type: "grammar",
+    question: "Choose the correct sentence:",
+    options: ["She have two brothers.", "She has two brothers.", "She having two brothers.", "She is have two brothers."],
     correct: 1,
-    explanation: "With 'we', we use the base form of the verb without any change. This is a common point for Arabic speakers because Arabic verbs change form based on the subject.",
+    explanation: "With he, she, and it, we use 'has' instead of 'have'.",
   },
   {
-    id: 4,
-    level: "A1",
-    question: "Choose the correct word: I would like a glass of ___ with my mansaf.",
-    options: ["waters", "water", "a water", "the waters"],
-    correct: 1,
-    explanation: "Water is an uncountable noun, so we do not add an 's'. We use 'a glass of water' or just 'water'. Many Arabic speakers confuse countable and uncountable nouns in English.",
-  },
-  {
-    id: 5,
-    level: "A1",
-    question: "What does 'How are you?' mean?",
-    options: ["Asking your name", "Asking where you live", "Asking what you do", "Asking about your health or feelings"],
+    id: 4, level: "A1", type: "pragmatic",
+    question: "Your aunt gives you a gift. What do you say?",
+    options: ["See you later.", "How are you?", "I am tired.", "Thank you very much."],
     correct: 3,
-    explanation: "'How are you?' (كيف حالك؟) is a greeting that asks about your well-being. In Jordan, people often respond with 'Alhamdulillah' (الحمد لله) before continuing the conversation.",
+    explanation: "When someone gives us something, we say 'thank you'. The other phrases are for different situations.",
   },
-  // B1 Level (5 questions) — correct answers: D, B, A, C, A
   {
-    id: 6,
-    level: "B1",
+    id: 5, level: "A1", type: "reading",
+    passage: "Hi, I am Omar. I am a student at the University of Jordan. I live in Amman with my family. Every morning, I drink tea and eat bread with za'atar before class.",
+    question: "What does Omar do every morning?",
+    options: ["He goes shopping.", "He drinks coffee at a café.", "He plays football.", "He has tea and bread with za'atar."],
+    correct: 3,
+    explanation: "The passage clearly says 'Every morning, I drink tea and eat bread with za'atar before class.'",
+  },
+  // ============== A2 (5 questions) ==============
+  {
+    id: 6, level: "A2", type: "grammar",
+    question: "Complete: Yesterday, we ___ to Petra with our cousins.",
+    options: ["go", "going", "went", "goes"],
+    correct: 2,
+    explanation: "'Yesterday' tells us this is in the past. The past form of 'go' is 'went'.",
+  },
+  {
+    id: 7, level: "A2", type: "vocab",
+    question: "Which word best fits? The traffic in Amman is very ___ at 8 a.m.",
+    options: ["heavy", "tall", "deep", "loud"],
+    correct: 0,
+    explanation: "We say 'heavy traffic' to mean there are a lot of cars. The other words do not fit with traffic.",
+  },
+  {
+    id: 8, level: "A2", type: "pragmatic",
+    question: "You arrive late to class. What is the most polite thing to say to your teacher?",
+    options: ["I am late, sorry.", "Why is class early?", "Sorry I am late, may I come in?", "Hello, where is my seat?"],
+    correct: 2,
+    explanation: "Adding 'may I come in?' shows politeness and respect for the teacher's authority over the classroom.",
+  },
+  {
+    id: 9, level: "A2", type: "grammar",
+    question: "Choose the correct comparison: Aqaba is ___ than Amman in winter.",
+    options: ["warmer", "more warm", "warmest", "warm more"],
+    correct: 0,
+    explanation: "Short adjectives like 'warm' add '-er' for comparison. Aqaba's coast is indeed warmer than Amman in winter.",
+  },
+  {
+    id: 10, level: "A2", type: "reading",
+    passage: "My sister works at a hospital in Irbid. She starts work at 7 a.m. and finishes at 3 p.m. After work, she usually visits our grandmother. On Fridays, she stays home and cooks maqloubeh for the family.",
+    question: "What does the writer's sister do on Fridays?",
+    options: ["She works extra hours.", "She visits her grandmother.", "She cooks for the family at home.", "She travels to Amman."],
+    correct: 2,
+    explanation: "The last sentence says 'On Fridays, she stays home and cooks maqloubeh for the family.'",
+  },
+  // ============== B1 (5 questions) ==============
+  {
+    id: 11, level: "B1", type: "grammar",
     question: "Complete: By the time we arrived in Aqaba, the sun ___.",
     options: ["has already set", "already set", "is already setting", "had already set"],
     correct: 3,
-    explanation: "We use the past perfect ('had set') when talking about an action that happened BEFORE another past action. The arrival was past, and the sunset was even earlier.",
+    explanation: "We use the past perfect ('had set') to talk about an action that finished BEFORE another past action.",
   },
   {
-    id: 7,
-    level: "B1",
-    question: "Choose the best response: 'I have been working on this project for three weeks.'",
-    options: ["You are work on this project.", "That must be exhausting. Have you taken any breaks?", "Three weeks is too many.", "I was working on that yesterday."],
-    correct: 1,
-    explanation: "The present perfect continuous ('have been working') means the action started in the past and is still happening. A natural response would show empathy and concern.",
-  },
-  {
-    id: 8,
-    level: "B1",
-    question: "Which sentence sounds more natural for a job email in Amman?",
-    options: ["I am writing to express my interest in the marketing position.", "I want the job that you have.", "Please give me the marketing job.", "I am interesting in the marketing job."],
+    id: 12, level: "B1", type: "vocab",
+    question: "Which word best completes the sentence? My father gave me valuable ___ before my job interview.",
+    options: ["advice", "advices", "advise", "advisement"],
     correct: 0,
-    explanation: "'I am writing to express my interest' is a formal, professional way to start a job application. 'Interesting' (with -ing) is wrong here because it describes the job, not your feeling.",
+    explanation: "'Advice' is uncountable, so it has no plural form. The verb form is 'advise' (with an 's' sound).",
   },
   {
-    id: 9,
-    level: "B1",
-    question: "Choose the correct form: If I ___ earlier, I would not have missed the bus.",
-    options: ["have left", "would leave", "had left", "will leave"],
-    correct: 2,
-    explanation: "This is a third conditional sentence about a past event that cannot be changed. The structure is: If + past perfect, would + have + past participle.",
-  },
-  {
-    id: 10,
-    level: "B1",
-    question: "What does 'It is out of the question' mean?",
-    options: ["It is absolutely not possible", "It is a great idea", "It is a difficult question", "It is outside the building"],
-    correct: 0,
-    explanation: "'Out of the question' means something is impossible or not allowed. For example: 'Working on Friday afternoon is out of the question for me.'",
-  },
-  // C1 Level (5 questions) — correct answers: B, C, A, A, C
-  {
-    id: 11,
-    level: "C1",
-    question: "Choose the most precise word: The scholar's ___ on bilingualism challenged long-held assumptions in the field.",
-    options: ["talk", "treatise", "paper", "idea"],
+    id: 13, level: "B1", type: "pragmatic",
+    question: "Which is the most professional way to start a job application email?",
+    options: ["Hey, I want this job.", "Dear Sir or Madam, I am writing to apply for the marketing position.", "Hi, please give me the job.", "I am interesting in your job."],
     correct: 1,
-    explanation: "A 'treatise' is a formal, systematic written work on a specific subject. It carries academic weight that 'talk', 'paper', or 'idea' do not convey in this context.",
+    explanation: "Formal job applications use 'Dear Sir or Madam' and 'I am writing to apply...' These signal professionalism.",
   },
   {
-    id: 12,
-    level: "C1",
-    question: "Which sentence demonstrates the most sophisticated use of hedging?",
-    options: ["Language acquisition is influenced by the environment.", "The environment influences how we learn language.", "The evidence would appear to suggest that language acquisition is influenced by environmental factors.", "I think the environment affects language learning."],
+    id: 14, level: "B1", type: "grammar",
+    question: "Choose the correct conditional: If I ___ earlier, I would not have missed the bus to Salt.",
+    options: ["have left", "would leave", "will leave", "had left"],
+    correct: 3,
+    explanation: "This is a third conditional sentence. The pattern is: If + past perfect, would + have + past participle.",
+  },
+  {
+    id: 15, level: "B1", type: "reading",
+    passage: "Sumud is an Arabic word that means 'steadfastness' or 'staying firm.' For Palestinians, sumud is more than a word — it is a way of life. It means staying connected to the land, planting olive trees, raising children, and continuing daily life despite great difficulty. Many writers describe sumud as quiet resistance.",
+    question: "According to the passage, what is the main meaning of sumud?",
+    options: ["A type of olive tree.", "Quiet, daily resistance through staying connected to the land.", "A famous Palestinian writer.", "A historical event that happened once."],
+    correct: 1,
+    explanation: "The passage explains that sumud is 'quiet resistance' shown through staying on the land and continuing daily life.",
+  },
+  // ============== B2 (5 questions) ==============
+  {
+    id: 16, level: "B2", type: "grammar",
+    question: "Complete: The proposal ___ by the committee before being sent to the dean.",
+    options: ["will review", "will be reviewed", "will reviewing", "will been reviewed"],
+    correct: 1,
+    explanation: "The future passive is 'will be + past participle.' The proposal does not review itself; it is reviewed by others.",
+  },
+  {
+    id: 17, level: "B2", type: "vocab",
+    question: "Choose the word that best fits: The young entrepreneur was ___ to take the financial risk despite the warnings.",
+    options: ["fearless", "fearful", "feared", "fearing"],
+    correct: 0,
+    explanation: "'Fearless' means without fear — appropriate for someone willing to take a risk. 'Fearful' would mean the opposite.",
+  },
+  {
+    id: 18, level: "B2", type: "pragmatic",
+    question: "Your colleague suggests an idea you disagree with in a meeting. What is the most diplomatic response?",
+    options: ["That is wrong.", "I see what you mean, but I would suggest we also consider another angle.", "No, that will not work.", "I do not like your idea."],
+    correct: 1,
+    explanation: "Acknowledging the other person's view ('I see what you mean') before offering an alternative is standard professional disagreement.",
+  },
+  {
+    id: 19, level: "B2", type: "grammar",
+    question: "Choose the correct sentence using a relative clause:",
+    options: ["The student which won the prize is from Karak.", "The student that wins the prize is from Karak.", "The student who won the prize is from Karak.", "The student whose won the prize is from Karak."],
     correct: 2,
-    explanation: "'Would appear to suggest' is an academic hedging technique that softens the claim without weakening it. Hedging is essential in academic writing to show intellectual caution.",
+    explanation: "We use 'who' for people. 'Which' is for things, and 'whose' shows possession.",
   },
   {
-    id: 13,
-    level: "C1",
+    id: 20, level: "B2", type: "reading",
+    passage: "Jordan's tech sector has grown remarkably over the past decade. Once dominated by traditional industries, the country now hosts a vibrant ecosystem of startups in Amman, particularly in the Abdali and Shmeisani districts. Young entrepreneurs, many of them returning graduates from abroad, are launching companies in fintech, e-commerce, and AI translation tools. While funding remains a challenge compared to Gulf neighbours, the talent pool is widely considered one of the strongest in the region.",
+    question: "What is the writer's main point about Jordan's tech sector?",
+    options: ["It is the largest in the Arab world.", "It struggles with poor talent compared to neighbours.", "It has grown significantly and has strong talent, despite funding challenges.", "It only focuses on fintech and nothing else."],
+    correct: 2,
+    explanation: "The passage describes growth and talent strength while acknowledging funding remains a challenge — answer C captures all three points accurately.",
+  },
+  // ============== C1 (5 questions) ==============
+  {
+    id: 21, level: "C1", type: "grammar",
     question: "Choose the sentence that best uses inversion for emphasis:",
     options: ["Not only did the study reveal significant findings, but it also proposed a new framework.", "The study not only revealed significant findings but also proposed a new framework.", "The study revealed significant findings and also proposed a new framework.", "Significant findings were revealed by the study, and it proposed a new framework."],
     correct: 0,
-    explanation: "Inversion ('Not only did the study...') is a C1-level rhetorical device used for emphasis and stylistic variety. It makes the writing more engaging and impactful.",
+    explanation: "Inversion ('did the study reveal' instead of 'the study revealed') after 'not only' is a C1-level rhetorical device that adds emphasis.",
   },
   {
-    id: 14,
-    level: "C1",
-    question: "What is the pragmatic function of 'I was wondering if you might consider...'?",
-    options: ["A highly indirect, polite request that preserves the listener's autonomy", "A question about the past", "An expression of uncertainty about the future", "A statement about personal curiosity"],
+    id: 22, level: "C1", type: "vocab",
+    question: "Choose the most precise word: The scholar's ___ on bilingualism challenged long-held assumptions in the field.",
+    options: ["talk", "treatise", "paper", "idea"],
+    correct: 1,
+    explanation: "A 'treatise' is a formal, systematic written work on a specific subject. 'Paper' and 'idea' are too general; 'talk' suggests speech, not writing.",
+  },
+  {
+    id: 23, level: "C1", type: "pragmatic",
+    question: "What is the pragmatic function of 'I was wondering if you might possibly consider...'?",
+    options: ["A highly indirect, polite request that softens the imposition on the listener.", "A question about a past wondering.", "An expression of doubt about the future.", "A statement about personal curiosity only."],
     correct: 0,
-    explanation: "This is an example of indirect speech act theory. The speaker is not literally wondering; they are making a polite request. The indirectness allows the listener to refuse without losing face.",
+    explanation: "This is a classic example of indirect speech act theory — multiple hedges ('wondering', 'might', 'possibly') minimise face threat in formal requests.",
   },
   {
-    id: 15,
-    level: "C1",
-    question: "Complete: The government's policy, ___ has been widely criticized, remains unchanged.",
-    options: ["that", "what", "which", "where"],
+    id: 24, level: "C1", type: "grammar",
+    question: "Complete: The government's policy, ___ has been widely criticised, remains unchanged.",
+    options: ["that", "what", "where", "which"],
+    correct: 3,
+    explanation: "'Which' is the correct relative pronoun for non-restrictive clauses (those set off by commas). 'That' cannot be used in non-restrictive clauses.",
+  },
+  {
+    id: 25, level: "C1", type: "reading",
+    passage: "The notion that language merely reflects thought has long been contested. Sapir and Whorf, in their now-canonical work, argued that the linguistic structures of one's native tongue actively shape cognition, predisposing speakers to particular ways of categorising experience. While the strong version of this hypothesis has fallen out of favour, contemporary research suggests a more nuanced relationship: language and thought appear to be mutually constitutive, each subtly informing the other in domains ranging from spatial reasoning to colour perception.",
+    question: "What does the passage suggest about the current view of language and thought?",
+    options: ["Language has no influence on thought whatsoever.", "Sapir and Whorf's strong claim has been entirely vindicated by modern research.", "Language and thought influence each other in complex, mutual ways.", "Only spatial reasoning is affected by language."],
     correct: 2,
-    explanation: "'Which' is used in non-defining relative clauses (set off by commas) to add extra information. 'That' cannot be used in non-defining clauses. This distinction is crucial in formal English.",
+    explanation: "The phrase 'mutually constitutive, each subtly informing the other' indicates a two-way, nuanced relationship — answer C.",
+  },
+  // ============== C2 (5 questions) ==============
+  {
+    id: 26, level: "C2", type: "grammar",
+    question: "Identify the sentence with the most sophisticated structure:",
+    options: ["Were she to reconsider her position, the entire negotiation would shift in our favour.", "If she would reconsider her position, the negotiation would shift.", "If she reconsidered, things would change.", "She might reconsider, and then things would change."],
+    correct: 0,
+    explanation: "Inverted conditional 'Were she to reconsider...' (without 'if') is a hallmark of C2 register, used in formal writing and rhetoric.",
+  },
+  {
+    id: 27, level: "C2", type: "vocab",
+    question: "Choose the most apt word: The minister's response was characterised by deliberate ___, neither confirming nor denying the allegations.",
+    options: ["clarity", "vagueness", "honesty", "equivocation"],
+    correct: 3,
+    explanation: "'Equivocation' specifically means using ambiguous language to avoid committing oneself — more precise than the broader 'vagueness'.",
+  },
+  {
+    id: 28, level: "C2", type: "pragmatic",
+    question: "Which utterance best demonstrates pragmatic mitigation in academic discourse?",
+    options: ["The author is completely wrong about this.", "It might be argued that the author's framework, while compelling, somewhat overlooks this dimension.", "The author missed this point.", "I think the author did not see this."],
+    correct: 1,
+    explanation: "Hedges ('might be argued', 'while compelling', 'somewhat') and impersonal construction ('it') soften critique while preserving academic rigour — textbook C2 mitigation.",
+  },
+  {
+    id: 29, level: "C2", type: "grammar",
+    question: "Choose the sentence that correctly uses a cleft construction for emphasis:",
+    options: ["What surprised the committee most was the proposal's elegance.", "The committee was surprised by the proposal's elegance.", "The committee surprised by the elegance of the proposal.", "What the committee surprised most was the elegance."],
+    correct: 0,
+    explanation: "A wh-cleft ('What X was Y') foregrounds new information and signals advanced rhetorical control.",
+  },
+  {
+    id: 30, level: "C2", type: "reading",
+    passage: "Postcolonial scholarship has compellingly demonstrated that the metropolitan archive, far from being a neutral repository of the past, operates as a site of epistemic violence — its silences, exclusions, and hierarchical taxonomies actively producing the very subjects it purports merely to document. To engage critically with such archives, then, is not simply to read against the grain but to reconstitute the conditions of legibility themselves, attending to those whose presence registers only as absence, whose voices the colonial record systematically renders inaudible.",
+    question: "What is the central argument of the passage?",
+    options: ["Archives are simple records of past events.", "Postcolonial scholars have abandoned archive-based research.", "Engaging critically with colonial archives requires recognising and challenging their inherent biases and silences, not just reading them differently.", "Archives should be destroyed because they are biased."],
+    correct: 2,
+    explanation: "The passage argues that critical engagement requires 'reconstitut[ing] the conditions of legibility' — going beyond surface re-reading to challenge the archive's structural exclusions. Answer C captures this nuance.",
   },
 ];
 
@@ -610,17 +711,77 @@ function getRandomItems<T>(arr: T[], count: number): T[] {
   return shuffled.slice(0, count);
 }
 
-function getPlacementLevel(score: number): { level: string; description: string } {
-  const a1Count = score > 0 && score <= 5 ? score : Math.min(5, score);
-  const b1Count = score > 5 ? Math.min(5, score - 5) : 0;
-  const c1Count = score > 10 ? score - 10 : 0;
+interface PlacementResult {
+  level: string; // e.g. "B1", "B1+", "Below A1"
+  description: string; // friendly explanation
+  breakdown: { level: string; correct: number; total: number }[];
+}
 
-  if (c1Count >= 4) return { level: "C1–C2", description: "Advanced! You have an excellent command of English. Focus on academic writing and nuanced vocabulary." };
-  if (c1Count >= 2 && b1Count >= 3) return { level: "B2–C1", description: "Upper Intermediate to Advanced! You are very strong. Push into complex grammar and professional English." };
-  if (b1Count >= 4) return { level: "B1–B2", description: "Intermediate! Solid foundation. Work on complex sentences, professional vocabulary, and idiomatic expressions." };
-  if (b1Count >= 2 && a1Count >= 3) return { level: "A2–B1", description: "Pre-Intermediate! Good basics. Focus on verb tenses, longer conversations, and reading short articles." };
-  if (a1Count >= 3) return { level: "A1–A2", description: "Beginner! You know the basics. Practice daily vocabulary, simple sentences, and listening skills." };
-  return { level: "A1", description: "Welcome! Start with basic vocabulary, simple greetings, and everyday phrases. You are at the beginning of an exciting journey!" };
+function getPlacementLevel(
+  questions: QuizQuestion[],
+  answers: (number | null)[]
+): PlacementResult {
+  const levels = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const breakdown = levels.map((lvl) => {
+    const levelQuestions = questions
+      .map((q, i) => ({ q, i }))
+      .filter(({ q }) => q.level === lvl);
+    const correctCount = levelQuestions.filter(
+      ({ q, i }) => answers[i] === q.correct
+    ).length;
+    return { level: lvl, correct: correctCount, total: levelQuestions.length };
+  });
+
+  // Mastery rule: a learner "has" a level if they got 3 or more out of 5 correct.
+  // The placement is the HIGHEST consecutive level mastered, starting from A1.
+  // If they score 4-5 out of 5 at a level, mark it as "+" (emerging into next).
+  let placedLevel = "Below A1";
+  let placementDesc = "";
+
+  for (let idx = 0; idx < levels.length; idx++) {
+    const { correct } = breakdown[idx];
+    if (correct >= 3) {
+      placedLevel = levels[idx];
+      // If they did very well (4 or 5), they're emerging into next level
+      if (correct >= 4 && idx < levels.length - 1) {
+        const nextLevel = levels[idx + 1];
+        const nextCorrect = breakdown[idx + 1].correct;
+        if (nextCorrect < 3) {
+          placedLevel = `${levels[idx]}+`;
+        }
+      }
+    } else {
+      // Stop climbing — they didn't pass this level
+      break;
+    }
+  }
+
+  // Build a friendly description
+  if (placedLevel === "Below A1") {
+    placementDesc =
+      "You're just starting your English journey — that's a wonderful place to be! We recommend beginning with our A1 reading passages and basic vocabulary.";
+  } else if (placedLevel === "C2") {
+    placementDesc =
+      "Mastery level. You demonstrate near-native command of English across grammar, vocabulary, and pragmatic discourse.";
+  } else if (placedLevel.endsWith("+")) {
+    const base = placedLevel.replace("+", "");
+    placementDesc = `You're solidly at ${base} and showing emerging strengths at the next level. We recommend ${base} content as your foundation, with selected challenges from the level above.`;
+  } else {
+    const descriptions: Record<string, string> = {
+      A1: "Beginner. You can handle basic everyday phrases and very simple interactions.",
+      A2: "Elementary. You can communicate in simple, routine situations and understand familiar topics.",
+      B1: "Intermediate. You can handle most situations while travelling and discuss familiar topics with reasonable fluency.",
+      B2: "Upper-intermediate. You can interact with native speakers fluently and discuss complex topics in your field.",
+      C1: "Advanced. You can express ideas fluently and use language flexibly for social, academic, and professional purposes.",
+    };
+    placementDesc = descriptions[placedLevel] || "";
+  }
+
+  return {
+    level: placedLevel,
+    description: placementDesc,
+    breakdown,
+  };
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -770,6 +931,10 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
     if (currentQ > 0) setCurrentQ(currentQ - 1);
   }
 
+  function buildAnswersArray(): (number | null)[] {
+    return placementQuestions.map((q) => answers[q.id] ?? null);
+  }
+
   function calculateScore() {
     let score = 0;
     placementQuestions.forEach((q) => {
@@ -791,7 +956,7 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
   }
 
   const score = calculateScore();
-  const result = getPlacementLevel(score);
+  const result = getPlacementLevel(placementQuestions, buildAnswersArray());
 
   return (
     <Sheet open={open} onOpenChange={handleClose}>
@@ -799,10 +964,10 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
         <SheetHeader className="p-6 pb-4 bg-gradient-to-r from-aqaba to-aqaba-dark">
           <SheetTitle className="text-xl font-bold text-white flex items-center gap-2">
             <GraduationCap className="size-6" />
-            Placement Test
+            Quick CEFR Check
           </SheetTitle>
           <SheetDescription className="text-blue-100 text-sm">
-            Answer {totalQuestions} questions to find your CEFR level
+            30 questions across 6 CEFR levels — an estimated self-check, not a formal qualification.
           </SheetDescription>
         </SheetHeader>
 
@@ -812,13 +977,13 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
               <div className="text-6xl mb-4">📝</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Ready to Test Your English?</h3>
               <p className="text-gray-600 mb-2 max-w-md mx-auto">
-                This placement test has {totalQuestions} questions across three levels: A1 (Beginner), B1 (Intermediate), and C1 (Advanced).
+                30 questions across 6 CEFR levels: A1 (Beginner), A2 (Elementary), B1 (Intermediate), B2 (Upper-Intermediate), C1 (Advanced), and C2 (Mastery).
               </p>
               <p className="text-gray-500 text-sm mb-6">
-                Answer honestly — there are no wrong answers, only honest ones. The test takes about 10 minutes.
+                Answer honestly — this is a self-check to help you find the right content, not a formal exam. It takes about 15 minutes.
               </p>
               <Button onClick={() => setStarted(true)} className="bg-aqaba hover:bg-aqaba-dark text-white px-8 py-3 text-lg">
-                Start the Test
+                Start the Check
               </Button>
             </div>
           ) : showResults ? (
@@ -831,7 +996,24 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
                 <Badge className="bg-aqaba text-white text-lg px-4 py-1 mb-3">
                   {result.level}
                 </Badge>
-                <p className="text-gray-600 max-w-md mx-auto mb-6">{result.description}</p>
+                <p className="text-gray-600 max-w-md mx-auto mb-4">{result.description}</p>
+                <div className="flex flex-wrap justify-center gap-2 mt-3 mb-2">
+                  {result.breakdown.map((b) => (
+                    <span
+                      key={b.level}
+                      className={`text-xs px-2 py-1 rounded-full border ${
+                        b.correct >= 3
+                          ? "bg-green-50 border-green-300 text-green-700"
+                          : b.correct >= 1
+                          ? "bg-yellow-50 border-yellow-300 text-yellow-700"
+                          : "bg-gray-50 border-gray-200 text-gray-500"
+                      }`}
+                    >
+                      {b.level}: {b.correct}/{b.total} {b.correct >= 3 ? "\u2713" : ""}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-xs text-gray-400 mt-2">This is an estimated self-check, not a formal CEFR qualification.</p>
               </div>
               <Separator className="my-4" />
               <h4 className="text-lg font-bold text-gray-800 mb-4">Review Your Answers</h4>
@@ -864,14 +1046,17 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
               <div className="text-center pb-8">
                 <Button onClick={resetTest} className="bg-aqaba hover:bg-aqaba-dark text-white px-8">
                   <RefreshCw className="size-4 mr-2" />
-                  Retake the Test
+                  Retake the Check
                 </Button>
               </div>
             </ScrollArea>
           ) : (
             <div>
               <div className="flex items-center justify-between mb-4">
-                <Badge variant="outline" className="text-xs">{question.level}</Badge>
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="text-xs">{question.level}</Badge>
+                  <span className="text-xs text-gray-500 capitalize">{question.type}</span>
+                </div>
                 <span className="text-sm text-gray-500">Question {currentQ + 1} of {totalQuestions}</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
@@ -880,6 +1065,11 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
                   style={{ width: `${((currentQ + 1) / totalQuestions) * 100}%` }}
                 />
               </div>
+              {question.passage && (
+                <div className="bg-sand/50 border-l-4 border-aqaba p-4 mb-4 rounded text-sm leading-relaxed">
+                  {question.passage}
+                </div>
+              )}
               <h3 className="text-lg font-bold text-gray-900 mb-4">{question.question}</h3>
               <div className="space-y-3 mb-6">
                 {question.options.map((option, idx) => {
@@ -1214,7 +1404,7 @@ function FeatureExplorer({
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200 z-50 py-2 overflow-hidden">
             {[
-              { icon: <GraduationCap className="size-4" />, label: "Placement Test", desc: "Find your CEFR level", color: "text-aqaba", onClick: onTest },
+              { icon: <GraduationCap className="size-4" />, label: "Quick CEFR Check", desc: "Estimate your CEFR level", color: "text-aqaba", onClick: onTest },
               { icon: <BookText className="size-4" />, label: "Reading Passages", desc: "Daily reading practice", color: "text-petra", onClick: onReading },
               { icon: <BookOpen className="size-4" />, label: "Vocabulary Lists", desc: "Words by topic & level", color: "text-olive", onClick: onVocab },
               { icon: <Languages className="size-4" />, label: "Grammar Lessons", desc: "Practical grammar tips", color: "text-purple-600", onClick: onGrammar },
@@ -1450,7 +1640,7 @@ export default function Home() {
               onClick={() => setPlacementOpen(true)}
               className="bg-petra hover:bg-petra-dark text-white shadow rounded-md transition-colors text-sm"
             >
-              Placement Test
+              Quick CEFR Check
             </Button>
           </div>
         </div>
@@ -1611,8 +1801,8 @@ export default function Home() {
                 <GraduationCap className="size-6 text-aqaba" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 text-sm">Take the Placement Test</h4>
-                <p className="text-xs text-gray-500">15 questions to find your level</p>
+                <h4 className="font-bold text-gray-900 text-sm">Take the Quick CEFR Check</h4>
+                <p className="text-xs text-gray-500">30 questions across 6 levels</p>
               </div>
               <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
             </CardContent>
@@ -1682,7 +1872,7 @@ export default function Home() {
         </SheetContent>
       </Sheet>
 
-      {/* Placement Test */}
+      {/* Quick CEFR Check */}
       <PlacementTest open={placementOpen} onOpenChange={setPlacementOpen} />
 
       {/* Grammar Lesson */}
