@@ -1,6 +1,5 @@
 // src/app/api/chat/route.ts
-// Nibras English chatbot — powered by Qwen 3.6 via OpenRouter (free tier)
-// Replaces the previous z-ai-web-dev-sdk implementation.
+// Nibras English chatbot — powered by free LLMs via OpenRouter
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -34,6 +33,51 @@ IF THE LEARNER:
 
 Stay in character. You are Nibras.`;
 
+// List of free models to try in order
+const FREE_MODELS = [
+  "meta-llama/llama-3.3-70b-instruct:free",
+  "google/gemma-4-31b-it:free",
+  "google/gemma-3-27b-it:free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "qwen/qwen3-next-80b-a3b-instruct:free",
+  "minimax/minimax-m2.5:free",
+];
+
+async function tryModel(
+  apiKey: string,
+  model: string,
+  messages: ChatMessage[],
+  signal: AbortSignal
+): Promise<string | null> {
+  const response = await fetch(
+    "https://openrouter.ai/api/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey.trim()}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://nibrasenglish.vercel.app",
+        "X-Title": "Nibras English",
+      },
+      body: JSON.stringify({
+        model,
+        messages,
+        temperature: 0.7,
+        max_tokens: 800,
+      }),
+      signal,
+    }
+  );
+
+  if (!response.ok) {
+    console.error(`Model ${model} failed: ${response.status}`);
+    return null;
+  }
+
+  const data = await response.json();
+  return data?.choices?.[0]?.message?.content ?? null;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
@@ -47,10 +91,8 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      console.error("OPENROUTER_API_KEY is not set in environment variables");
-      return NextResponse.json(
-        { reply: "The chatbot is not configured yet — the OPENROUTER_API_KEY environment variable is missing. Please add it to .env.local and restart the server." }
-      );
+      console.error("OPENROUTER_API_KEY is not set");
+      return NextResponse.json({ reply: "The chatbot is not configured yet. Please set OPENROUTER_API_KEY in .env.local and restart." });
     }
 
     const fullMessages: ChatMessage[] = [
@@ -62,68 +104,41 @@ export async function POST(req: NextRequest) {
     ];
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 25000);
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://nibrasenglish.vercel.app",
-          "X-Title": "Nibras English",
-        },
-        body: JSON.stringify({
-          model: "openrouter/free",
-          messages: fullMessages,
-          temperature: 0.7,
-          max_tokens: 800,
-        }),
-        signal: controller.signal,
+    // Try each model until one works
+    let reply: string | null = null;
+    for (const model of FREE_MODELS) {
+      try {
+        reply = await tryModel(apiKey, model, fullMessages, controller.signal);
+        if (reply) break;
+      } catch {
+        // This model failed, try the next one
+        console.error(`Error with model ${model}, trying next...`);
       }
-    );
+    }
 
     clearTimeout(timeoutId);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("OpenRouter error:", response.status, errorText);
-      return NextResponse.json(
-        {
-          reply:
-            "I'm sorry, I had trouble connecting. Please try asking again in a moment!",
-        },
-        { status: 500 }
-      );
+    if (!reply) {
+      return NextResponse.json({
+        reply: "I'm sorry, I'm having trouble connecting right now. Please try again in a moment!",
+      });
     }
-
-    const data = await response.json();
-    const reply =
-      data?.choices?.[0]?.message?.content ??
-      "I'm sorry, I couldn't think of a reply. Could you try rephrasing?";
 
     return NextResponse.json({ reply });
   } catch (error: unknown) {
     const isAbort = error instanceof Error && error.name === "AbortError";
 
     if (isAbort) {
-      return NextResponse.json(
-        {
-          reply:
-            "Sorry, that took too long. Please try a shorter question or try again!",
-        },
-        { status: 504 }
-      );
+      return NextResponse.json({
+        reply: "Sorry, that took too long. Please try a shorter question or try again!",
+      });
     }
 
     console.error("Chat route error:", error);
-    return NextResponse.json(
-      {
-        reply:
-          "I'm sorry, something went wrong on my end. Please try asking again!",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      reply: "I'm sorry, something went wrong on my end. Please try asking again!",
+    });
   }
 }
