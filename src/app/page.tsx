@@ -83,62 +83,62 @@ interface GrammarLesson {
    ═══════════════════════════════════════════════════════════════ */
 
 const placementQuestions: QuizQuestion[] = [
-  // A1 Level (5 questions)
+  // A1 Level (5 questions) — correct answers: C, D, B, B, D
   {
     id: 1,
     level: "A1",
     question: "Your brother Ahmad just passed his exams. What do you say?",
-    options: ["Mabrouk! I am proud of you.", "I am drinking coffee now.", "She goes to school every day.", "They are playing football."],
-    correct: 0,
+    options: ["I am drinking coffee now.", "She goes to school every day.", "Mabrouk! I am proud of you.", "They are playing football."],
+    correct: 2,
     explanation: "Mabrouk means congratulations in Arabic. When someone achieves something, we say we are proud of them. The other options describe different situations.",
   },
   {
     id: 2,
     level: "A1",
     question: "Complete: My family ___ dinner together every Friday evening.",
-    options: ["eat", "eating", "ate", "eats"],
-    correct: 0,
+    options: ["eating", "ate", "eats", "eat"],
+    correct: 3,
     explanation: "'My family' uses a plural verb in English, so we say 'eat' not 'eats'. This is different from Arabic where the verb comes before the subject.",
   },
   {
     id: 3,
     level: "A1",
     question: "Which sentence is correct?",
-    options: ["We pray Fajr early in the morning.", "We prays Fajr early in the morning.", "We praying Fajr early in the morning.", "We is pray Fajr early in the morning."],
-    correct: 0,
+    options: ["We prays Fajr early in the morning.", "We pray Fajr early in the morning.", "We praying Fajr early in the morning.", "We is pray Fajr early in the morning."],
+    correct: 1,
     explanation: "With 'we', we use the base form of the verb without any change. This is a common point for Arabic speakers because Arabic verbs change form based on the subject.",
   },
   {
     id: 4,
     level: "A1",
     question: "Choose the correct word: I would like a glass of ___ with my mansaf.",
-    options: ["water", "waters", "a water", "the waters"],
-    correct: 0,
+    options: ["waters", "water", "a water", "the waters"],
+    correct: 1,
     explanation: "Water is an uncountable noun, so we do not add an 's'. We use 'a glass of water' or just 'water'. Many Arabic speakers confuse countable and uncountable nouns in English.",
   },
   {
     id: 5,
     level: "A1",
     question: "What does 'How are you?' mean?",
-    options: ["Asking about your health or feelings", "Asking your name", "Asking where you live", "Asking what you do"],
-    correct: 0,
+    options: ["Asking your name", "Asking where you live", "Asking what you do", "Asking about your health or feelings"],
+    correct: 3,
     explanation: "'How are you?' (كيف حالك؟) is a greeting that asks about your well-being. In Jordan, people often respond with 'Alhamdulillah' (الحمد لله) before continuing the conversation.",
   },
-  // B1 Level (5 questions)
+  // B1 Level (5 questions) — correct answers: D, B, A, C, A
   {
     id: 6,
     level: "B1",
     question: "Complete: By the time we arrived in Aqaba, the sun ___.",
-    options: ["had already set", "has already set", "already set", "is already setting"],
-    correct: 0,
+    options: ["has already set", "already set", "is already setting", "had already set"],
+    correct: 3,
     explanation: "We use the past perfect ('had set') when talking about an action that happened BEFORE another past action. The arrival was past, and the sunset was even earlier.",
   },
   {
     id: 7,
     level: "B1",
     question: "Choose the best response: 'I have been working on this project for three weeks.'",
-    options: ["That must be exhausting. Have you taken any breaks?", "You are work on this project.", "Three weeks is too many.", "I was working on that yesterday."],
-    correct: 0,
+    options: ["You are work on this project.", "That must be exhausting. Have you taken any breaks?", "Three weeks is too many.", "I was working on that yesterday."],
+    correct: 1,
     explanation: "The present perfect continuous ('have been working') means the action started in the past and is still happening. A natural response would show empathy and concern.",
   },
   {
@@ -153,8 +153,8 @@ const placementQuestions: QuizQuestion[] = [
     id: 9,
     level: "B1",
     question: "Choose the correct form: If I ___ earlier, I would not have missed the bus.",
-    options: ["had left", "have left", "would leave", "will leave"],
-    correct: 0,
+    options: ["have left", "would leave", "had left", "will leave"],
+    correct: 2,
     explanation: "This is a third conditional sentence about a past event that cannot be changed. The structure is: If + past perfect, would + have + past participle.",
   },
   {
@@ -165,21 +165,21 @@ const placementQuestions: QuizQuestion[] = [
     correct: 0,
     explanation: "'Out of the question' means something is impossible or not allowed. For example: 'Working on Friday afternoon is out of the question for me.'",
   },
-  // C1 Level (5 questions)
+  // C1 Level (5 questions) — correct answers: B, C, A, A, C
   {
     id: 11,
     level: "C1",
     question: "Choose the most precise word: The scholar's ___ on bilingualism challenged long-held assumptions in the field.",
-    options: ["treatise", "talk", "paper", "idea"],
-    correct: 0,
+    options: ["talk", "treatise", "paper", "idea"],
+    correct: 1,
     explanation: "A 'treatise' is a formal, systematic written work on a specific subject. It carries academic weight that 'talk', 'paper', or 'idea' do not convey in this context.",
   },
   {
     id: 12,
     level: "C1",
     question: "Which sentence demonstrates the most sophisticated use of hedging?",
-    options: ["The evidence would appear to suggest that language acquisition is influenced by environmental factors.", "Language acquisition is influenced by the environment.", "The environment influences how we learn language.", "I think the environment affects language learning."],
-    correct: 0,
+    options: ["Language acquisition is influenced by the environment.", "The environment influences how we learn language.", "The evidence would appear to suggest that language acquisition is influenced by environmental factors.", "I think the environment affects language learning."],
+    correct: 2,
     explanation: "'Would appear to suggest' is an academic hedging technique that softens the claim without weakening it. Hedging is essential in academic writing to show intellectual caution.",
   },
   {
@@ -202,8 +202,8 @@ const placementQuestions: QuizQuestion[] = [
     id: 15,
     level: "C1",
     question: "Complete: The government's policy, ___ has been widely criticized, remains unchanged.",
-    options: ["which", "that", "what", "where"],
-    correct: 0,
+    options: ["that", "what", "which", "where"],
+    correct: 2,
     explanation: "'Which' is used in non-defining relative clauses (set off by commas) to add extra information. 'That' cannot be used in non-defining clauses. This distinction is crucial in formal English.",
   },
 ];
