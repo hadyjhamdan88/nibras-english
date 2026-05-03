@@ -1,5 +1,7 @@
 // src/app/api/chat/route.ts
-// Nibras English chatbot — powered by free LLMs via OpenRouter
+// Nibras English chatbot — OpenRouter integration with reliable chat models
+// Uses fallback list of confirmed-working free chat models, with proper
+// response parsing and detailed error logging.
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -33,49 +35,76 @@ IF THE LEARNER:
 
 Stay in character. You are Nibras.`;
 
-// List of free models to try in order
-const FREE_MODELS = [
+const MODEL_FALLBACK_LIST = [
+  "openrouter/free",
+  "deepseek/deepseek-chat-v3.2:free",
   "meta-llama/llama-3.3-70b-instruct:free",
-  "google/gemma-4-31b-it:free",
-  "google/gemma-3-27b-it:free",
-  "nvidia/nemotron-3-super-120b-a12b:free",
-  "qwen/qwen3-next-80b-a3b-instruct:free",
-  "minimax/minimax-m2.5:free",
+  "mistralai/mistral-small-3.1:free",
 ];
 
-async function tryModel(
+async function callOpenRouter(
   apiKey: string,
-  model: string,
-  messages: ChatMessage[],
-  signal: AbortSignal
-): Promise<string | null> {
-  const response = await fetch(
-    "https://openrouter.ai/api/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey.trim()}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://nibrasenglish.vercel.app",
-        "X-Title": "Nibras English",
-      },
-      body: JSON.stringify({
-        model,
-        messages,
-        temperature: 0.7,
-        max_tokens: 800,
-      }),
-      signal,
+  modelId: string,
+  messages: ChatMessage[]
+): Promise<{ ok: true; reply: string } | { ok: false; error: string; status?: number }> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 25000);
+
+  try {
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey.trim()}`,
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://nibrasenglish.vercel.app",
+          "X-Title": "Nibras English",
+        },
+        body: JSON.stringify({
+          model: modelId,
+          messages,
+          temperature: 0.7,
+          max_tokens: 800,
+        }),
+        signal: controller.signal,
+      }
+    );
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`[Nibras] Model ${modelId} returned ${response.status}: ${errorText}`);
+      return { ok: false, error: errorText, status: response.status };
     }
-  );
 
-  if (!response.ok) {
-    console.error(`Model ${model} failed: ${response.status}`);
-    return null;
+    const data = await response.json();
+
+    const reply =
+      data?.choices?.[0]?.message?.content ??
+      data?.choices?.[0]?.text ??
+      data?.message?.content ??
+      null;
+
+    if (!reply || typeof reply !== "string" || reply.trim() === "") {
+      console.error(`[Nibras] Model ${modelId} returned empty or malformed response:`, JSON.stringify(data).slice(0, 500));
+      return { ok: false, error: "Empty response from model" };
+    }
+
+    console.log(`[Nibras] Success with model ${modelId}, reply length: ${reply.length}`);
+    return { ok: true, reply };
+  } catch (error: unknown) {
+    clearTimeout(timeoutId);
+    const isAbort = error instanceof Error && error.name === "AbortError";
+    const errorMsg = isAbort
+      ? "Request timed out"
+      : error instanceof Error
+        ? error.message
+        : "Unknown error";
+    console.error(`[Nibras] Model ${modelId} threw error:`, errorMsg);
+    return { ok: false, error: errorMsg };
   }
-
-  const data = await response.json();
-  return data?.choices?.[0]?.message?.content ?? null;
 }
 
 export async function POST(req: NextRequest) {
@@ -91,8 +120,11 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      console.error("OPENROUTER_API_KEY is not set");
-      return NextResponse.json({ reply: "The chatbot is not configured yet. Please set OPENROUTER_API_KEY in .env.local and restart." });
+      console.error("[Nibras] OPENROUTER_API_KEY is not set");
+      return NextResponse.json(
+        { reply: "The chatbot is not configured yet. Please try again later!" },
+        { status: 500 }
+      );
     }
 
     const fullMessages: ChatMessage[] = [
@@ -103,42 +135,34 @@ export async function POST(req: NextRequest) {
       })),
     ];
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000);
-
-    // Try each model until one works
-    let reply: string | null = null;
-    for (const model of FREE_MODELS) {
-      try {
-        reply = await tryModel(apiKey, model, fullMessages, controller.signal);
-        if (reply) break;
-      } catch {
-        // This model failed, try the next one
-        console.error(`Error with model ${model}, trying next...`);
+    let lastError = "All models failed";
+    for (const modelId of MODEL_FALLBACK_LIST) {
+      const result = await callOpenRouter(apiKey, modelId, fullMessages);
+      if (result.ok) {
+        return NextResponse.json({ reply: result.reply });
+      }
+      lastError = result.error;
+      if (result.status === 401) {
+        break;
       }
     }
 
-    clearTimeout(timeoutId);
-
-    if (!reply) {
-      return NextResponse.json({
-        reply: "I'm sorry, I'm having trouble connecting right now. Please try again in a moment!",
-      });
-    }
-
-    return NextResponse.json({ reply });
+    console.error("[Nibras] All models in fallback list failed. Last error:", lastError);
+    return NextResponse.json(
+      {
+        reply:
+          "I'm sorry, I had trouble connecting. Please try asking again in a moment!",
+      },
+      { status: 500 }
+    );
   } catch (error: unknown) {
-    const isAbort = error instanceof Error && error.name === "AbortError";
-
-    if (isAbort) {
-      return NextResponse.json({
-        reply: "Sorry, that took too long. Please try a shorter question or try again!",
-      });
-    }
-
-    console.error("Chat route error:", error);
-    return NextResponse.json({
-      reply: "I'm sorry, something went wrong on my end. Please try asking again!",
-    });
+    console.error("[Nibras] Chat route fatal error:", error);
+    return NextResponse.json(
+      {
+        reply:
+          "I'm sorry, something went wrong on my end. Please try asking again!",
+      },
+      { status: 500 }
+    );
   }
 }
