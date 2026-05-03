@@ -154,6 +154,7 @@ export async function POST(req: NextRequest) {
       {
         reply:
           "I'm sorry, I had trouble connecting. Please try asking again in a moment!",
+        debug: { tried: MODEL_FALLBACK_LIST.length, lastError: lastError?.slice?.(0, 200) },
       },
       { status: 500 }
     );
