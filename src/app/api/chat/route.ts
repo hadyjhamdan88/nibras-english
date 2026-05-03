@@ -37,9 +37,11 @@ Stay in character. You are Nibras.`;
 
 const MODEL_FALLBACK_LIST = [
   "openrouter/free",
-  "deepseek/deepseek-chat-v3.2:free",
-  "meta-llama/llama-3.3-70b-instruct:free",
-  "mistralai/mistral-small-3.1:free",
+  "minimax/minimax-m2.5:free",
+  "nvidia/nemotron-nano-9b-v2:free",
+  "poolside/laguna-m.1:free",
+  "openai/gpt-oss-120b:free",
+  "nvidia/nemotron-3-super-120b-a12b:free",
 ];
 
 async function callOpenRouter(
