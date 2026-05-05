@@ -31,6 +31,7 @@ import {
   Sparkles,
   ChevronDown,
   Paperclip,
+  Mic2,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1434,6 +1435,357 @@ function ChatBot() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   PRONUNCIATION LAB (Layer 1: Browser TTS)
+   ═══════════════════════════════════════════════════════════════ */
+
+interface MinimalPair {
+  a: string;
+  b: string;
+  ipaA: string;
+  ipaB: string;
+  hint?: string;
+}
+
+interface PronunciationModule {
+  id: string;
+  title: string;
+  contrast: string;
+  intro: string;
+  whyHard: string;
+  pairs: MinimalPair[];
+}
+
+const pronunciationModules: PronunciationModule[] = [
+  {
+    id: "p-vs-b",
+    title: "P vs B",
+    contrast: "/p/ vs /b/",
+    intro: "English distinguishes a voiceless P from a voiced B. Modern Standard Arabic has no /p/ sound, so many Jordanian learners say 'bark' when they mean 'park'.",
+    whyHard: "Both sounds are made with the lips. The difference is voicing: /p/ has no vibration in your throat, /b/ does. Place your fingers on your throat and feel the buzz on B but not on P.",
+    pairs: [
+      { a: "park", b: "bark", ipaA: "/pɑːrk/", ipaB: "/bɑːrk/" },
+      { a: "pat", b: "bat", ipaA: "/pæt/", ipaB: "/bæt/" },
+      { a: "pear", b: "bear", ipaA: "/pɛər/", ipaB: "/bɛər/" },
+      { a: "pin", b: "bin", ipaA: "/pɪn/", ipaB: "/bɪn/" },
+      { a: "pull", b: "bull", ipaA: "/pʊl/", ipaB: "/bʊl/" },
+      { a: "pack", b: "back", ipaA: "/pæk/", ipaB: "/bæk/" },
+      { a: "peach", b: "beach", ipaA: "/piːtʃ/", ipaB: "/biːtʃ/" },
+      { a: "pig", b: "big", ipaA: "/pɪɡ/", ipaB: "/bɪɡ/" },
+      { a: "pen", b: "Ben", ipaA: "/pɛn/", ipaB: "/bɛn/" },
+      { a: "pole", b: "bowl", ipaA: "/poʊl/", ipaB: "/boʊl/" },
+      { a: "pride", b: "bride", ipaA: "/praɪd/", ipaB: "/braɪd/" },
+      { a: "pest", b: "best", ipaA: "/pɛst/", ipaB: "/bɛst/" },
+    ],
+  },
+  {
+    id: "ship-sheep",
+    title: "Ship vs Sheep",
+    contrast: "/ɪ/ vs /iː/",
+    intro: "English has two sounds where Arabic has one: a short, relaxed /ɪ/ (as in 'ship') and a long, tense /iː/ (as in 'sheep'). Many Jordanian learners use only the long sound, so 'ship' becomes 'sheep'.",
+    whyHard: "The short /ɪ/ is shorter and more relaxed. Your tongue is slightly lower and the muscles around your mouth are loose. The long /iː/ is held longer with your lips pulled wider, almost like a smile.",
+    pairs: [
+      { a: "ship", b: "sheep", ipaA: "/ʃɪp/", ipaB: "/ʃiːp/" },
+      { a: "fit", b: "feet", ipaA: "/fɪt/", ipaB: "/fiːt/" },
+      { a: "sit", b: "seat", ipaA: "/sɪt/", ipaB: "/siːt/" },
+      { a: "live", b: "leave", ipaA: "/lɪv/", ipaB: "/liːv/" },
+      { a: "hit", b: "heat", ipaA: "/hɪt/", ipaB: "/hiːt/" },
+      { a: "bit", b: "beat", ipaA: "/bɪt/", ipaB: "/biːt/" },
+      { a: "fill", b: "feel", ipaA: "/fɪl/", ipaB: "/fiːl/" },
+      { a: "slip", b: "sleep", ipaA: "/slɪp/", ipaB: "/sliːp/" },
+      { a: "rich", b: "reach", ipaA: "/rɪtʃ/", ipaB: "/riːtʃ/" },
+      { a: "knit", b: "neat", ipaA: "/nɪt/", ipaB: "/niːt/" },
+    ],
+  },
+];
+
+function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+  const [activeModuleId, setActiveModuleId] = useState(pronunciationModules[0].id);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoice, setSelectedVoice] = useState<string>("");
+  const [rate, setRate] = useState(0.85);
+  const [speakingId, setSpeakingId] = useState<string | null>(null);
+
+  const activeModule = pronunciationModules.find((m) => m.id === activeModuleId)!;
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+
+    function loadVoices() {
+      const allVoices = window.speechSynthesis.getVoices();
+      const englishVoices = allVoices.filter((v) => v.lang.startsWith("en"));
+      setVoices(englishVoices);
+
+      const saved = typeof window !== "undefined" ? localStorage.getItem("nibras-voice") : null;
+      if (saved && englishVoices.some((v) => v.name === saved)) {
+        setSelectedVoice(saved);
+      } else if (englishVoices.length > 0) {
+        const preferred =
+          englishVoices.find((v) => v.name.includes("Google US English")) ||
+          englishVoices.find((v) => v.lang === "en-US") ||
+          englishVoices[0];
+        setSelectedVoice(preferred.name);
+      }
+    }
+
+    loadVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (selectedVoice && typeof window !== "undefined") {
+      localStorage.setItem("nibras-voice", selectedVoice);
+    }
+  }, [selectedVoice]);
+
+  useEffect(() => {
+    if (!open && typeof window !== "undefined" && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      setSpeakingId(null);
+    }
+  }, [open]);
+
+  function speakWord(word: string, id: string) {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    const voice = voices.find((v) => v.name === selectedVoice);
+    if (voice) utterance.voice = voice;
+    utterance.rate = rate;
+    utterance.pitch = 1;
+    utterance.onstart = () => setSpeakingId(id);
+    utterance.onend = () => setSpeakingId(null);
+    utterance.onerror = () => setSpeakingId(null);
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function speakPair(pair: MinimalPair, pairIdx: number) {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const id = `pair-${pairIdx}`;
+    setSpeakingId(id);
+
+    const u1 = new SpeechSynthesisUtterance(pair.a);
+    const u2 = new SpeechSynthesisUtterance(pair.b);
+    const voice = voices.find((v) => v.name === selectedVoice);
+    if (voice) {
+      u1.voice = voice;
+      u2.voice = voice;
+    }
+    u1.rate = rate;
+    u2.rate = rate;
+    u2.onend = () => setSpeakingId(null);
+
+    window.speechSynthesis.speak(u1);
+    setTimeout(() => {
+      window.speechSynthesis.speak(u2);
+    }, 600);
+  }
+
+  function stopAll() {
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    setSpeakingId(null);
+  }
+
+  const ttsSupported = typeof window !== "undefined" && !!window.speechSynthesis;
+
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="right" className="w-full sm:max-w-lg bg-white p-0 overflow-hidden">
+        <SheetHeader className="p-6 pb-4 bg-gradient-to-r from-petra to-petra-dark">
+          <SheetTitle className="text-xl font-bold text-white flex items-center gap-2">
+            <Mic2 className="size-6" />
+            Pronunciation Lab
+          </SheetTitle>
+          <SheetDescription className="text-pink-100 text-sm">
+            Listen, notice the difference, repeat aloud.
+          </SheetDescription>
+        </SheetHeader>
+
+        <ScrollArea className="h-[calc(100vh-8rem)] px-6 pt-4">
+          {!ttsSupported ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600 mb-2">
+                Your browser does not support text-to-speech.
+              </p>
+              <p className="text-gray-500 text-sm">
+                Please try the latest version of Chrome, Safari, or Firefox.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="flex gap-2 mb-4 border-b border-gray-200">
+                {pronunciationModules.map((m) => (
+                  <button
+                    key={m.id}
+                    onClick={() => {
+                      stopAll();
+                      setActiveModuleId(m.id);
+                    }}
+                    className={`px-4 py-2 text-sm font-semibold border-b-2 transition-colors ${
+                      activeModuleId === m.id
+                        ? "border-petra text-petra"
+                        : "border-transparent text-gray-500 hover:text-gray-700"
+                    }`}
+                  >
+                    {m.title}
+                  </button>
+                ))}
+              </div>
+
+              <div className="bg-gray-50 rounded-lg p-3 mb-4 space-y-2">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">
+                    Voice
+                  </label>
+                  <select
+                    value={selectedVoice}
+                    onChange={(e) => setSelectedVoice(e.target.value)}
+                    className="w-full text-sm border border-gray-200 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-petra"
+                  >
+                    {voices.length === 0 ? (
+                      <option>Loading voices...</option>
+                    ) : (
+                      voices.map((v) => (
+                        <option key={v.name} value={v.name}>
+                          {v.name} ({v.lang})
+                        </option>
+                      ))
+                    )}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 mb-1">
+                    Speed: {rate.toFixed(2)}x
+                  </label>
+                  <input
+                    type="range"
+                    min="0.7"
+                    max="1.0"
+                    step="0.05"
+                    value={rate}
+                    onChange={(e) => setRate(parseFloat(e.target.value))}
+                    className="w-full accent-petra"
+                  />
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-500 italic mb-4 leading-relaxed">
+                These are computer-generated voices. They are a reliable reference for most contrasts, but trust your ear — if a single playback sounds off, try a different voice from the dropdown.
+              </p>
+
+              <div className="mb-4">
+                <Badge className="bg-petra/10 text-petra border-petra/20 mb-2">
+                  {activeModule.contrast}
+                </Badge>
+                <p className="text-sm text-gray-700 leading-relaxed mb-2">
+                  {activeModule.intro}
+                </p>
+                <p className="text-sm text-gray-600 leading-relaxed bg-amber-50 border-l-4 border-amber-300 p-3 rounded">
+                  <strong className="text-amber-700">Why it&apos;s tricky:</strong> {activeModule.whyHard}
+                </p>
+              </div>
+
+              <Separator className="my-4" />
+
+              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">
+                Minimal Pairs ({activeModule.pairs.length})
+              </h3>
+              <div className="space-y-3">
+                {activeModule.pairs.map((pair, idx) => {
+                  const idA = `${activeModule.id}-${idx}-a`;
+                  const idB = `${activeModule.id}-${idx}-b`;
+                  const idPair = `${activeModule.id}-pair-${idx}`;
+                  return (
+                    <div
+                      key={`${activeModule.id}-${idx}`}
+                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors"
+                    >
+                      <div className="grid grid-cols-2 gap-2 mb-2">
+                        <button
+                          onClick={() => speakWord(pair.a, idA)}
+                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
+                            speakingId === idA
+                              ? "border-petra bg-pink-50"
+                              : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
+                          }`}
+                        >
+                          <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
+                            <span className="text-petra text-xs">▶</span>
+                          </span>
+                          <div className="text-left">
+                            <div className="font-semibold text-gray-900 text-sm">{pair.a}</div>
+                            <div className="text-xs text-gray-500">{pair.ipaA}</div>
+                          </div>
+                        </button>
+                        <button
+                          onClick={() => speakWord(pair.b, idB)}
+                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
+                            speakingId === idB
+                              ? "border-petra bg-pink-50"
+                              : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
+                          }`}
+                        >
+                          <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
+                            <span className="text-petra text-xs">▶</span>
+                          </span>
+                          <div className="text-left">
+                            <div className="font-semibold text-gray-900 text-sm">{pair.b}</div>
+                            <div className="text-xs text-gray-500">{pair.ipaB}</div>
+                          </div>
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => speakPair(pair, idx)}
+                        className={`w-full text-xs font-semibold py-1.5 rounded transition-colors ${
+                          speakingId === idPair
+                            ? "bg-petra text-white"
+                            : "bg-gray-100 text-gray-600 hover:bg-petra/10 hover:text-petra"
+                        }`}
+                      >
+                        Play both, then repeat aloud
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <Separator className="my-6" />
+
+              <div>
+                <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">
+                  How to Practice
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                    Listen to each pair at least three times before repeating.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                    Slow the speed to 0.75x at first, then build up to 1.0x.
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                    Record yourself on your phone&apos;s voice memo app and compare.
+                  </li>
+                </ul>
+              </div>
+
+              <div className="h-8" />
+            </>
+          )}
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    FEATURE EXPLORER DROPDOWN
    ═══════════════════════════════════════════════════════════════ */
 
@@ -1443,12 +1795,14 @@ function FeatureExplorer({
   onReading,
   onTest,
   onIdioms,
+  onPronunciation,
 }: {
   onGrammar: () => void;
   onVocab: () => void;
   onReading: () => void;
   onTest: () => void;
   onIdioms: () => void;
+  onPronunciation: () => void;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -1472,6 +1826,7 @@ function FeatureExplorer({
               { icon: <BookOpen className="size-4" />, label: "Vocabulary Lists", desc: "Words by topic & level", color: "text-olive", onClick: onVocab },
               { icon: <Languages className="size-4" />, label: "Grammar Lessons", desc: "Practical grammar tips", color: "text-purple-600", onClick: onGrammar },
               { icon: <HelpCircle className="size-4" />, label: "Idiom Practice", desc: "Learn everyday expressions", color: "text-amber-600", onClick: onIdioms },
+              { icon: <Mic2 className="size-4" />, label: "Pronunciation Lab", desc: "Listen and repeat minimal pairs", color: "text-petra", onClick: onPronunciation },
             ].map((item) => (
               <button
                 key={item.label}
@@ -1697,6 +2052,7 @@ export default function Home() {
   const [dailyDropOpen, setDailyDropOpen] = useState(false);
   const [wordOfDayOpen, setWordOfDayOpen] = useState(false);
   const [idiomSheetOpen, setIdiomSheetOpen] = useState(false);
+  const [pronunciationOpen, setPronunciationOpen] = useState(false);
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRandomItems(allIdioms, 4));
 
   function refreshMainIdioms() {
@@ -1726,6 +2082,7 @@ export default function Home() {
               onReading={() => setDailyDropOpen(true)}
               onTest={() => setPlacementOpen(true)}
               onIdioms={() => setIdiomSheetOpen(true)}
+              onPronunciation={() => setPronunciationOpen(true)}
             />
             <Button
               onClick={() => setPlacementOpen(true)}
@@ -1882,7 +2239,7 @@ export default function Home() {
         <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
           Quick Practice
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Card
             className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-aqaba"
             onClick={() => setPlacementOpen(true)}
@@ -1924,6 +2281,21 @@ export default function Home() {
               <div>
                 <h4 className="font-bold text-gray-900 text-sm">Idiom Practice</h4>
                 <p className="text-xs text-gray-500">{allIdioms.length} expressions to master</p>
+              </div>
+              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
+            </CardContent>
+          </Card>
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-petra"
+            onClick={() => setPronunciationOpen(true)}
+          >
+            <CardContent className="pt-5 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
+                <Mic2 className="size-6 text-petra" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Pronunciation Lab</h4>
+                <p className="text-xs text-gray-500">Minimal pairs for Arabic speakers</p>
               </div>
               <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
             </CardContent>
@@ -1977,6 +2349,9 @@ export default function Home() {
 
       {/* Idioms */}
       <IdiomSheet open={idiomSheetOpen} onOpenChange={setIdiomSheetOpen} />
+
+      {/* Pronunciation Lab */}
+      <PronunciationLab open={pronunciationOpen} onOpenChange={setPronunciationOpen} />
 
       {/* AI Chatbot */}
       <ChatBot />
