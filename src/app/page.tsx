@@ -5022,6 +5022,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── About & Identity ─── */}
+      <section className="mt-10 sm:mt-14">
+        <div className="mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
+            About & Identity
+          </h2>
+          <p className="text-gray-600 mt-2 max-w-3xl">
+            Nibras English is built to help learners grow in English while staying connected to who they are.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+          <Card className="border-none shadow-md">
+            <CardHeader>
+              <CardTitle className="text-xl text-aqaba">
+                About Nibras English
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">
+                Nibras English is an ESL learning portal created for Arabic-speaking learners, especially students in Jordan and the wider region. It teaches English through daily reading, vocabulary, pronunciation, writing skills, and practical examples drawn from real life. The mission is simple: to help learners use English with confidence in study, work, and communication while staying rooted in their language, culture, and values.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-none shadow-md">
+            <CardHeader>
+              <CardTitle className="text-xl text-olive">
+                Rooted in Jordan
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-700 leading-relaxed">
+                Jordan is more than a setting for Nibras English; it is part of its voice. The platform reflects the everyday stories of Jordanian students, families, teachers, workers, and dreamers. It values hospitality, education, resilience, respect, and ambition. Through its examples and learning materials, Nibras presents a Jordanian narrative that is modern, generous, thoughtful, and deeply connected to its Arab identity.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
       {/* ─── Footer ─── */}
       <footer className="mt-auto bg-white border-t border-gray-200 py-6">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
