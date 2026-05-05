@@ -30,6 +30,7 @@ import {
   HelpCircle,
   Sparkles,
   ChevronDown,
+  Paperclip,
 } from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════════
@@ -797,7 +798,7 @@ function VocabCard({ item, index }: { item: VocabItem; index: number }) {
       onClick={() => setFlipped(!flipped)}
     >
       <div className="flex items-start justify-between gap-2 mb-1">
-        <h4 className="font-bold text-gray-900 group-hover:text-aqaba transition-colors">
+        <h4 className="font-bold text-gray-900 group-hover:text-aqaba transition-colors capitalize">
           {item.word}
         </h4>
         <span className="text-xs text-gray-400 shrink-0 mt-0.5">#{index + 1}</span>
@@ -1051,7 +1052,7 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
               </div>
             </ScrollArea>
           ) : (
-            <div>
+            <div className="flex flex-col h-[calc(100vh-8rem)]">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="text-xs">{question.level}</Badge>
@@ -1065,32 +1066,34 @@ function PlacementTest({ open, onOpenChange }: { open: boolean; onOpenChange: (v
                   style={{ width: `${((currentQ + 1) / totalQuestions) * 100}%` }}
                 />
               </div>
-              {question.passage && (
-                <div className="bg-sand/50 border-l-4 border-aqaba p-4 mb-4 rounded text-sm leading-relaxed">
-                  {question.passage}
+              <div className="flex-1 overflow-y-auto -mx-1 px-1">
+                {question.passage && (
+                  <div className="bg-sand/50 border-l-4 border-aqaba p-4 mb-4 rounded text-sm leading-relaxed">
+                    {question.passage}
+                  </div>
+                )}
+                <h3 className="text-lg font-bold text-gray-900 mb-4">{question.question}</h3>
+                <div className="space-y-3 mb-6">
+                  {question.options.map((option, idx) => {
+                    const selected = answers[question.id] === idx;
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => handleAnswer(idx)}
+                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
+                          selected
+                            ? "border-aqaba bg-blue-50 text-aqaba font-semibold"
+                            : "border-gray-200 hover:border-aqaba/50 hover:bg-gray-50 text-gray-700"
+                        }`}
+                      >
+                        <span className="font-bold mr-2">{String.fromCharCode(65 + idx)}.</span>
+                        {option}
+                      </button>
+                    );
+                  })}
                 </div>
-              )}
-              <h3 className="text-lg font-bold text-gray-900 mb-4">{question.question}</h3>
-              <div className="space-y-3 mb-6">
-                {question.options.map((option, idx) => {
-                  const selected = answers[question.id] === idx;
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handleAnswer(idx)}
-                      className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                        selected
-                          ? "border-aqaba bg-blue-50 text-aqaba font-semibold"
-                          : "border-gray-200 hover:border-aqaba/50 hover:bg-gray-50 text-gray-700"
-                      }`}
-                    >
-                      <span className="font-bold mr-2">{String.fromCharCode(65 + idx)}.</span>
-                      {option}
-                    </button>
-                  );
-                })}
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between pt-3 border-t border-gray-200 mt-2 shrink-0">
                 <Button variant="outline" onClick={handlePrev} disabled={currentQ === 0} className="gap-1">
                   Previous
                 </Button>
@@ -1210,6 +1213,7 @@ function GrammarSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v:
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+  fileName?: string;
 }
 
 function ChatBot() {
@@ -1217,6 +1221,8 @@ function ChatBot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [attachedFile, setAttachedFile] = useState<{ name: string; content: string } | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = useCallback(() => {
@@ -1228,10 +1234,16 @@ function ChatBot() {
   }, [messages, scrollToBottom]);
 
   async function handleSend() {
-    const text = input.trim();
+    let text = input.trim();
+    let fileName: string | undefined;
+    if (attachedFile) {
+      text = "Please check the following text for grammar and spelling errors, and explain any corrections in simple language. Show the corrected version after the explanations.\n\n—\n\n" + attachedFile.content;
+      fileName = attachedFile.name;
+      setAttachedFile(null);
+    }
     if (!text || loading) return;
 
-    const userMsg: ChatMessage = { role: "user", content: text };
+    const userMsg: ChatMessage = { role: "user", content: text, fileName };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
     setInput("");
@@ -1271,6 +1283,30 @@ function ChatBot() {
       e.preventDefault();
       handleSend();
     }
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const validTypes = [".txt", ".md"];
+    const ext = "." + file.name.split(".").pop()?.toLowerCase();
+    if (!validTypes.includes(ext)) {
+      setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, only .txt and .md files are accepted. Please try again with a plain text file." }]);
+      e.target.value = "";
+      return;
+    }
+    if (file.size > 50 * 1024) {
+      setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, please upload a text file under 50 KB. Try pasting your text directly into the chat for longer pieces." }]);
+      e.target.value = "";
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const text = reader.result as string;
+      setAttachedFile({ name: file.name, content: text });
+    };
+    reader.readAsText(file);
+    e.target.value = "";
   }
 
   return (
@@ -1326,6 +1362,12 @@ function ChatBot() {
                     ? "bg-aqaba text-white rounded-br-md"
                     : "bg-white border border-gray-200 text-gray-700 rounded-bl-md shadow-sm"
                 }`}>
+                  {msg.fileName && (
+                    <div className="flex items-center gap-1.5 mb-1.5 opacity-80">
+                      <Paperclip className="size-3" />
+                      <span className="text-xs">{msg.fileName}</span>
+                    </div>
+                  )}
                   <div className="whitespace-pre-wrap">{msg.content}</div>
                 </div>
               </div>
@@ -1346,7 +1388,28 @@ function ChatBot() {
 
           {/* Input */}
           <div className="p-3 border-t border-gray-200 bg-white">
+            {attachedFile && (
+              <div className="flex items-center gap-2 mb-2 px-1">
+                <Paperclip className="size-3 text-gray-400" />
+                <span className="text-xs text-gray-600 truncate">{attachedFile.name}</span>
+                <button onClick={() => setAttachedFile(null)} className="text-gray-400 hover:text-gray-600 ml-auto"><X className="size-3" /></button>
+              </div>
+            )}
             <div className="flex items-center gap-2">
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept=".txt,.md"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="w-9 h-9 rounded-full border border-gray-200 text-gray-500 hover:text-aqaba hover:border-aqaba/30 flex items-center justify-center transition-colors shrink-0"
+                title="Attach a .txt or .md file"
+              >
+                <Paperclip className="size-4" />
+              </button>
               <input
                 type="text"
                 value={input}
@@ -1357,7 +1420,7 @@ function ChatBot() {
               />
               <button
                 onClick={handleSend}
-                disabled={!input.trim() || loading}
+                disabled={(!input.trim() && !attachedFile) || loading}
                 className="w-9 h-9 rounded-full bg-aqaba hover:bg-aqaba-dark text-white flex items-center justify-center disabled:opacity-40 transition-colors"
               >
                 <Send className="size-4" />
@@ -1538,6 +1601,13 @@ const wordOfDay = {
   partOfSpeech: "(Noun)",
   phonetic: "/rɪˈzæl.jəns/",
   example: "The resilience of the Palestinian people inspires the whole world.",
+  relatedWords: [
+    { word: "perseverance", definition: "Continued effort to achieve something despite difficulties.", example: "After failing the TOEFL twice, Lama's perseverance finally paid off when she got the score she needed." },
+    { word: "endurance", definition: "The ability to withstand hardship or pain over a long period.", example: "Running the Amman Marathon requires great endurance, especially in the summer heat." },
+    { word: "tenacity", definition: "Holding firmly to something; being persistent and determined.", example: "The tenacity of Jordanian small business owners during economic challenges is truly admirable." },
+    { word: "fortitude", definition: "Courage in the face of pain or adversity.", example: "It takes fortitude to move to a new city for university and build a life from scratch." },
+    { word: "grit", definition: "Courage and resolve; strength of character.", example: "Maha showed real grit when she completed her engineering degree while working part-time at a cafe in Sweifieh." },
+  ],
 };
 
 const dailyDrop = {
@@ -1547,6 +1617,8 @@ const dailyDrop = {
 };
 
 function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+  const [expandedWord, setExpandedWord] = useState<string | null>(null);
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-full sm:max-w-md bg-white p-0 overflow-hidden">
@@ -1556,7 +1628,7 @@ function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
             Word of the Day
           </SheetTitle>
         </SheetHeader>
-        <div className="px-6 pt-6">
+        <ScrollArea className="h-[calc(100vh-10rem)] px-6 pt-6">
           <h3 className="text-4xl font-bold text-petra mb-2">{wordOfDay.word}</h3>
           <p className="text-sm text-gray-500 italic mb-1">{wordOfDay.partOfSpeech} &bull; {wordOfDay.phonetic}</p>
           <Separator className="my-4" />
@@ -1575,9 +1647,27 @@ function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
             </div>
             <div>
               <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Related Words</h4>
-              <div className="flex flex-wrap gap-2">
-                {["perseverance", "endurance", "tenacity", "fortitude", "grit"].map((w) => (
-                  <Badge key={w} className="bg-petra/10 text-petra border-petra/20">{w}</Badge>
+              <div className="space-y-2">
+                {wordOfDay.relatedWords.map((rw) => (
+                  <div key={rw.word}>
+                    <button
+                      onClick={() => setExpandedWord(expandedWord === rw.word ? null : rw.word)}
+                      className="inline-flex items-center gap-1 text-sm bg-petra/10 text-petra border border-petra/20 rounded-full px-3 py-1.5 hover:bg-petra/20 transition-colors"
+                    >
+                      <span className="font-medium capitalize">{rw.word}</span>
+                      <ChevronDown className={`size-3 transition-transform ${expandedWord === rw.word ? "rotate-180" : ""}`} />
+                    </button>
+                    {expandedWord === rw.word && (
+                      <div className="mt-2 ml-2 p-3 bg-gray-50 rounded-lg border-l-3 border-petra/40 text-sm space-y-2">
+                        <p className="text-gray-700">
+                          <span className="font-semibold capitalize">{rw.word}</span>: {rw.definition}
+                        </p>
+                        <p className="text-gray-600 italic">
+                          &ldquo;{rw.example}&rdquo;
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>
@@ -1588,7 +1678,8 @@ function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
               </p>
             </div>
           </div>
-        </div>
+          <div className="h-8" />
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );
@@ -1682,7 +1773,7 @@ export default function Home() {
               {dailyDrop.body}
             </p>
             <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
-              Read full passage &amp; take quiz <ArrowRight className="size-4" />
+              Read full passage <ArrowRight className="size-4" />
             </span>
           </CardContent>
         </Card>
