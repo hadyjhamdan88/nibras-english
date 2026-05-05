@@ -713,6 +713,129 @@ function getRandomItems<T>(arr: T[], count: number): T[] {
   return shuffled.slice(0, count);
 }
 
+/* ─── Date-based rotation helpers ─── */
+
+// Launch anchor: Wednesday, May 6, 2026, midnight local time.
+// Day 1 of the site is this date.
+const LAUNCH_YEAR = 2026;
+const LAUNCH_MONTH = 4; // 0-indexed: 4 = May
+const LAUNCH_DAY = 6;
+
+function getDaysSinceLaunch(): number {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const launch = new Date(LAUNCH_YEAR, LAUNCH_MONTH, LAUNCH_DAY);
+  const diffMs = today.getTime() - launch.getTime();
+  return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+}
+
+function getDayNumber(): number {
+  // 1-indexed for display: Day 1, Day 2, ...
+  // Negative days (visitors before launch with wrong system clock) clamp to 1.
+  return Math.max(1, getDaysSinceLaunch() + 1);
+}
+
+function getRotatedIndex(poolSize: number, offset: number = 0): number {
+  if (poolSize <= 0) return 0;
+  const days = getDaysSinceLaunch() + offset;
+  return ((days % poolSize) + poolSize) % poolSize;
+}
+
+function getRotatedItems<T>(pool: T[], count: number): T[] {
+  if (pool.length === 0) return [];
+  if (pool.length <= count) return [...pool];
+  const start = getRotatedIndex(pool.length) * count;
+  const result: T[] = [];
+  for (let i = 0; i < count; i++) {
+    result.push(pool[(start + i) % pool.length]);
+  }
+  return result;
+}
+
+function formatDatePill(): string {
+  try {
+    const today = new Date();
+    const dateStr = today.toLocaleDateString(undefined, {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    });
+    return `Day ${getDayNumber()} · ${dateStr}`;
+  } catch {
+    return `Day ${getDayNumber()}`;
+  }
+}
+
+function todayISODate(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function yesterdayISODate(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+interface StreakState {
+  count: number;
+  label: string;
+}
+
+function loadAndUpdateStreak(): StreakState {
+  // Safe wrapper: any localStorage failure returns a sane default.
+  try {
+    if (typeof window === "undefined" || !window.localStorage) {
+      return { count: 1, label: "🔥 First day" };
+    }
+    const today = todayISODate();
+    const yesterday = yesterdayISODate();
+    const lastVisit = window.localStorage.getItem("nibras-last-visit");
+    const stored = parseInt(window.localStorage.getItem("nibras-streak") || "0", 10);
+    let next: number;
+    if (lastVisit === today) {
+      next = stored > 0 ? stored : 1;
+    } else if (lastVisit === yesterday) {
+      next = (stored > 0 ? stored : 0) + 1;
+    } else {
+      next = 1;
+    }
+    window.localStorage.setItem("nibras-streak", String(next));
+    window.localStorage.setItem("nibras-last-visit", today);
+    return {
+      count: next,
+      label: next === 1 ? "🔥 First day" : `🔥 ${next} day streak`,
+    };
+  } catch {
+    return { count: 1, label: "🔥 First day" };
+  }
+}
+
+/* ─── Rotating content interfaces ─── */
+
+interface DailyDropEntry {
+  level: string;
+  title: string;
+  body: string;
+  keyVocab: string[];
+}
+
+interface WordOfDayEntry {
+  word: string;
+  partOfSpeech: string;
+  phonetic: string;
+  meaning: string;
+  example: string;
+  cultural: string;
+  relatedWords: { word: string; definition: string; example: string }[];
+}
+
 interface PlacementResult {
   level: string; // e.g. "B1", "B1+", "Below A1"
   description: string; // friendly explanation
@@ -1852,7 +1975,7 @@ function FeatureExplorer({
    DAILY DROP SHEET
    ═══════════════════════════════════════════════════════════════ */
 
-function DailyDropSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+function DailyDropSheet({ open, onOpenChange, drop }: { open: boolean; onOpenChange: (v: boolean) => void; drop: DailyDropEntry }) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-full sm:max-w-lg bg-white p-0 overflow-hidden">
@@ -1862,27 +1985,23 @@ function DailyDropSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
             Today&apos;s Daily Drop
           </SheetTitle>
           <SheetDescription className="text-blue-100 text-sm">
-            Level: {dailyDrop.level} — Read the full passage
+            Level: {drop.level} — Read the full passage
           </SheetDescription>
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-10rem)] px-6 pt-4">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">{dailyDrop.title}</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">{drop.title}</h3>
           <div className="space-y-4">
-            <p className="text-gray-700 leading-relaxed">
-              Ahmad took a deep breath before walking to the front of the classroom. It was his final presentation for the Essentials of Public Speaking course at the University of Jordan. His hands were shaking slightly, but he remembered his professor&apos;s advice: &ldquo;Confidence is built, not given.&rdquo; As he looked at his classmates, he realized they wanted him to succeed. He smiled, introduced his topic on AI integration, and the words began to flow naturally.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              His presentation covered three main areas: how AI is being used in Jordanian hospitals to assist doctors, how Jordanian universities are incorporating AI research into their computer science programs, and what ethical concerns come with this rapid technological change. He used real examples from King Abdullah University Hospital and the University of Jordan&apos;s AI lab to make his points clear and relatable.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              When Ahmad finished, there was a brief moment of silence. Then his professor, Dr. Hala, stood up and began to clap. The entire class joined in. Dr. Hala told Ahmad that his presentation was one of the best she had seen all semester. Ahmad felt a wave of relief and gratitude. He realized that stage fright was not a wall — it was a door, and he had just walked through it.
-            </p>
+            {drop.body.split(/\n\n+/).map((para, i) => (
+              <p key={i} className="text-gray-700 leading-relaxed">
+                {para}
+              </p>
+            ))}
           </div>
           <Separator className="my-6" />
           <div>
             <h3 className="text-sm font-bold text-aqaba uppercase tracking-wide mb-3">Key Vocabulary</h3>
             <div className="flex flex-wrap gap-2">
-              {["stage fright", "confidence", "essentials", "integration", "ethical concerns", "relief", "gratitude"].map((w) => (
+              {drop.keyVocab.map((w) => (
                 <Badge key={w} className="bg-aqaba/10 text-aqaba border-aqaba/20">{w}</Badge>
               ))}
             </div>
@@ -1951,27 +2070,38 @@ function IdiomSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v: b
    WORD OF DAY SHEET
    ═══════════════════════════════════════════════════════════════ */
 
-const wordOfDay = {
-  word: "Resilience",
-  partOfSpeech: "(Noun)",
-  phonetic: "/rɪˈzæl.jəns/",
-  example: "The resilience of the Palestinian people inspires the whole world.",
-  relatedWords: [
-    { word: "perseverance", definition: "Continued effort to achieve something despite difficulties.", example: "After failing the TOEFL twice, Lama's perseverance finally paid off when she got the score she needed." },
-    { word: "endurance", definition: "The ability to withstand hardship or pain over a long period.", example: "Running the Amman Marathon requires great endurance, especially in the summer heat." },
-    { word: "tenacity", definition: "Holding firmly to something; being persistent and determined.", example: "The tenacity of Jordanian small business owners during economic challenges is truly admirable." },
-    { word: "fortitude", definition: "Courage in the face of pain or adversity.", example: "It takes fortitude to move to a new city for university and build a life from scratch." },
-    { word: "grit", definition: "Courage and resolve; strength of character.", example: "Maha showed real grit when she completed her engineering degree while working part-time at a cafe in Sweifieh." },
-  ],
-};
+const wordsOfDay: WordOfDayEntry[] = [
+  {
+    word: "Resilience",
+    partOfSpeech: "(Noun)",
+    phonetic: "/rɪˈzæl.jəns/",
+    meaning: "The capacity to withstand or to recover quickly from difficulties; mental toughness and the ability to bounce back after challenges.",
+    example: "The resilience of the Palestinian people inspires the whole world.",
+    cultural: "In Jordanian culture, resilience is a deeply valued trait. From the people of Palestine who demonstrate extraordinary Sumud, to Jordanian students who overcome challenges to achieve their academic goals, resilience is woven into daily life.",
+    relatedWords: [
+      { word: "perseverance", definition: "Continued effort to achieve something despite difficulties.", example: "After failing the TOEFL twice, Lama's perseverance finally paid off when she got the score she needed." },
+      { word: "endurance", definition: "The ability to withstand hardship or pain over a long period.", example: "Running the Amman Marathon requires great endurance, especially in the summer heat." },
+      { word: "tenacity", definition: "Holding firmly to something; being persistent and determined.", example: "The tenacity of Jordanian small business owners during economic challenges is truly admirable." },
+      { word: "fortitude", definition: "Courage in the face of pain or adversity.", example: "It takes fortitude to move to a new city for university and build a life from scratch." },
+      { word: "grit", definition: "Courage and resolve; strength of character.", example: "Maha showed real grit when she completed her engineering degree while working part-time at a cafe in Sweifieh." },
+    ],
+  },
+];
 
-const dailyDrop = {
-  level: "B1",
-  title: "Overcoming Stage Fright",
-  body: `Ahmad took a deep breath before walking to the front of the classroom. It was his final presentation for the Essentials of Public Speaking course at the University of Jordan. His hands were shaking slightly, but he remembered his professor's advice: "Confidence is built, not given." As he looked at his classmates, he realized they wanted him to succeed. He smiled, introduced his topic on AI integration, and the words began to flow naturally.`,
-};
+const dailyDrops: DailyDropEntry[] = [
+  {
+    level: "B1",
+    title: "Overcoming Stage Fright",
+    body: `Ahmad took a deep breath before walking to the front of the classroom. It was his final presentation for the Essentials of Public Speaking course at the University of Jordan. His hands were shaking slightly, but he remembered his professor's advice: "Confidence is built, not given." As he looked at his classmates, he realized they wanted him to succeed. He smiled, introduced his topic on AI integration, and the words began to flow naturally.
 
-function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+His presentation covered three main areas: how AI is being used in Jordanian hospitals to assist doctors, how Jordanian universities are incorporating AI research into their computer science programs, and what ethical concerns come with this rapid technological change. He used real examples from King Abdullah University Hospital and the University of Jordan's AI lab to make his points clear and relatable.
+
+When Ahmad finished, there was a brief moment of silence. Then his professor, Dr. Hala, stood up and began to clap. The entire class joined in. Dr. Hala told Ahmad that his presentation was one of the best she had seen all semester. Ahmad felt a wave of relief and gratitude. He realized that stage fright was not a wall — it was a door, and he had just walked through it.`,
+    keyVocab: ["stage fright", "confidence", "essentials", "integration", "ethical concerns", "relief", "gratitude"],
+  },
+];
+
+function WordOfDaySheet({ open, onOpenChange, word: wod }: { open: boolean; onOpenChange: (v: boolean) => void; word: WordOfDayEntry }) {
   const [expandedWord, setExpandedWord] = useState<string | null>(null);
 
   return (
@@ -1984,26 +2114,26 @@ function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
           </SheetTitle>
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-10rem)] px-6 pt-6">
-          <h3 className="text-4xl font-bold text-petra mb-2">{wordOfDay.word}</h3>
-          <p className="text-sm text-gray-500 italic mb-1">{wordOfDay.partOfSpeech} &bull; {wordOfDay.phonetic}</p>
+          <h3 className="text-4xl font-bold text-petra mb-2">{wod.word}</h3>
+          <p className="text-sm text-gray-500 italic mb-1">{wod.partOfSpeech} &bull; {wod.phonetic}</p>
           <Separator className="my-4" />
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Meaning</h4>
               <p className="text-gray-700">
-                The capacity to withstand or to recover quickly from difficulties; mental toughness and the ability to bounce back after challenges.
+                {wod.meaning}
               </p>
             </div>
             <div>
               <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Example</h4>
               <p className="text-gray-700 italic bg-pink-50 p-3 rounded border-l-4 border-petra">
-                &ldquo;{wordOfDay.example}&rdquo;
+                &ldquo;{wod.example}&rdquo;
               </p>
             </div>
             <div>
               <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Related Words</h4>
               <div className="space-y-2">
-                {wordOfDay.relatedWords.map((rw) => (
+                {wod.relatedWords.map((rw) => (
                   <div key={rw.word}>
                     <button
                       onClick={() => setExpandedWord(expandedWord === rw.word ? null : rw.word)}
@@ -2029,7 +2159,7 @@ function WordOfDaySheet({ open, onOpenChange }: { open: boolean; onOpenChange: (
             <div>
               <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">In Context</h4>
               <p className="text-sm text-gray-600">
-                In Jordanian culture, resilience is a deeply valued trait. From the people of Palestine who demonstrate extraordinary Sumud, to Jordanian students who overcome challenges to achieve their academic goals, resilience is woven into daily life.
+                {wod.cultural}
               </p>
             </div>
           </div>
@@ -2053,7 +2183,17 @@ export default function Home() {
   const [wordOfDayOpen, setWordOfDayOpen] = useState(false);
   const [idiomSheetOpen, setIdiomSheetOpen] = useState(false);
   const [pronunciationOpen, setPronunciationOpen] = useState(false);
-  const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRandomItems(allIdioms, 4));
+  const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
+
+  const [streak, setStreak] = useState<StreakState>({ count: 1, label: "🔥 First day" });
+
+  useEffect(() => {
+    setStreak(loadAndUpdateStreak());
+  }, []);
+
+  const todaysDrop = dailyDrops[getRotatedIndex(dailyDrops.length)];
+  const todaysWord = wordsOfDay[getRotatedIndex(wordsOfDay.length)];
+  const todaysDatePill = formatDatePill();
 
   function refreshMainIdioms() {
     setDisplayedIdioms(getRandomItems(allIdioms, 4));
@@ -2074,7 +2214,7 @@ export default function Home() {
           </h1>
           <div className="flex items-center gap-2 sm:gap-3">
             <Badge className="bg-green-100 text-olive border-none hover:bg-green-100 py-1 px-3 text-xs sm:text-sm font-semibold">
-              🔥 5 Day Streak
+              {streak.label}
             </Badge>
             <FeatureExplorer
               onGrammar={() => setGrammarListOpen(true)}
@@ -2113,21 +2253,24 @@ export default function Home() {
           onClick={() => setDailyDropOpen(true)}
         >
           <CardHeader className="pb-2">
-            <div className="flex justify-between items-center">
-              <CardTitle className="text-xl sm:text-2xl text-aqaba">
-                Today&apos;s Daily Drop
-              </CardTitle>
-              <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs sm:text-sm">
-                Level: {dailyDrop.level}
+            <div className="flex justify-between items-start gap-2 flex-wrap">
+              <div>
+                <CardTitle className="text-xl sm:text-2xl text-aqaba">
+                  Today&apos;s Daily Drop
+                </CardTitle>
+                <p className="text-xs text-gray-500 mt-1">{todaysDatePill}</p>
+              </div>
+              <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs sm:text-sm shrink-0">
+                Level: {todaysDrop.level}
               </Badge>
             </div>
           </CardHeader>
           <CardContent>
             <h4 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-              {dailyDrop.title}
+              {todaysDrop.title}
             </h4>
             <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
-              {dailyDrop.body}
+              {todaysDrop.body.split(/\n\n+/)[0]}
             </p>
             <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
               Read full passage <ArrowRight className="size-4" />
@@ -2147,13 +2290,13 @@ export default function Home() {
                 Word of the Day
               </h3>
               <h4 className="text-2xl sm:text-3xl font-bold text-petra mb-1">
-                {wordOfDay.word}
+                {todaysWord.word}
               </h4>
               <p className="text-xs sm:text-sm text-gray-600 italic mb-3">
-                {wordOfDay.partOfSpeech} &bull; {wordOfDay.phonetic}
+                {todaysWord.partOfSpeech} &bull; {todaysWord.phonetic}
               </p>
               <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-2 rounded border-l-4 border-petra">
-                &ldquo;{wordOfDay.example}&rdquo;
+                &ldquo;{todaysWord.example}&rdquo;
               </p>
               <span className="text-petra text-xs font-semibold mt-2 inline-flex items-center gap-1 hover:underline">
                 Tap to learn more <ArrowRight className="size-3" />
@@ -2342,10 +2485,10 @@ export default function Home() {
       <GrammarSheet open={grammarListOpen} onOpenChange={setGrammarListOpen} />
 
       {/* Daily Drop Full Passage */}
-      <DailyDropSheet open={dailyDropOpen} onOpenChange={setDailyDropOpen} />
+      <DailyDropSheet open={dailyDropOpen} onOpenChange={setDailyDropOpen} drop={todaysDrop} />
 
       {/* Word of Day */}
-      <WordOfDaySheet open={wordOfDayOpen} onOpenChange={setWordOfDayOpen} />
+      <WordOfDaySheet open={wordOfDayOpen} onOpenChange={setWordOfDayOpen} word={todaysWord} />
 
       {/* Idioms */}
       <IdiomSheet open={idiomSheetOpen} onOpenChange={setIdiomSheetOpen} />
