@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Nibras English | Jordanian Learners",
   description: "Master English. Stay Rooted. Daily readings, practical vocabulary, and grammar tailored to your world.",
   keywords: ["English learning", "Jordan", "ESL", "Arabic speakers", "Nibras"],
+  icons: {
+    icon: "/logo-icon.png",
+  },
 };
 
 export default function RootLayout({

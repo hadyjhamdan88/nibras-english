@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -4769,9 +4770,24 @@ export default function Home() {
       {/* ─── Navigation ─── */}
       <nav className="bg-white shadow-md sticky top-0 z-40">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-4">
-          <h1 className="text-2xl font-bold text-aqaba tracking-tight cursor-pointer">
-            Nibras English
-          </h1>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo-icon.png"
+              alt="Nibras English Logo"
+              width={42}
+              height={42}
+              className="object-contain"
+              priority
+            />
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold text-aqaba leading-none">
+                Nibras English
+              </h1>
+              <p className="text-xs text-gray-500 mt-1 hidden sm:block">
+                Master English. Stay Rooted.
+              </p>
+            </div>
+          </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <Badge className="bg-green-100 text-olive border-none hover:bg-green-100 py-1 px-3 text-xs sm:text-sm font-semibold">
               {streak.label}
