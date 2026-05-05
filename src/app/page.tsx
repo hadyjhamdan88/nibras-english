@@ -819,6 +819,12 @@ function loadAndUpdateStreak(): StreakState {
 
 /* ─── Rotating content interfaces ─── */
 
+interface VocabEntry {
+  term: string;
+  definition: string;
+  example: string;
+}
+
 interface DailyDropEntry {
   level: string;
   title: string;
@@ -1975,7 +1981,17 @@ function FeatureExplorer({
    DAILY DROP SHEET
    ═══════════════════════════════════════════════════════════════ */
 
-function DailyDropSheet({ open, onOpenChange, drop }: { open: boolean; onOpenChange: (v: boolean) => void; drop: DailyDropEntry }) {
+function DailyDropSheet({
+  open,
+  onOpenChange,
+  drop,
+  onVocabClick,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+  drop: DailyDropEntry;
+  onVocabClick: (term: string) => void;
+}) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="right" className="w-full sm:max-w-lg bg-white p-0 overflow-hidden">
@@ -2002,7 +2018,17 @@ function DailyDropSheet({ open, onOpenChange, drop }: { open: boolean; onOpenCha
             <h3 className="text-sm font-bold text-aqaba uppercase tracking-wide mb-3">Key Vocabulary</h3>
             <div className="flex flex-wrap gap-2">
               {drop.keyVocab.map((w) => (
-                <Badge key={w} className="bg-aqaba/10 text-aqaba border-aqaba/20">{w}</Badge>
+                <button
+                  key={w}
+                  type="button"
+                  onClick={() => onVocabClick(w)}
+                  className="inline-flex"
+                  aria-label={`Open vocabulary entry for ${w}`}
+                >
+                  <Badge className="bg-aqaba/10 text-aqaba border-aqaba/20 cursor-pointer hover:bg-aqaba/20 transition-colors">
+                    {w}
+                  </Badge>
+                </button>
               ))}
             </div>
           </div>
@@ -2400,6 +2426,405 @@ What makes Amman's urban story distinctive is the coexistence of the ancient and
   },
 ];
 
+const dailyDropVocabEntries: VocabEntry[] = [
+  {
+    term: "stage fright",
+    definition: "A feeling of fear or nervousness before speaking in front of people.",
+    example: "Ahmad felt stage fright before presenting in his class at the University of Jordan.",
+  },
+  {
+    term: "confidence",
+    definition: "A feeling of trust in your abilities.",
+    example: "After practicing his presentation many times at home, he gained more confidence.",
+  },
+  {
+    term: "deadline",
+    definition: "A time by which something must be finished.",
+    example: "They stayed late at the university library to meet the project deadline.",
+  },
+  {
+    term: "communicate",
+    definition: "To share information or ideas with others.",
+    example: "The group had problems because they did not communicate clearly during the project.",
+  },
+  {
+    term: "responsibility",
+    definition: "Something that you must do or take care of.",
+    example: "He took responsibility for the mistake instead of blaming others.",
+  },
+  {
+    term: "teamwork",
+    definition: "Working together with others to achieve a goal.",
+    example: "Their success in the course depended on good teamwork.",
+  },
+  {
+    term: "make a good impression",
+    definition: "To create a positive opinion about yourself.",
+    example: "She dressed neatly on her first day to make a good impression at the office in Amman.",
+  },
+  {
+    term: "colleagues",
+    definition: "People you work with.",
+    example: "She had lunch with her colleagues at a small restaurant near the office.",
+  },
+  {
+    term: "opportunity",
+    definition: "A chance to do something important or useful.",
+    example: "Getting an internship in Amman was a great opportunity for her future.",
+  },
+  {
+    term: "prepare",
+    definition: "To get something ready.",
+    example: "He woke up early to prepare fresh bread in his bakery before customers arrived.",
+  },
+  {
+    term: "customer",
+    definition: "A person who buys something.",
+    example: "The bakery became full of customers before people went to work.",
+  },
+  {
+    term: "satisfied",
+    definition: "Feeling happy because something met your expectations.",
+    example: "He felt satisfied when people enjoyed the bread he made.",
+  },
+  {
+    term: "trip",
+    definition: "A short journey to another place.",
+    example: "They planned a family trip to the Dead Sea during the weekend.",
+  },
+  {
+    term: "experience",
+    definition: "Something that happens to you and teaches you something.",
+    example: "Floating in the Dead Sea was a new experience for her.",
+  },
+  {
+    term: "memories",
+    definition: "Things you remember from the past.",
+    example: "They took photos to keep memories from their day at the Dead Sea.",
+  },
+  {
+    term: "charity",
+    definition: "Helping people in need, often by giving time or money.",
+    example: "The students joined a charity iftar initiative during Ramadan.",
+  },
+  {
+    term: "initiative",
+    definition: "A new plan or action to solve a problem.",
+    example: "Their university started an initiative to support local communities.",
+  },
+  {
+    term: "volunteer",
+    definition: "To do something to help without getting paid.",
+    example: "She volunteered at a care home for elderly women in her area.",
+  },
+  {
+    term: "care home",
+    definition: "A place where elderly people live and receive care.",
+    example: "The students visited a care home in Amman to spend time with the residents.",
+  },
+  {
+    term: "conversation",
+    definition: "A talk between two or more people.",
+    example: "She had a warm conversation with an elderly woman during iftar.",
+  },
+  {
+    term: "connection",
+    definition: "A feeling of understanding or closeness.",
+    example: "They felt a strong connection after sharing stories together.",
+  },
+  {
+    term: "hesitate",
+    definition: "To pause before doing something because you are unsure.",
+    example: "She hesitated before answering the question in class.",
+  },
+  {
+    term: "courage",
+    definition: "The ability to do something even when you feel afraid.",
+    example: "It takes courage to speak in front of your classmates.",
+  },
+  {
+    term: "harvest",
+    definition: "The time when crops like olives are collected.",
+    example: "The whole family joined the olive harvest in their village in northern Jordan.",
+  },
+  {
+    term: "tradition",
+    definition: "Something people do regularly as part of their culture.",
+    example: "Olive picking is an important tradition in many Jordanian families.",
+  },
+  {
+    term: "belonging",
+    definition: "A feeling of being part of a group or place.",
+    example: "Working together in the field gave them a strong sense of belonging.",
+  },
+  {
+    term: "frustrated",
+    definition: "Feeling upset because something is difficult or not working.",
+    example: "Her brother felt frustrated when he couldn't solve the homework.",
+  },
+  {
+    term: "encourage",
+    definition: "To give someone support or confidence.",
+    example: "She encouraged her brother to try again instead of giving up.",
+  },
+  {
+    term: "improve",
+    definition: "To become better.",
+    example: "With practice, his English started to improve.",
+  },
+  {
+    term: "unfamiliar",
+    definition: "Not known or not recognized.",
+    example: "Living in a new city at first felt unfamiliar to her.",
+  },
+  {
+    term: "routine",
+    definition: "A regular way of doing things.",
+    example: "She slowly built a new routine at university.",
+  },
+  {
+    term: "independent",
+    definition: "Able to do things on your own.",
+    example: "Living alone helped her become more independent.",
+  },
+  {
+    term: "downtown",
+    definition: "The main central area of a city.",
+    example: "They walked through Downtown Amman in the afternoon.",
+  },
+  {
+    term: "surroundings",
+    definition: "The things and environment around you.",
+    example: "She felt more connected to her surroundings after the walk.",
+  },
+  {
+    term: "compare",
+    definition: "To look at two or more things to see differences or similarities.",
+    example: "She compared different gifts before choosing one.",
+  },
+  {
+    term: "option",
+    definition: "A choice that you can make.",
+    example: "He had several options for where to study.",
+  },
+  {
+    term: "personal",
+    definition: "Something that is special or meaningful to a person.",
+    example: "She chose a personal gift instead of something expensive.",
+  },
+  {
+    term: "condition",
+    definition: "A person's physical state or health situation.",
+    example: "He explained his mother's condition to the pharmacist.",
+  },
+  {
+    term: "instructions",
+    definition: "Information about how to do something.",
+    example: "The pharmacist gave clear instructions for using the medicine.",
+  },
+  {
+    term: "review",
+    definition: "To look at something again carefully.",
+    example: "He reviewed the email before sending it to the client.",
+  },
+  {
+    term: "professional",
+    definition: "Related to work or a job.",
+    example: "She wanted to keep a professional image at work.",
+  },
+  {
+    term: "follow-up",
+    definition: "An action taken after something to check or correct it.",
+    example: "He sent a follow-up message to fix the mistake.",
+  },
+  {
+    term: "trust",
+    definition: "Belief that someone is honest or reliable.",
+    example: "Clear communication helps build trust with clients.",
+  },
+  {
+    term: "collaboration",
+    definition: "Working together with others.",
+    example: "Their success came from good collaboration.",
+  },
+  {
+    term: "identity",
+    definition: "Who you are and how you see yourself.",
+    example: "His experiences helped shape his identity.",
+  },
+  {
+    term: "planning",
+    definition: "Thinking ahead about what you need to do.",
+    example: "Good planning helped her prepare everything before the guests arrived.",
+  },
+  {
+    term: "solution",
+    definition: "A way to fix a problem.",
+    example: "After checking the bulb, he found a simple solution.",
+  },
+  {
+    term: "overwhelming",
+    definition: "Too much to deal with at one time.",
+    example: "Her week felt overwhelming because she had classes, assignments, and family duties.",
+  },
+  {
+    term: "schedule",
+    definition: "A plan that shows when things should happen.",
+    example: "She made a weekly schedule to balance university work and home responsibilities.",
+  },
+  {
+    term: "productivity",
+    definition: "The ability to complete useful work efficiently.",
+    example: "She thought productivity meant doing more, but later learned that rest also matters.",
+  },
+  {
+    term: "clarity",
+    definition: "A clear understanding of something.",
+    example: "After slowing down, she gained more clarity about what mattered most.",
+  },
+  {
+    term: "take a break",
+    definition: "To stop working or studying for a short time to rest.",
+    example: "After studying English for two hours, Noor decided to take a break and drink tea.",
+  },
+  {
+    term: "clear your mind",
+    definition: "To relax so you can think more calmly.",
+    example: "A short walk near the house helped her clear her mind before studying again.",
+  },
+  {
+    term: "make a plan",
+    definition: "To decide what you will do before you start.",
+    example: "Kareem made a plan for his weekend so he could finish his homework and visit his family.",
+  },
+  {
+    term: "write down",
+    definition: "To put information on paper or in your phone so you remember it.",
+    example: "He wrote down his tasks before going to the university library.",
+  },
+  {
+    term: "on time",
+    definition: "At the correct or expected time.",
+    example: "She arrived on time for her lecture at the University of Jordan.",
+  },
+  {
+    term: "figure it out",
+    definition: "To understand or solve something after thinking about it.",
+    example: "Rasha did not understand the lesson at first, but she figured it out after reviewing her notes.",
+  },
+  {
+    term: "make sense",
+    definition: "To become clear and understandable.",
+    example: "The grammar rule started to make sense after the teacher gave examples from daily life.",
+  },
+  {
+    term: "fall into place",
+    definition: "To become clear or organized after some time.",
+    example: "After a week of practice, the new vocabulary began to fall into place.",
+  },
+  {
+    term: "get used to",
+    definition: "To become comfortable with something new.",
+    example: "Hasan needed time to get used to his new university schedule.",
+  },
+  {
+    term: "keep track",
+    definition: "To follow or remember information carefully.",
+    example: "He used his phone calendar to keep track of assignments and exams.",
+  },
+  {
+    term: "in the long run",
+    definition: "After a long period of time.",
+    example: "Studying a little every day helps more in the long run than studying only before exams.",
+  },
+  {
+    term: "stay on top of",
+    definition: "To manage your work well and not fall behind.",
+    example: "She made a checklist to stay on top of her university tasks.",
+  },
+  {
+    term: "put in effort",
+    definition: "To work hard at something.",
+    example: "Dima put in effort every day to improve her English speaking skills.",
+  },
+  {
+    term: "keep up",
+    definition: "To continue at the same speed or level as others.",
+    example: "He worked hard to keep up with his classmates during the intensive course.",
+  },
+  {
+    term: "moving forward",
+    definition: "Making progress after difficulty or delay.",
+    example: "After weeks of practice, she finally felt that her English was moving forward.",
+  },
+  {
+    term: "add up",
+    definition: "To slowly become important or noticeable.",
+    example: "Ten minutes of English practice every day can add up over time.",
+  },
+  {
+    term: "come together",
+    definition: "To become clear, organized, or successful.",
+    example: "After many small steps, her learning plan finally came together.",
+  },
+  {
+    term: "work out",
+    definition: "To end well or be solved successfully.",
+    example: "She was worried about the project, but everything worked out in the end.",
+  },
+];
+
+function findDailyDropVocabEntry(term: string): VocabEntry | undefined {
+  return dailyDropVocabEntries.find(
+    (entry) => entry.term.toLowerCase() === term.toLowerCase()
+  );
+}
+
+function VocabEntrySheet({
+  open,
+  onOpenChange,
+  entry,
+  fallbackTerm,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+  entry?: VocabEntry;
+  fallbackTerm: string;
+}) {
+  const title = entry?.term || fallbackTerm;
+
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent className="overflow-y-auto sm:max-w-md">
+        <SheetHeader>
+          <SheetTitle className="text-2xl text-aqaba">
+            {title}
+          </SheetTitle>
+          <SheetDescription>
+            Daily Drop vocabulary
+          </SheetDescription>
+        </SheetHeader>
+
+        <div className="mt-6 space-y-5">
+          <div className="bg-aqaba/5 rounded-xl p-4 border border-aqaba/10">
+            <h4 className="font-semibold text-aqaba mb-2">Meaning</h4>
+            <p className="text-gray-700 leading-relaxed">
+              {entry?.definition || "Definition coming soon."}
+            </p>
+          </div>
+
+          <div className="bg-olive/5 rounded-xl p-4 border border-olive/10">
+            <h4 className="font-semibold text-olive mb-2">Example</h4>
+            <p className="text-gray-700 leading-relaxed italic">
+              {entry?.example || "Example coming soon."}
+            </p>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
 function WordOfDaySheet({ open, onOpenChange, word: wod }: { open: boolean; onOpenChange: (v: boolean) => void; word: WordOfDayEntry }) {
   const [expandedWord, setExpandedWord] = useState<string | null>(null);
 
@@ -2482,6 +2907,8 @@ export default function Home() {
   const [wordOfDayOpen, setWordOfDayOpen] = useState(false);
   const [idiomSheetOpen, setIdiomSheetOpen] = useState(false);
   const [pronunciationOpen, setPronunciationOpen] = useState(false);
+  const [vocabOpen, setVocabOpen] = useState(false);
+  const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
 
   const [streak, setStreak] = useState<StreakState>({ count: 1, label: "🔥 First day" });
@@ -2493,6 +2920,15 @@ export default function Home() {
   const todaysDrop = dailyDrops[getRotatedIndex(dailyDrops.length)];
   const todaysWord = wordsOfDay[getRotatedIndex(wordsOfDay.length)];
   const todaysDatePill = formatDatePill();
+
+  const selectedVocabEntry = selectedVocabTerm
+    ? findDailyDropVocabEntry(selectedVocabTerm)
+    : undefined;
+
+  function openVocabEntry(term: string) {
+    setSelectedVocabTerm(term);
+    setVocabOpen(true);
+  }
 
   function refreshMainIdioms() {
     setDisplayedIdioms(getRandomItems(allIdioms, 4));
@@ -2784,7 +3220,20 @@ export default function Home() {
       <GrammarSheet open={grammarListOpen} onOpenChange={setGrammarListOpen} />
 
       {/* Daily Drop Full Passage */}
-      <DailyDropSheet open={dailyDropOpen} onOpenChange={setDailyDropOpen} drop={todaysDrop} />
+      <DailyDropSheet
+        open={dailyDropOpen}
+        onOpenChange={setDailyDropOpen}
+        drop={todaysDrop}
+        onVocabClick={openVocabEntry}
+      />
+
+      {/* Vocabulary Entry */}
+      <VocabEntrySheet
+        open={vocabOpen}
+        onOpenChange={setVocabOpen}
+        entry={selectedVocabEntry}
+        fallbackTerm={selectedVocabTerm}
+      />
 
       {/* Word of Day */}
       <WordOfDaySheet open={wordOfDayOpen} onOpenChange={setWordOfDayOpen} word={todaysWord} />
