@@ -2099,6 +2099,305 @@ His presentation covered three main areas: how AI is being used in Jordanian hos
 When Ahmad finished, there was a brief moment of silence. Then his professor, Dr. Hala, stood up and began to clap. The entire class joined in. Dr. Hala told Ahmad that his presentation was one of the best she had seen all semester. Ahmad felt a wave of relief and gratitude. He realized that stage fright was not a wall — it was a door, and he had just walked through it.`,
     keyVocab: ["stage fright", "confidence", "essentials", "integration", "ethical concerns", "relief", "gratitude"],
   },
+
+  /* ── A2 entries (10 new) ── */
+
+  {
+    level: "A2",
+    title: "A Morning in Jabal Amman",
+    body: `Every Friday morning, the streets of Jabal Amman come alive in a special way. While most of Amman is still quiet, the small bakeries are already open. The smell of fresh bread and hot ka'ak fills the air. Old men sit on plastic chairs outside their favourite cafes, drinking sweet tea and reading the morning newspaper. A young boy on a bicycle delivers labneh and za'atar to the neighbours.
+
+My grandmother, Teta Amal, has lived on the same street for forty years. She knows every family on the block. Every Friday, she prepares a large breakfast for the whole family. Her table is never empty — there is always enough food for unexpected guests. "In our culture," she says, "the door is always open and the tea is always hot."
+
+After breakfast, the family walks down to Rainbow Street. The young people check their phones while the older ones stop to greet friends and neighbours. Street vendors sell roasted corn and fresh juice. The sound of the call to prayer mixes with the noise of traffic. It is a simple morning, but it is full of warmth and belonging. For many families in Amman, this Friday routine is the most important part of the week.`,
+    keyVocab: ["routine", "neighbourhood", "unexpected", "roasted", "belonging"],
+  },
+  {
+    level: "A2",
+    title: "The Olive Harvest in Ajloun",
+    body: `In October, the hills around Ajloun turn a beautiful silver-green colour. It is olive harvest season, and families from all over northern Jordan travel to their family orchards to pick the olives by hand. The work starts early in the morning, just after Fajr prayer, and continues until sunset. Children help by spreading large sheets under the trees to catch the olives as they fall.
+
+Abu Khalid has been harvesting olives from the same trees for thirty years. His grandfather planted them, and his father cared for them before him. "These trees are like family," he says with a smile. "They give us oil, they give us food, and they connect us to the land." This year, the harvest was better than expected because of good rainfall in the spring.
+
+After the picking is finished, the olives are taken to a local press in the village. The fresh olive oil is stored in large glass jars — some for the family and some to share with relatives in Amman and Irbid. The olive harvest is not just work; it is a celebration of family, land, and tradition that has continued for generations in Palestine and Jordan.`,
+    keyVocab: ["harvest", "orchard", "generation", "press", "tradition"],
+  },
+  {
+    level: "A2",
+    title: "First Day at the University of Jordan",
+    body: `Layla woke up at six in the morning, earlier than usual. Today was her first day at the University of Jordan, and she wanted everything to be perfect. She chose her outfit the night before — a neat blouse and comfortable shoes for walking across the large campus. Her mother prepared a sandwich of labneh and cucumber and a small bag of nuts for a snack.
+
+When Layla arrived at the university gate, she was surprised by how many students there were. The campus was full of life — groups of friends laughing, professors carrying books, and vendors selling coffee near the library. A friendly student named Dina noticed Layla looking lost and offered to help her find her first class. "Don't worry," Dina said. "Everyone feels confused on the first day. By next week, you will know this place like your own home."
+
+The professor of Layla's first class, English Communication, welcomed everyone warmly. He told the students that making mistakes is part of learning. "Your English does not need to be perfect," he said. "What matters is that you try." Layla felt a wave of relief. She looked around the classroom and realised she was not alone — everyone was starting something new, and that made her feel brave.`,
+    keyVocab: ["campus", "confused", "relief", "professor", "brave"],
+  },
+  {
+    level: "A2",
+    title: "Cooking Maqloubeh with Mama",
+    body: `On a cool Thursday evening, ten-year-old Yazan stood on a small chair next to his mother in the kitchen. Tonight, they were making maqloubeh — the famous upside-down rice dish that his family eats almost every Thursday. "Can I help with the chicken?" Yazan asked. His mother smiled and handed him a pair of gloves. "First, wash your hands well," she said. "Then you can help me add the spices."
+
+The kitchen was warm and filled with wonderful smells. His mother explained each step carefully: first, fry the chicken until it is golden brown. Then, layer the vegetables — eggplant, cauliflower, and potatoes — on the bottom of a large pot. Place the chicken on top, then add the rice and the spices. "The secret," his mother whispered, "is patience. You must cook it on low heat and wait."
+
+When it was time to flip the pot, everyone in the family gathered in the kitchen. His father held the large plate over the pot, and together they turned it upside down. There was a moment of silence. Then his mother lifted the pot slowly, and the maqloubeh stood perfectly on the plate — golden and tall. The whole family cheered. Yazan felt proud. He had helped make something beautiful.`,
+    keyVocab: ["spices", "layer", "patience", "golden", "proud"],
+  },
+  {
+    level: "A2",
+    title: "A Weekend Trip to Petra",
+    body: `The bus left Amman at seven in the morning, full of excited students from different universities. The three-hour journey south passed through some of Jordan's most beautiful scenery. They crossed the desert highway, passed near Karak with its ancient castle on the hill, and watched the landscape change from brown hills to dramatic red cliffs as they got closer to Wadi Musa.
+
+When they finally arrived at the entrance to Petra, their guide, Uncle Mahmoud, gathered the group. "Petra is not just a place," he told them. "It is a story written in stone by the Nabataean people over two thousand years ago." As they walked through the narrow Siq — a long passage between towering sandstone cliffs — the students could hardly believe their eyes. At the end of the Siq, the Treasury appeared, its carved facade glowing pink in the morning sun.
+
+The group spent the whole day exploring. They climbed hundreds of rock-cut steps to reach the Monastery, one of the largest monuments in Petra. From the top, they could see all the way to Palestine and Israel on a clear day. On the way back to the bus, students bought handmade silver jewellery and postcards from local Bedouin vendors. "I have read about Petra in books," said one student, "but standing here, I feel like I am inside a dream."`,
+    keyVocab: ["scenery", "ancient", "carved", "monument", "handmade"],
+  },
+  {
+    level: "A2",
+    title: "Ramadan Nights in Irbid",
+    body: `During Ramadan, the city of Irbid changes completely. The streets that are busy and noisy during the day become quiet and peaceful. Shops close in the afternoon so that people can rest before iftar. But as the sun begins to set, a different kind of energy fills the air. Families hurry home with bags full of dates, milk, and ingredients for the evening meal.
+
+At the home of the Al-Sharif family, the kitchen is the centre of activity. Um Ahmad and her daughters prepare a table full of traditional dishes: fattoush, soup, stuffed vine leaves, and of course, fresh dates and laban. The youngest children help by setting the table and bringing water glasses. Everyone waits together for the call to Maghrib prayer, which signals that it is time to break the fast.
+
+After iftar and prayer, the real magic of Ramadan begins. The streets fill with families walking together, children playing, and the smell of sweets coming from the bakeries. Qatayef — small sweet pancakes filled with cheese or nuts — are the most popular treat. The mosques are full for Taraweeh prayers, and the sound of Quran recitation fills the night. "Ramadan is not just about not eating," says Uncle Sami. "It is about being close to your family, helping others, and remembering what is truly important."`,
+    keyVocab: ["peaceful", "ingredients", "traditional", "signal", "recitation"],
+  },
+  {
+    level: "A2",
+    title: "My Uncle's Barber Shop in Salt",
+    body: `The small barber shop on the main street of Salt has been open for over twenty years. My uncle, Abu Omar, opened it when he was just twenty-five years old. Every morning, he arrives at seven, turns on the old radio, and sweeps the floor until it shines. The walls are covered with photographs of his customers — football players, university professors, and government workers who have been coming to the same chair for years.
+
+Abu Omar's shop is more than a place for haircuts. It is a meeting place. Men come to discuss the news, share stories about their children, and argue about football. On busy days, there is a line of chairs outside the door, and customers sit together drinking Arabic coffee while they wait. "I have cut the hair of three generations of some families," Abu Omar says proudly. "I cut the grandfather's hair, then his son's, and now his grandson's."
+
+The city of Salt is famous for its old Ottoman buildings and its warm hospitality. Abu Omar's shop represents the spirit of the city — simple, welcoming, and connected to the past. When tourists visit Salt, they always stop to take photos of the old shops. Abu Omar waves at them and offers coffee. "Everyone is welcome here," he says. "That is the Salt way."`,
+    keyVocab: ["generation", "discuss", "hospitality", "tourists", "welcome"],
+  },
+  {
+    level: "A2",
+    title: "Learning to Swim in Aqaba",
+    body: `Twelve-year-old Farah had always been afraid of deep water. While her friends spent their summer holidays jumping off the rocks at the public beach in Aqaba, Farah would sit on the sand and watch. This summer, her older brother Hassan decided it was time for a change. "I will teach you myself," he said. "There is nothing to be afraid of."
+
+They went to the shallow part of the beach early in the morning, before it got crowded. Hassan started with the basics: how to hold your breath, how to float on your back, and how to kick your legs. At first, Farah was nervous and held onto Hassan's arm tightly. But he was patient. "Take your time," he said. "The sea is your friend, not your enemy."
+
+By the end of the first week, Farah could float on her own. By the second week, she could swim ten metres without stopping. By the third week, she joined her friends and jumped off the rocks for the first time. The feeling of flying through the clear, warm water of the Red Sea was the most wonderful thing she had ever experienced. "You did it!" Hassan shouted from the beach, clapping his hands. Farah smiled. She had learned something important: courage does not mean you are not afraid — it means you try anyway.`,
+    keyVocab: ["afraid", "patient", "float", "courage", "wonderful"],
+  },
+  {
+    level: "A2",
+    title: "The Bookshop on Rainbow Street",
+    body: `There is a small bookshop on Rainbow Street in Jabal Amman that has been open since 1995. The owner, Miss Nadia, is a retired English teacher who loves books more than anything else in the world. Her shop is small but full — every wall has shelves, and every shelf is packed with books in Arabic and English. There is a smell of old paper and fresh coffee that makes visitors feel calm the moment they walk in.
+
+Miss Nadia does not just sell books. She helps young readers find the right book for their level. "Tell me what you like," she always says to new customers. "Do you like stories about adventure? History? Science?" She then picks three or four books and explains what each one is about. Many university students come to her shop to buy novels for their literature courses, and she always gives them a small discount.
+
+On Saturday mornings, Miss Nadia organises a free reading circle for children aged eight to twelve. The children sit on cushions on the floor and take turns reading aloud. After reading, they discuss the story together and draw pictures of their favourite scenes. "Books open doors," Miss Nadia tells the children. "When you read, you can travel anywhere in the world without leaving this room." Her bookshop is not just a business — it is a gift to the neighbourhood.`,
+    keyVocab: ["retired", "packed", "discount", "cushions", "discuss"],
+  },
+  {
+    level: "A2",
+    title: "A Visit to Jerash",
+    body: `On a bright Saturday in spring, the Al-Rashid family drove from Amman to Jerash, about fifty kilometres north. The children, Sara and Tariq, had been studying Roman history at school, and their father promised them a real-life history lesson. As they entered the ancient city, Sara gasped. "It looks just like the pictures in my textbook," she whispered.
+
+Their guide, a local man named Mr. Nabil, walked them through the South Theatre, a large round theatre that could hold thousands of people. "If you stand in the centre and speak," he explained, "your voice travels to every seat without a microphone." Tariq tried it, and everyone in the family heard him clearly. They walked along the colonnaded street, where tall stone columns still stood after nearly two thousand years.
+
+In the afternoon, they visited the Hippodrome, where chariot races used to take place. Mr. Nabil explained that Jerash was once one of the most important cities in the Roman Empire, a centre of trade and culture in the region. As the family left, Sara turned around for one last look at the ancient ruins. "I want to be an archaeologist," she told her father. He smiled and put his hand on her shoulder. "Then you have come to the right place."`,
+    keyVocab: ["ancient", "colonnaded", "chariot", "archaeologist", "ruins"],
+  },
+
+  /* ── B1 entries (9 new) ── */
+
+  {
+    level: "B1",
+    title: "Sumud: More Than a Word",
+    body: `The Arabic word sumud is often translated as "steadfastness" in English, but for Palestinians and their descendants across the region, it carries a meaning that no single English word can fully capture. Sumud is not just about staying in one place — it is about continuing to live, grow, and build despite enormous difficulty. It is the olive farmer who returns to his groves every season, the teacher who holds classes even when the power is out, the grandmother who preserves the recipes of a village she may never see again.
+
+In Jordan, where many Palestinian families have lived for decades, sumud takes many forms. Some families have built successful businesses from nothing. Others have sent their children to the University of Jordan, to JUST, or to universities abroad, investing in education as an act of resistance. The famous poet Mahmoud Darwish wrote that sumud is "to be, in order to be" — a simple but powerful idea that existence itself, under pressure, is a form of dignity.
+
+For young Jordanians of Palestinian heritage, sumud is both a family story and a personal choice. It means learning Arabic calligraphy, cooking the dishes of their grandparents' villages, and teaching their children the names of places like Jaffa, Haifa, and Nablus. Sumud is not about looking backward with anger; it is about carrying forward with purpose. In a world that often asks them to forget, choosing to remember is itself an act of courage.`,
+    keyVocab: ["steadfastness", "descendants", "dignity", "heritage", "resistance", "perseverance"],
+  },
+  {
+    level: "B1",
+    title: "The Start-up Scene in Abdali",
+    body: `Five years ago, the Abdali district of Amman was mostly known for its modern shopping mall and expensive apartments. Today, it is also the centre of Jordan's growing start-up ecosystem. Co-working spaces like The Tank and Oasis500 have transformed empty floors into busy offices where young entrepreneurs work on ideas that could change the region. The energy in these spaces is contagious — people from different backgrounds share desks, ideas, and sometimes even meals.
+
+One of the most promising start-ups to emerge from this scene is a food delivery app called "Dawarreh," which was designed specifically for Jordanian neighbourhoods. Unlike international apps that struggle with Amman's complicated address system, Dawarreh uses local landmarks — "near the Kunafa shop on Sweifieh Street" or "the building with the blue gate opposite the mosque" — to help drivers find locations. The founder, a twenty-six-year-old graduate of the University of Jordan, says the idea came from watching her grandmother order groceries by phone.
+
+Jordan's tech sector still faces challenges. Funding is limited compared to Dubai or Riyadh, and many talented developers leave for better opportunities abroad. But the talent pool remains strong. Jordanian universities produce thousands of computer science graduates every year, and many of them are choosing to build their companies at home. "The problems we face here — in education, agriculture, logistics — are real," says one investor. "And real problems make the best start-up ideas."`,
+    keyVocab: ["ecosystem", "contagious", "entrepreneurs", "logistics", "complicated"],
+  },
+  {
+    level: "B1",
+    title: "A Jordanian Wedding",
+    body: `A traditional Jordanian wedding is not a single event — it is a series of celebrations that can last for several days. It usually begins with the henna night, where the bride's female relatives and friends gather at her family home. A henna artist decorates the bride's hands with intricate patterns, while the women sing traditional songs and eat sweets. The atmosphere is joyful, emotional, and deeply rooted in Arabic tradition.
+
+The main wedding celebration, called the zaffeh, is a spectacular affair. The groom's family processes through the streets, accompanied by drummers, dancers, and sometimes even a brass band. Cars honk their horns, children run alongside the procession, and the whole neighbourhood comes out to watch. In some families, the groom rides a horse — a practice that connects modern celebrations to Bedouin heritage.
+
+The reception itself can host hundreds of guests. Food is central: mansaf, the national dish of Jordan, is served on large platters and shared communally. Speeches are made, dances are performed — the debke, a traditional line dance, is always a highlight. But what makes a Jordanian wedding truly special is not the expense or the decoration; it is the sense of community. In Jordan, a wedding is not just a union of two people; it is a celebration that belongs to the entire family and neighbourhood.`,
+    keyVocab: ["intricate", "spectacular", "procession", "communally", "heritage", "union"],
+  },
+  {
+    level: "B1",
+    title: "Working as a Tour Guide in Wadi Rum",
+    body: `At twenty-eight years old, Suleiman Al-Zalabieh is one of the youngest licensed tour guides in Wadi Rum. He grew up in the desert — his family are Bedouins from the Zalabieh tribe, who have lived in the area for generations. As a child, he played among the sandstone cliffs and learned the names of every valley, rock formation, and water source from his grandfather.
+
+Becoming a licensed guide was not easy. Suleiman had to study for two years, learning English, geology, history, and first aid. He also had to pass a strict examination from the Ministry of Tourism. "Many people think being a guide is just about driving a jeep," he says. "But a real guide must understand the land — not just where to go, but why it matters. Every rock in Wadi Rum has a story."
+
+Suleiman now leads tours in both English and Arabic, taking visitors from Europe, Asia, and the Americas through the desert landscape made famous by films like Lawrence of Arabia and The Martian. His favourite part of the job is the evening, when the tour groups sit around a campfire, drink sweet tea, and look up at a sky full of stars with no city lights to dim them. "When my guests look at the stars in Wadi Rum, they forget about their problems," he says. "And for a moment, I forget about mine too."`,
+    keyVocab: ["licensed", "formation", "examination", "landscape", "dim"],
+  },
+  {
+    level: "B1",
+    title: "The Friday Market in Mafraq",
+    body: `Every Friday morning, a large open-air market appears on the outskirts of Mafraq, a city in northern Jordan. By six o'clock, dozens of vendors have set up their stalls on the dusty ground, selling everything from fresh vegetables and spices to second-hand clothes and household items. The market is called Souq al-Juma, and it has been a weekly tradition in the city for as long as anyone can remember.
+
+For many families in Mafraq, the Friday market is the most affordable way to buy what they need. Vegetables are cheaper here than in supermarkets — a kilo of tomatoes might cost half the price. Women from nearby villages arrive early with baskets of eggs, homemade cheese, and olives from their own orchards. The bargaining is friendly but serious; both the buyer and the seller expect to negotiate, and arriving at a fair price is considered a matter of respect.
+
+In recent years, the market has also become a gathering place for the Syrian refugee families who have settled in the area. Some have opened their own stalls, selling handmade crafts, traditional Syrian sweets, or repaired electronics. The integration has not always been easy, but the market has helped. "When people buy from each other, they begin to understand each other," says Abu Raed, who has sold spices at the market for thirty years. "The market does not care where you come from. It only cares that you treat people fairly."`,
+    keyVocab: ["affordable", "negotiate", "integration", "refugee", "bargaining"],
+  },
+  {
+    level: "B1",
+    title: "My Father's First Job",
+    body: `My father, Mahmoud, grew up in a small village near Jerash in the 1980s. His family were farmers — they grew wheat, olives, and vegetables on a small piece of land. Education was not a priority in those days. Most boys in the village left school after the ninth grade to help their families in the fields. But my grandmother, who could not read or write herself, had a different dream for her son.
+
+"You will go to school," she told my father firmly. "You will finish. And you will go to university." It was an unusual thing for a village woman to say in the 1980s, but my grandmother was determined. She sold eggs and homemade butter at the market to pay for his school supplies. When my father passed his Tawjihi exams with high marks, she cried.
+
+My father received a scholarship to study engineering at the University of Jordan. He took a bus from Jerash to Amman every morning — a journey of more than an hour each way. After graduating, he got his first job at a construction company near 7th Circle. The salary was small, but he sent money home every month to his mother. "Everything I have," he told me once, "started with a woman who could not read but believed that education could change everything." That woman was my grandmother, and her belief changed the future of our entire family.`,
+    keyVocab: ["priority", "scholarship", "determined", "construction", "firmly"],
+  },
+  {
+    level: "B1",
+    title: "The Art of Arabic Calligraphy",
+    body: `In a small studio above a coffee shop on Rainbow Street, thirty-two-year-old Rami Al-Qudsi practices an art form that is centuries old. Rami is a professional Arabic calligrapher, one of only a handful in Jordan who make their living entirely from this craft. His studio walls are covered with framed pieces — verses from the Quran, lines of poetry by Mahmoud Darwish, and even contemporary phrases written in styles that blend traditional and modern aesthetics.
+
+Rami discovered calligraphy by accident. While studying graphic design at the University of Jordan, a professor showed the class examples of classical Arabic scripts. "I was amazed," Rami recalls. "The letters were not just writing — they were art. Each stroke had a rhythm, a flow, a personality." He began practising with a bamboo reed pen and homemade ink, spending hours each day on a single letter.
+
+Today, Rami's clients include Jordanian government offices, hotels, and private collectors from across the Gulf. He also teaches free workshops for children at the Jordan National Gallery of Fine Arts, believing that calligraphy is an important cultural heritage that must be passed to the next generation. "In a world of keyboards and touchscreens," he says, "handwriting is becoming rare. But Arabic calligraphy is not just handwriting — it is identity. When a child learns to shape these letters, they are connecting to a thousand years of culture."`,
+    keyVocab: ["calligraphy", "aesthetics", "contemporary", "heritage", "manuscripts"],
+  },
+  {
+    level: "B1",
+    title: "Football Friday in Amman",
+    body: `Every Friday evening during football season, a small cafe in Shmeisani transforms into something much bigger than a coffee shop. The owner, Abu Hassan, sets up a large projector screen against the back wall, and by the time the match begins, every seat is taken. The customers — mostly young men, but increasingly women and families too — come for the atmosphere as much as for the game.
+
+Abu Hassan has been running these football nights for seven years. He serves free tea and sometimes mansaf on special occasions. The customers bring their own snacks, and everyone contributes what they can. When a goal is scored, the whole cafe erupts — people jump, shout, and embrace strangers. When the team loses, the mood is quiet, but Abu Hassan always says the same thing: "There is always next week."
+
+What makes these gatherings special is that they are not just about football. They are about community. Many of the regulars have known each other for years. They discuss politics, family, work, and studies between the plays. Young graduates looking for jobs share advice with older professionals. University students practise their English by reading the commentary aloud. In a city where people are often busy and disconnected, Abu Hassan's Friday football night is a weekly reminder that community can be found in the simplest places.`,
+    keyVocab: ["projector", "erupts", "contributes", "atmosphere", "commentary"],
+  },
+  {
+    level: "B1",
+    title: "Women Who Code Jordan",
+    body: `In 2019, a young software engineer named Lina Al-Masri posted a message on Twitter: "I want to start a coding group for women in Jordan. Who is in?" Within a week, she had received over two hundred replies. Six months later, "Women Who Code Jordan" held its first workshop at a co-working space in Abdali, with fifty women attending and ten volunteer mentors.
+
+The organisation's mission is practical and urgent. Although Jordanian women earn more university degrees than men, they are significantly underrepresented in the technology industry. Women Who Code Jordan addresses this gap by offering free workshops in web development, mobile apps, data science, and cloud computing. The workshops are taught in both Arabic and English, and child care is provided on-site — a deliberate choice to remove the barriers that prevent many women from attending professional events.
+
+Four years on, the group has grown to over three thousand members across Amman, Irbid, and Aqaba. Several members have launched their own tech start-ups, and others have been hired by companies in the Gulf and Europe. But Lina says the impact goes beyond jobs. "When a young woman writes her first line of code and sees it work, something changes inside her," she explains. "She realises that technology is not a foreign world. It is a tool she can use to build whatever she imagines."`,
+    keyVocab: ["underrepresented", "deliberate", "mission", "barriers", "launched"],
+  },
+
+  /* ── B2 entries (10 new) ── */
+
+  {
+    level: "B2",
+    title: "Jordan's Water Challenge",
+    body: `Jordan is the second most water-scarce country in the world, a fact that shapes nearly every aspect of national planning, agriculture, and daily life. With an annual rainfall averaging just 200 millimetres — most of which falls in a few intense storms between November and March — the country simply does not receive enough water naturally to support its population of over ten million people, including a significant refugee community. The Jordan River, once a powerful waterway, now carries only a fraction of its historical flow due to upstream diversion by neighbouring countries.
+
+The government has responded with a combination of large-scale infrastructure projects and demand-management policies. The Disi Water Conveyance Project, completed in 2013, pumps fossil groundwater from the Disi aquifer in southern Jordan over 300 kilometres to Amman. Meanwhile, the National Water Strategy promotes conservation through tiered pricing — households that consume more pay significantly more per cubic metre — and the construction of wastewater treatment plants that recycle water for agricultural use. Desalination of Red Sea water, currently under study as part of the Red Sea-Dead Sea project, represents the most ambitious long-term proposal.
+
+At the individual level, water scarcity influences daily behaviour in ways that visitors often find surprising. Many Jordanian homes have rooftop water tanks that are filled once or twice a week by municipal trucks. Families have learned to use water efficiently — reusing cooking water for plants, taking shorter showers, and fixing leaks immediately. These habits, born of necessity, have become ingrained in the culture. "Water is more precious than oil in Jordan," says Dr. Marwan Al-Raggad, a hydrologist at the University of Jordan. "And it will become even more precious in the years ahead."`,
+    keyVocab: ["water-scarce", "infrastructure", "conveyance", "fossil groundwater", "desalination", "hydrologist"],
+  },
+  {
+    level: "B2",
+    title: "Preserving the Dead Sea",
+    body: `The Dead Sea, the lowest point on Earth at approximately 430 metres below sea level, is shrinking. Its surface area has contracted by roughly a third since the 1960s, and the water level drops by more than one metre every year. The causes are well documented: the diversion of the Jordan River's headwaters for agricultural and domestic use, mineral extraction by the potash and bromine industries on both the Israeli and Jordanian sides, and the natural evaporation that accelerates as the lake becomes shallower and its surface area decreases.
+
+For Jordan, the Dead Sea is not merely a geographical landmark — it is a pillar of the economy. The cosmetic and pharmaceutical industries generate hundreds of millions of dollars annually from Dead Sea minerals, particularly magnesium, potassium, and bromine. Tourism at sites like the Amman Beach and the private resorts along the coast attracts visitors from around the world, many of whom come specifically for the reputed therapeutic properties of the mud and water. The hotel sector along the Dead Sea coast employs thousands of Jordanians.
+
+Scientists and policymakers have proposed several solutions. The most prominent is the Red Sea-Dead Sea Conduit, a project that would pump seawater from Aqaba northward, generating hydroelectric power along the way and replenishing the Dead Sea. However, environmental concerns — particularly the risk of mixing Red Sea water with Dead Sea brine, which could trigger gypsum precipitation and turn the water white — have delayed implementation. Conservationists argue that the most effective immediate action is simply to reduce the water taken from the Jordan River. "The Dead Sea is a warning," says environmental researcher Dr. Salim Al-Halabi. "If we cannot save a sea, what can we save?"`,
+    keyVocab: ["contracted", "extraction", "hydroelectric", "precipitation", "replenishing", "brine"],
+  },
+  {
+    level: "B2",
+    title: "The Palestinian Diaspora in Amman",
+    body: `Amman is home to one of the largest Palestinian diaspora communities in the world. According to UNRWA, there are approximately two million registered Palestine refugees in Jordan, though this figure does not capture the full picture — many Palestinians in Jordan hold full citizenship and are not registered as refugees. The community's presence in Amman dates back to 1948, when the first wave of refugees arrived from cities like Jaffa, Haifa, and Jerusalem, and was reinforced by a second wave after the 1967 war.
+
+The Palestinian community has profoundly shaped Amman's identity. Neighbourhoods like Wihdat, Jabal Al-Nuzha, and parts of Jabal Amman became cultural centres where Palestinian traditions were preserved and adapted. The cuisine — maqloubeh, musakhan, and knafeh — became part of Jordan's national food culture. Musically, the voices of Um Kulthum and Fairuz filled homes and cafes. Educationally, Palestinian families prioritised schooling as a means of preserving identity and achieving economic stability, a value that has had lasting effects on Jordan's overall educational standards.
+
+For the third generation — young Jordanians of Palestinian descent born in the 1990s and 2000s — the relationship with heritage is complex. Many have never visited Palestine. Their connection to cities like Nablus, Gaza, or Jaffa comes through family stories, recipes, and the keys to old homes that grandparents still keep. At the same time, they are fully Jordanian — they speak Jordanian Arabic, support the national football team, and contribute to every sector of society. Scholars describe this as a "dual consciousness" — being deeply rooted in both the reality of Jordan and the memory of Palestine. It is not a contradiction; it is a lived experience that defines much of Amman's cultural richness.`,
+    keyVocab: ["diaspora", "reinforced", "profoundly", "contradiction", "dual consciousness", "descendants"],
+  },
+  {
+    level: "B2",
+    title: "The Rise of E-Commerce in Jordan",
+    body: `Jordan's e-commerce sector has experienced remarkable growth over the past five years, driven by a young, tech-savvy population, high smartphone penetration, and the lasting behavioural changes brought about by the COVID-19 pandemic. Before 2020, online shopping in Jordan was limited mainly to international purchases through websites like Amazon and AliExpress. Today, a growing ecosystem of local platforms — including MarkaVIP, Jamalon, and OpenSooq — serves millions of customers across the country.
+
+The challenges, however, are significant. Jordan does not have a standardised postal addressing system, which makes last-mile delivery complicated and expensive. Courier companies rely on phone calls and WhatsApp messages to locate customers. Cash on delivery remains the dominant payment method, accounting for roughly 70 percent of transactions. This creates operational inefficiencies: drivers carry large amounts of cash, and return rates — where customers refuse to accept a package — can reach 30 percent for some categories.
+
+Despite these obstacles, entrepreneurs continue to innovate. Some companies have introduced GPS-tagged delivery points, while others are experimenting with QR-code-based payment systems. The Central Bank of Jordan has also introduced regulatory frameworks for digital wallets and fintech services, aiming to gradually shift the culture toward electronic payments. "Jordan's e-commerce story is still being written," says tech analyst Reem Khouri. "The infrastructure is improving, the consumer trust is growing, and the young population is ready. The question is not whether e-commerce will transform Jordan's retail sector — it already has. The question is how fast."`,
+    keyVocab: ["tech-savvy", "penetration", "last-mile delivery", "dominant", "inefficiencies", "regulatory"],
+  },
+  {
+    level: "B2",
+    title: "Traditional Jordanian Architecture",
+    body: `The old city of Salt, perched on three hills in northwestern Jordan, offers one of the finest collections of traditional Ottoman-era architecture in the Levant. In the late nineteenth and early twentieth centuries, Salt was the administrative capital of Transjordan, and its prosperous merchant families built elaborate stone houses that blended Ottoman, European, and local Arab design elements. These buildings — with their domed ceilings, arched windows, and painted interior walls — are now recognised as national treasures.
+
+The construction techniques used in these buildings reflect a deep understanding of the local environment. Walls were built from golden limestone quarried from the surrounding hills, a material that provides natural insulation — keeping interiors cool in the scorching summer and warm in the bitter winter. High ceilings allowed hot air to rise, while small windows on the ground floor provided privacy and security. Many houses featured internal courtyards with citrus trees and water fountains, creating a private outdoor space that served as the family's social centre.
+
+The Salt Heritage Trail, established in recent years with support from the UNESCO and the Jordanian Ministry of Tourism, has helped bring new life to the old city. Several historic houses have been converted into museums, cafes, and cultural centres. The Trail has also created economic opportunities for local residents, who now run small businesses catering to tourists. Yet preservation remains an ongoing challenge. Some historic buildings have deteriorated due to neglect, and developers sometimes prefer to demolish old structures rather than restore them. Balancing development with heritage conservation is a tension that Salt — and Jordan more broadly — will continue to navigate.`,
+    keyVocab: ["elaborate", "limestone", "insulation", "courtyards", "deteriorated", "preservation"],
+  },
+  {
+    level: "B2",
+    title: "Mental Health Awareness in Jordan",
+    body: `For decades, mental health was a topic that families in Jordan rarely discussed openly. Seeking help from a psychologist or psychiatrist carried a significant social stigma, and many people who experienced anxiety, depression, or trauma suffered in silence rather than risk being judged by their community. The cultural expectation was to rely on family, faith, and personal resilience — valuable resources, but not always sufficient for clinical conditions.
+
+In recent years, however, a quiet transformation has begun. Young Jordanians, many of whom have been exposed to global conversations about mental health through social media, are increasingly willing to speak about their experiences. Instagram accounts and podcasts in Arabic that discuss therapy, self-care, and emotional well-being have gained substantial followings. The University of Jordan and JUST have both expanded their counselling services, and several private clinics in Amman now offer therapy in both Arabic and English.
+
+Professional organisations are also contributing. The Jordanian Psychological Association has campaigned to raise awareness, emphasising that mental health conditions are medical issues, not character weaknesses. The Syrian refugee crisis, which brought hundreds of thousands of traumatised individuals to Jordan, forced the healthcare system to confront mental health needs on an unprecedented scale. International organisations like the UNHCR and WHO partnered with local clinics to provide counselling and psychosocial support. While the stigma has not disappeared — older generations remain more reluctant to seek professional help — the conversation has undeniably shifted. "Ten years ago, no one talked about this," says Dr. Lina Naber, a clinical psychologist in Amman. "Today, my waiting room is full. That is not a sign that people are weaker. It is a sign that they are braver."`,
+    keyVocab: ["stigma", "clinical", "traumatised", "psychosocial", "unprecedented", "campaign"],
+  },
+  {
+    level: "B2",
+    title: "Renewable Energy in the Desert",
+    body: `Jordan currently imports over 90 percent of its energy, primarily in the form of oil and natural gas, at an annual cost that has sometimes exceeded 15 percent of the country's GDP. This heavy dependence on imported energy has long been identified as one of the kingdom's most critical economic vulnerabilities. In response, Jordan has embarked on one of the most ambitious renewable energy programmes in the Middle East, leveraging its most abundant natural resource: sunshine.
+
+The country's flagship solar project is the Quweira Solar Park, located in the desert south of Wadi Rum. With a capacity of 103 megawatts, the park generates enough electricity to power approximately 50,000 homes and reduces carbon dioxide emissions by an estimated 160,000 tonnes per year. It was financed through a combination of international loans and private investment, and it represents a model for how developing countries can attract clean energy capital. In total, renewable sources — primarily solar and wind — now account for roughly 20 percent of Jordan's electricity generation, up from virtually zero a decade ago.
+
+The economic implications are substantial. Lower energy costs make Jordanian industries more competitive, and the renewable sector has created thousands of new jobs in installation, maintenance, and engineering. Universities such as the University of Jordan and the Hashemite University have introduced specialised programmes in renewable energy engineering. Yet challenges remain. The national grid requires significant upgrades to handle the intermittent nature of solar and wind power, and energy storage technology is still too expensive for widespread deployment. "We have made enormous progress," says Minister of Energy Dr. Hala Zawati. "But the transition from 20 percent to 50 percent renewable energy will be harder than getting from zero to twenty."`,
+    keyVocab: ["vulnerability", "leveraging", "capacity", "intermittent", "deployment", "flagship"],
+  },
+  {
+    level: "B2",
+    title: "The Palestinian Kitchen in Exile",
+    body: `Food is one of the most powerful carriers of cultural memory, and for the Palestinian diaspora, the kitchen has served as a site of resistance, identity, and continuity. In Amman, where Palestinian refugees and their descendants have lived for over seven decades, traditional Palestinian dishes remain a daily presence on family tables — not merely as food, but as living links to cities, villages, and agricultural practices that may no longer exist.
+
+Consider musakhan, a dish from the Jenin and Tulkarem areas: roasted chicken served on flatbread layered with caramelised onions, sumac, and pine nuts. Preparing musakhan is not a quick task — the onions must be cooked slowly for over an hour, the bread must be thin and crispy, and the sumac must be of high quality. For Palestinian families in Amman, making musakhan is an act of cultural preservation. The recipe is passed from mother to daughter, with each generation making small adjustments, but the core remains unchanged.
+
+Academic research has examined this phenomenon. Anthropologists describe it as "culinary heritage maintenance" — the deliberate practice of preserving food traditions as a form of identity continuity. A 2021 study by researchers at the University of Jordan found that 94 percent of Palestinian-Jordanian families surveyed prepare at least one traditional Palestinian dish per week, and that the practice is strongly associated with a sense of belonging and connection to Palestinian identity. The study also found that younger generations, while more likely to experiment with international cuisines, place equal emotional value on learning to cook their family's traditional dishes. "When I cook my grandmother's maqloubeh," one respondent wrote, "I am not just making dinner. I am telling her story."`,
+    keyVocab: ["culinary", "caramelised", "continuity", "anthropologists", "deliberate", "identity"],
+  },
+  {
+    level: "B2",
+    title: "The Tech Talent Pipeline",
+    body: `Jordan has earned a reputation as one of the Arab world's leading producers of technology talent, a remarkable achievement for a country with limited natural resources and a population of just over ten million. The roots of this reputation lie in the education system: Jordanian universities have been producing strong graduates in computer science, engineering, and information technology since the 1990s, and the quality of the output has consistently attracted the attention of international employers.
+
+The numbers tell part of the story. Jordanian universities graduate approximately 5,000 computer science students annually, a disproportionately high figure for the country's size. Many of these graduates find employment with multinational technology companies — Google, Microsoft, Amazon, and Cisco all have significant operations in the region and actively recruit from Jordanian universities. Others join the growing number of local start-ups or work remotely for companies based in Europe and North America, a trend accelerated by the global shift toward remote work.
+
+However, the talent pipeline also reveals structural problems. Brain drain remains a serious concern — surveys suggest that up to 30 percent of Jordanian tech graduates eventually leave the country for better-paying opportunities abroad. The local job market, while growing, cannot always absorb the supply of graduates, and salaries in Jordan's tech sector lag behind those in the Gulf states. Furthermore, there is a significant gap between what universities teach and what the industry needs, particularly in emerging fields like artificial intelligence, cybersecurity, and cloud architecture. Several initiatives, including coding bootcamps and industry-university partnerships, have emerged to bridge this gap. "Jordan does not have a talent problem," argues venture capitalist Fadi Ghandour. "It has a retention problem. The talent is here. The question is whether we can build an ecosystem that keeps it here."`,
+    keyVocab: ["disproportionately", "brain drain", "pipeline", "absorb", "architecture", "ecosystem"],
+  },
+  {
+    level: "B2",
+    title: "Amman's Urban Transformation",
+    body: `Amman has undergone a dramatic urban transformation over the past three decades, evolving from a quiet administrative city into a sprawling metropolis of over four million people. The changes are visible everywhere: the Abdali Boulevard development has introduced high-rise towers and luxury apartments to the city centre, while the expansion of the ring roads has pushed residential suburbs further into the surrounding hills. Yet beneath this modern facade, Amman retains a character that is uniquely its own.
+
+The city's growth has not been without challenges. Traffic congestion on routes like the Airport Road and the Queen Alia Street corridor now ranks among residents' top complaints. Public transportation remains inadequate — the city relies primarily on shared taxis and private buses with no fixed schedules. Informal settlements have grown on Amman's eastern outskirts, where infrastructure and municipal services lag behind the more affluent western neighbourhoods. Urban planners at the Greater Amman Municipality have proposed bus rapid transit systems and improved zoning regulations, but implementation has been slow.
+
+What makes Amman's urban story distinctive is the coexistence of the ancient and the ultra-modern. A single drive can take you past the Roman Theatre, a cluster of contemporary art galleries, a centuries-old mosque, and a new shopping mall. The city's famous seven hills — originally Jabal Amman, Jabal Al-Qala, Jabal Al-Nuzha, Jabal Al-Weibdeh, Jabal Ashrafieh, Jabal Jofeh, and Jabal Akhdar — have been joined by dozens more as the city has expanded. Weibdeh, once a quiet neighbourhood of old stone houses, has become Amman's bohemian quarter, filled with cafes, studios, and cultural spaces. Despite the rapid pace of change, Amman has somehow managed to grow without losing its soul — a quality that residents, whether born there or arrived as newcomers, consistently cite as the city's greatest asset.`,
+    keyVocab: ["sprawling", "facade", "inadequate", "coexistence", "bohemian", "municipal"],
+  },
 ];
 
 function WordOfDaySheet({ open, onOpenChange, word: wod }: { open: boolean; onOpenChange: (v: boolean) => void; word: WordOfDayEntry }) {
