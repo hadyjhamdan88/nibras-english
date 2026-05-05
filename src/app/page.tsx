@@ -1584,6 +1584,15 @@ interface PronunciationModule {
   pairs: MinimalPair[];
 }
 
+interface WritingLabLesson {
+  title: string;
+  explanation: string;
+  correctExample: string;
+  commonMistake: string;
+  practice: string;
+  answer: string;
+}
+
 const pronunciationModules: PronunciationModule[] = [
   {
     id: "p-vs-b",
@@ -1624,6 +1633,89 @@ const pronunciationModules: PronunciationModule[] = [
       { a: "rich", b: "reach", ipaA: "/rɪtʃ/", ipaB: "/riːtʃ/" },
       { a: "knit", b: "neat", ipaA: "/nɪt/", ipaB: "/niːt/" },
     ],
+  },
+];
+
+const collocationLessons: WritingLabLesson[] = [
+  {
+    title: "Make a Decision",
+    explanation: "Some verbs naturally go with certain nouns. In English, we say \u201Cmake a decision\u201D, not \u201Cdo a decision\u201D.",
+    correctExample: "After thinking about her major, Lina finally made a decision.",
+    commonMistake: "She did a decision.",
+    practice: "Choose the correct sentence: A) He made a decision. B) He did a decision.",
+    answer: "A) He made a decision.",
+  },
+  {
+    title: "Take Responsibility",
+    explanation: "We use \u201Ctake responsibility\u201D when someone accepts that they must deal with a task, duty, or mistake.",
+    correctExample: "Samer took responsibility for the mistake in the email.",
+    commonMistake: "Samer carried responsibility for the mistake.",
+    practice: "Complete the sentence: A good team member should ___ responsibility.",
+    answer: "take",
+  },
+  {
+    title: "Pay Attention",
+    explanation: "We say \u201Cpay attention\u201D when someone listens, watches, or thinks carefully about something.",
+    correctExample: "Khaled paid attention to the pharmacist's instructions.",
+    commonMistake: "Khaled gave attention to the instructions.",
+    practice: "Complete the sentence: Students should ___ attention during the lesson.",
+    answer: "pay",
+  },
+  {
+    title: "Meet a Deadline",
+    explanation: "To \u201Cmeet a deadline\u201D means to finish something before the required time.",
+    correctExample: "The group stayed late at the university library to meet the deadline.",
+    commonMistake: "The group arrived the deadline.",
+    practice: "Choose the correct phrase: A) meet a deadline B) reach a deadline",
+    answer: "A) meet a deadline",
+  },
+  {
+    title: "Build Confidence",
+    explanation: "We use \u201Cbuild confidence\u201D when confidence grows slowly through practice or experience.",
+    correctExample: "Practicing every day helped Ahmad build confidence before his presentation.",
+    commonMistake: "Practicing every day made confidence.",
+    practice: "Complete the sentence: Speaking often can help you ___ confidence.",
+    answer: "build",
+  },
+  {
+    title: "Make Progress",
+    explanation: "To \u201Cmake progress\u201D means to improve or move forward in learning, work, or life.",
+    correctExample: "With daily practice, Rasha made progress in English.",
+    commonMistake: "Rasha did progress in English.",
+    practice: "Choose the correct sentence: A) I made progress. B) I did progress.",
+    answer: "A) I made progress.",
+  },
+  {
+    title: "Have a Conversation",
+    explanation: "We say \u201Chave a conversation\u201D when people talk together.",
+    correctExample: "The student had a warm conversation with the elderly woman during iftar.",
+    commonMistake: "The student made a conversation.",
+    practice: "Complete the sentence: They ___ a conversation after class.",
+    answer: "had",
+  },
+  {
+    title: "Give Advice",
+    explanation: "In English, we say \u201Cgive advice\u201D, not \u201Csay advice\u201D.",
+    correctExample: "Her teacher gave her useful advice before the exam.",
+    commonMistake: "Her teacher said her useful advice.",
+    practice: "Choose the correct phrase: A) give advice B) say advice",
+    answer: "A) give advice",
+  },
+  {
+    title: "Gain Experience",
+    explanation: "To \u201Cgain experience\u201D means to learn by doing something over time.",
+    correctExample: "Noor gained experience during her internship in Amman.",
+    commonMistake: "Noor took experience during her internship.",
+    practice: "Complete the sentence: Volunteering helps students ___ experience.",
+    answer: "gain",
+  },
+  {
+    title: "Keep a Promise",
+    explanation: "To \u201Ckeep a promise\u201D means to do what you said you would do.",
+    correctExample: "He kept his promise and helped his brother study.",
+    commonMistake: "He saved his promise.",
+    practice: "Choose the correct sentence: A) She kept her promise. B) She saved her promise.",
+    answer: "A) She kept her promise.",
   },
 ];
 
@@ -4509,6 +4601,123 @@ function WordOfDaySheet({ open, onOpenChange, word: wod }: { open: boolean; onOp
   );
 }
 
+function WritingLabSheet({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) {
+  const comingSoonTopics = [
+    "Phrasal verbs",
+    "Phrases and their types",
+    "Sentences and their types",
+    "Paragraphs and their elements",
+    "Punctuation marks",
+    "Consistency",
+    "Formal / informal",
+    "Cohesive devices",
+  ];
+
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent className="overflow-y-auto sm:max-w-2xl">
+        <SheetHeader>
+          <SheetTitle className="text-2xl text-aqaba">
+            Writing Lab
+          </SheetTitle>
+          <SheetDescription>
+            Learn how English works in real writing, one small skill at a time.
+          </SheetDescription>
+        </SheetHeader>
+
+        <div className="mt-6 space-y-6">
+          <div className="rounded-2xl border border-aqaba/10 bg-aqaba/5 p-4">
+            <h3 className="text-xl font-bold text-aqaba mb-2">
+              Collocations
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              Collocations are words that naturally go together in English.
+              Learning them helps your writing sound clearer, smoother, and more natural.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {collocationLessons.map((lesson, index) => (
+              <div
+                key={lesson.title}
+                className="rounded-2xl border bg-white p-4 shadow-sm"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge className="bg-olive/10 text-olive border-olive/20">
+                    Lesson {index + 1}
+                  </Badge>
+                  <h4 className="font-bold text-gray-900">
+                    {lesson.title}
+                  </h4>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed mb-3">
+                  {lesson.explanation}
+                </p>
+
+                <div className="space-y-3">
+                  <div className="rounded-xl bg-green-50 border border-green-100 p-3">
+                    <p className="text-sm font-semibold text-green-800 mb-1">
+                      Correct example
+                    </p>
+                    <p className="text-gray-700">
+                      {lesson.correctExample}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-red-50 border border-red-100 p-3">
+                    <p className="text-sm font-semibold text-red-800 mb-1">
+                      Common mistake
+                    </p>
+                    <p className="text-gray-700">
+                      {lesson.commonMistake}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-sand/40 border border-sand p-3">
+                    <p className="text-sm font-semibold text-gray-900 mb-1">
+                      Quick practice
+                    </p>
+                    <p className="text-gray-700 mb-2">
+                      {lesson.practice}
+                    </p>
+                    <p className="text-sm text-olive font-semibold">
+                      Answer: {lesson.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl border border-dashed border-gray-300 p-4 bg-gray-50">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">
+              Coming soon
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {comingSoonTopics.map((topic) => (
+                <Badge
+                  key={topic}
+                  variant="secondary"
+                  className="bg-white text-gray-600 border-gray-200"
+                >
+                  {topic}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════
    MAIN PAGE
    ═══════════════════════════════════════════════════════════════ */
@@ -4522,6 +4731,7 @@ export default function Home() {
   const [wordOfDayOpen, setWordOfDayOpen] = useState(false);
   const [idiomSheetOpen, setIdiomSheetOpen] = useState(false);
   const [pronunciationOpen, setPronunciationOpen] = useState(false);
+  const [writingLabOpen, setWritingLabOpen] = useState(false);
   const [vocabOpen, setVocabOpen] = useState(false);
   const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
@@ -4793,6 +5003,22 @@ export default function Home() {
               <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
             </CardContent>
           </Card>
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-purple-500"
+            onClick={() => setWritingLabOpen(true)}
+          >
+            <CardContent className="pt-5 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
+                <BookText className="size-6 text-purple-600" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-sm">Writing Lab</h4>
+                <p className="text-xs text-gray-500">Build stronger writing, one skill at a time</p>
+              </div>
+              <Badge className="bg-olive/10 text-olive border-olive/20 shrink-0 text-xs">New</Badge>
+              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -4858,6 +5084,9 @@ export default function Home() {
 
       {/* Pronunciation Lab */}
       <PronunciationLab open={pronunciationOpen} onOpenChange={setPronunciationOpen} />
+
+      {/* Writing Lab */}
+      <WritingLabSheet open={writingLabOpen} onOpenChange={setWritingLabOpen} />
 
       {/* AI Chatbot */}
       <ChatBot />
