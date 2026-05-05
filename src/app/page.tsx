@@ -3657,6 +3657,736 @@ const dailyDropVocabEntries: VocabEntry[] = [
     definition: "To end well or be solved successfully.",
     example: "She was worried about the project, but everything worked out in the end.",
   },
+  {
+    term: "essentials",
+    definition: "The basic things that someone needs in order to live or do something.",
+    example: "Before travelling to Aqaba, Layla packed all the essentials — sunscreen, a water bottle, and a light jacket.",
+  },
+  {
+    term: "integration",
+    definition: "The process of becoming part of a community or group and being accepted by its members.",
+    example: "The University of Jordan helps new students from different cities feel a sense of integration through orientation programmes.",
+  },
+  {
+    term: "ethical concerns",
+    definition: "Worries or doubts about whether something is morally right or wrong.",
+    example: "The researchers discussed ethical concerns about collecting data from families in refugee camps without proper permission.",
+  },
+  {
+    term: "relief",
+    definition: "A feeling of comfort when something difficult or worrying has ended, or help given to people in need.",
+    example: "There was a great sense of relief in the neighbourhood when the rain finally came after weeks of dry weather.",
+  },
+  {
+    term: "gratitude",
+    definition: "A feeling of thankfulness towards someone who has helped you or given you something.",
+    example: "Omar expressed his gratitude to his grandmother for teaching him how to make the perfect maqloubeh.",
+  },
+  {
+    term: "neighbourhood",
+    definition: "A small area within a town or city where people live near each other.",
+    example: "Every Friday, the smell of fresh kunafa fills the neighbourhood in Jabal Amman.",
+  },
+  {
+    term: "unexpected",
+    definition: "Not expected or planned; surprising.",
+    example: "The unexpected rainstorm in Amman caught everyone without umbrellas on their way home from work.",
+  },
+  {
+    term: "roasted",
+    definition: "Cooked in an oven or over fire with dry heat.",
+    example: "The smell of roasted chestnuts fills the streets of Downtown Amman during winter evenings.",
+  },
+  {
+    term: "orchard",
+    definition: "A piece of land where fruit or olive trees are grown.",
+    example: "Abu Khalid's olive orchard in Ajloun has been in the family for three generations.",
+  },
+  {
+    term: "generation",
+    definition: "People born around the same time, or the average period between the birth of parents and their children.",
+    example: "The olive trees in Palestine have been passed down from one generation to the next for centuries.",
+  },
+  {
+    term: "press",
+    definition: "A machine used to extract oil from olives or juice from fruit.",
+    example: "After the harvest, the family took the olives to the village press to make fresh olive oil.",
+  },
+  {
+    term: "campus",
+    definition: "The land and buildings of a university or college.",
+    example: "The campus of the University of Jordan is so large that new students often get lost in their first week.",
+  },
+  {
+    term: "confused",
+    definition: "Unable to think clearly or understand something.",
+    example: "Layla felt confused on her first day at university until a friendly student offered to show her around.",
+  },
+  {
+    term: "professor",
+    definition: "A teacher at a university.",
+    example: "Dr. Hala, a professor of linguistics at the University of Jordan, always encourages her students to ask questions.",
+  },
+  {
+    term: "brave",
+    definition: "Willing to do something difficult or dangerous despite fear.",
+    example: "It was brave of her to move to a new city alone to study at university.",
+  },
+  {
+    term: "spices",
+    definition: "Substances added to food to give it flavour, such as cumin, cinnamon, or cardamom.",
+    example: "Jordanian maqloubeh uses a special blend of spices that gives it its unique taste.",
+  },
+  {
+    term: "layer",
+    definition: "A flat sheet of substance spread over a surface or between other layers.",
+    example: "Maqloubeh is made by layering rice, vegetables, and meat in a large pot before flipping it upside down.",
+  },
+  {
+    term: "patience",
+    definition: "The ability to wait calmly without getting angry or upset.",
+    example: "Cooking mansaf requires patience — the jameed sauce needs hours of slow stirring.",
+  },
+  {
+    term: "golden",
+    definition: "Having the colour or shine of gold.",
+    example: "The golden sandstone of Petra glows beautifully at sunset, attracting visitors from around the world.",
+  },
+  {
+    term: "proud",
+    definition: "Feeling pleased and satisfied about something you or someone close to you has achieved.",
+    example: "Her father was proud when she graduated from the University of Jordan with honours.",
+  },
+  {
+    term: "scenery",
+    definition: "The natural features of a landscape, such as mountains, valleys, and water.",
+    example: "The scenery in Wadi Rum is so breathtaking that it has been used as a filming location for many international movies.",
+  },
+  {
+    term: "ancient",
+    definition: "Very old; from a time long ago.",
+    example: "The ancient city of Jerash has some of the best-preserved Roman ruins in the world.",
+  },
+  {
+    term: "carved",
+    definition: "Cut into a hard material to create a shape or design.",
+    example: "The Treasury at Petra is carved directly into the rose-red cliff face.",
+  },
+  {
+    term: "monument",
+    definition: "A structure built to remember an important person or event in history.",
+    example: "The colonnaded street in Jerash is a remarkable monument to Roman engineering.",
+  },
+  {
+    term: "handmade",
+    definition: "Made by hand, not by machine.",
+    example: "She bought a handmade olive-wood carving from a workshop in Bethlehem as a gift for her mother.",
+  },
+  {
+    term: "peaceful",
+    definition: "Quiet and calm; free from disturbance or conflict.",
+    example: "The early morning hours in the old city of Salt are peaceful, with only the sound of birds and the distant call to prayer.",
+  },
+  {
+    term: "ingredients",
+    definition: "The items used to make a particular dish or product.",
+    example: "The main ingredients for mansaf are lamb, jameed, and rice — simple but rich in flavour.",
+  },
+  {
+    term: "traditional",
+    definition: "Following customs and practices that have been passed down over a long time.",
+    example: "At a traditional Jordanian wedding, the zaffeh procession escorts the groom to the celebration with music and dancing.",
+  },
+  {
+    term: "signal",
+    definition: "A sign, sound, or action that gives information or a message.",
+    example: "The call to prayer is a familiar signal that it is time to pause and reflect.",
+  },
+  {
+    term: "recitation",
+    definition: "The act of reading or repeating something aloud from memory, especially from the Quran.",
+    example: "During Ramadan, beautiful Quran recitation can be heard from mosques across Amman late into the night.",
+  },
+  {
+    term: "discuss",
+    definition: "To talk about something with others in order to share ideas or reach a decision.",
+    example: "After the lecture, students gathered at a cafe near campus to discuss what they had learned.",
+  },
+  {
+    term: "hospitality",
+    definition: "The friendly and generous way of treating guests and visitors.",
+    example: "Jordanian hospitality is legendary — guests are always served Arabic coffee and sweets as soon as they arrive.",
+  },
+  {
+    term: "tourists",
+    definition: "People who travel to a place for pleasure, sightseeing, or holiday.",
+    example: "Tourists from around the world visit Petra every year to see the ancient Nabataean city.",
+  },
+  {
+    term: "welcome",
+    definition: "To greet someone with pleasure and kindness when they arrive.",
+    example: "The family in Irbid always welcome guests with a large plate of mansaf and warm smiles.",
+  },
+  {
+    term: "afraid",
+    definition: "Feeling fear or worry about something.",
+    example: "She was not afraid to ask questions in class because her professor always encouraged curiosity.",
+  },
+  {
+    term: "patient",
+    definition: "A person receiving medical care, or someone who can wait calmly.",
+    example: "The doctor was patient and took time to explain the treatment clearly to the elderly woman.",
+  },
+  {
+    term: "float",
+    definition: "To stay on top of water without sinking.",
+    example: "Floating in the Dead Sea is one of the most popular experiences for visitors to Jordan.",
+  },
+  {
+    term: "wonderful",
+    definition: "Extremely good; causing pleasure and happiness.",
+    example: "The family had a wonderful time exploring the Roman ruins in Jerash during their weekend trip.",
+  },
+  {
+    term: "retired",
+    definition: "Having stopped working, usually because of reaching a certain age.",
+    example: "After retiring from teaching at the University of Jordan, Dr. Ahmad spent his days tending his garden in Jerash.",
+  },
+  {
+    term: "packed",
+    definition: "Very crowded; filled with people or things.",
+    example: "The cafes on Rainbow Street were packed on Friday evening as families gathered to enjoy the cool weather.",
+  },
+  {
+    term: "discount",
+    definition: "A reduction in the price of something.",
+    example: "The shopkeeper in Downtown Amman gave her a small discount because she was a regular customer.",
+  },
+  {
+    term: "cushions",
+    definition: "Soft bags filled with material, used to make seats more comfortable.",
+    example: "The living room was arranged with colourful cushions on the floor for the family gathering after dinner.",
+  },
+  {
+    term: "colonnaded",
+    definition: "Having a row of columns, usually in ancient architecture.",
+    example: "The colonnaded street in Jerash is one of the longest and best-preserved in the Middle East.",
+  },
+  {
+    term: "chariot",
+    definition: "A two-wheeled vehicle pulled by horses, used in ancient times for racing and war.",
+    example: "The archaeologist showed the students where chariot races once took place in the Roman hippodrome at Jerash.",
+  },
+  {
+    term: "archaeologist",
+    definition: "A person who studies ancient cultures by examining remains and artefacts.",
+    example: "The archaeologist from the University of Jordan has spent twenty years studying the Nabataean water systems at Petra.",
+  },
+  {
+    term: "ruins",
+    definition: "The remains of buildings that have been destroyed or fallen into decay over time.",
+    example: "The ruins of the ancient Roman city in Jerash attract thousands of visitors every year.",
+  },
+  {
+    term: "steadfastness",
+    definition: "The quality of remaining firm and determined despite difficulties; similar to the concept of Sumud.",
+    example: "The steadfastness of the Palestinian people in holding onto their identity and culture is admired around the world.",
+  },
+  {
+    term: "descendants",
+    definition: "People who are born from a particular ancestor or family line.",
+    example: "The descendants of Palestinian families who left their homes in 1948 still carry the keys and deeds to their houses.",
+  },
+  {
+    term: "dignity",
+    definition: "The quality of being worthy of respect and honour.",
+    example: "She faced every challenge with dignity, never allowing difficulties to take away her sense of self-worth.",
+  },
+  {
+    term: "heritage",
+    definition: "Cultural traditions, buildings, and objects that are passed down from previous generations.",
+    example: "The olive harvest is an important part of Palestinian heritage that connects families to their ancestral land.",
+  },
+  {
+    term: "resistance",
+    definition: "The act of opposing or fighting against something harmful or unjust.",
+    example: "Cultural resistance through storytelling, embroidery, and poetry has kept Palestinian identity alive across generations.",
+  },
+  {
+    term: "perseverance",
+    definition: "Continued effort to achieve something despite difficulties or delays.",
+    example: "Through perseverance, she completed her degree at the University of Jordan while working part-time to support her family.",
+  },
+  {
+    term: "ecosystem",
+    definition: "A community of living organisms and their physical environment, functioning together as a system.",
+    example: "The Wadi Rum ecosystem supports a surprising variety of plants and animals that have adapted to the harsh desert conditions.",
+  },
+  {
+    term: "contagious",
+    definition: "Spreading easily from one person to another, like an emotion or an idea.",
+    example: "The enthusiasm of the tour guide at Petra was contagious — soon everyone in the group was excited and asking questions.",
+  },
+  {
+    term: "entrepreneurs",
+    definition: "People who start their own businesses and take financial risks to do so.",
+    example: "Young Jordanian entrepreneurs in Abdali are creating innovative apps and services for the Arab market.",
+  },
+  {
+    term: "logistics",
+    definition: "The detailed planning and organisation of a complex operation, such as transporting goods.",
+    example: "The logistics of delivering food packages to families in remote areas of southern Jordan required careful planning.",
+  },
+  {
+    term: "complicated",
+    definition: "Difficult to understand or deal with because of many connected parts.",
+    example: "The process of applying for a scholarship can feel complicated, but the university office helps students through every step.",
+  },
+  {
+    term: "intricate",
+    definition: "Very detailed and complicated, often beautiful because of its complexity.",
+    example: "The intricate patterns of Palestinian embroidery, known as tatreez, tell stories of village life and heritage.",
+  },
+  {
+    term: "spectacular",
+    definition: "Very impressive or beautiful, especially in a dramatic way.",
+    example: "The view of the Treasury at Petra as you walk through the narrow canyon is truly spectacular.",
+  },
+  {
+    term: "procession",
+    definition: "A group of people moving forward in an orderly way, often as part of a ceremony or celebration.",
+    example: "The zaffeh procession at a traditional Jordanian wedding moves through the streets with drums and dancing.",
+  },
+  {
+    term: "communally",
+    definition: "Done together as a community or group, rather than individually.",
+    example: "In many Jordanian villages, the olive harvest is done communally, with neighbours helping each other.",
+  },
+  {
+    term: "union",
+    definition: "The act of joining together, or an organised group of workers that protects their rights.",
+    example: "The marriage union between the two families was celebrated with a large feast that lasted until the early hours.",
+  },
+  {
+    term: "licensed",
+    definition: "Having official permission from an authority to do something.",
+    example: "Only licensed tour guides are allowed to lead groups through the ancient sites at Petra.",
+  },
+  {
+    term: "formation",
+    definition: "The process of forming or creating something, or the way something is arranged.",
+    example: "The rock formations in Wadi Rum were shaped by millions of years of wind and water erosion.",
+  },
+  {
+    term: "examination",
+    definition: "A formal test of knowledge or ability, or a careful inspection of something.",
+    example: "Students at the University of Jordan prepare carefully for their final examinations each semester.",
+  },
+  {
+    term: "landscape",
+    definition: "The overall appearance of an area of land, including its natural features.",
+    example: "The landscape of southern Jordan changes dramatically from the green hills of Ajloun to the red desert of Wadi Rum.",
+  },
+  {
+    term: "dim",
+    definition: "Not bright; somewhat dark or poorly lit.",
+    example: "The dim lighting in the old souq of Salt adds to its historic charm in the late afternoon.",
+  },
+  {
+    term: "affordable",
+    definition: "Priced reasonably; not too expensive for most people.",
+    example: "Street food in Amman is affordable and delicious — a falafel sandwich costs just one dinar.",
+  },
+  {
+    term: "negotiate",
+    definition: "To discuss something in order to reach an agreement, especially about a price.",
+    example: "In the souq, it is common to negotiate the price before buying handmade goods.",
+  },
+  {
+    term: "refugee",
+    definition: "A person who has been forced to leave their country to escape war, danger, or persecution.",
+    example: "Jordan has welcomed millions of refugees over the decades, showing remarkable generosity and compassion.",
+  },
+  {
+    term: "bargaining",
+    definition: "The act of discussing the price of something in order to agree on a lower amount.",
+    example: "Bargaining in the markets of Downtown Amman is expected — the first price is never the final one.",
+  },
+  {
+    term: "priority",
+    definition: "Something that is more important than other things and should be dealt with first.",
+    example: "Education is a top priority for many Jordanian families, who often save for years to send their children to university.",
+  },
+  {
+    term: "scholarship",
+    definition: "Financial support given to a student to help pay for their education.",
+    example: "She received a scholarship to study engineering at the University of Jordan, which was a life-changing opportunity for her family.",
+  },
+  {
+    term: "determined",
+    definition: "Having a strong desire to achieve something and not giving up.",
+    example: "Despite the challenges, the determined student from Irbid graduated at the top of her class.",
+  },
+  {
+    term: "construction",
+    definition: "The process of building something, or a structure that is being built.",
+    example: "The construction of new apartment buildings in Abdali has changed the skyline of Amman.",
+  },
+  {
+    term: "firmly",
+    definition: "In a strong, definite, and unwavering way.",
+    example: "She firmly believes that education is the key to a better future for the next generation.",
+  },
+  {
+    term: "calligraphy",
+    definition: "The art of beautiful handwriting, especially in Arabic and other scripts.",
+    example: "Arabic calligraphy is taught as an art form at the Institute of Fine Arts at the University of Jordan.",
+  },
+  {
+    term: "aesthetics",
+    definition: "The study or appreciation of beauty, especially in art and design.",
+    example: "The aesthetics of traditional Jordanian architecture — stone walls, arches, and courtyards — reflect centuries of design wisdom.",
+  },
+  {
+    term: "contemporary",
+    definition: "Belonging to the present time; modern.",
+    example: "Contemporary Jordanian artists blend traditional Arabic patterns with modern techniques in their work.",
+  },
+  {
+    term: "manuscripts",
+    definition: "Handwritten documents, especially from before the printing press era.",
+    example: "Ancient Arabic manuscripts in the libraries of Amman contain centuries of scientific and literary knowledge.",
+  },
+  {
+    term: "projector",
+    definition: "A device that shows images or videos on a large screen.",
+    example: "The professor used a projector to display old photographs of Amman during the lecture on urban history.",
+  },
+  {
+    term: "erupts",
+    definition: "Bursts out suddenly and violently, often used for volcanoes or strong emotions.",
+    example: "Cheers erupted from the crowd when the Jordanian football team scored the winning goal.",
+  },
+  {
+    term: "contributes",
+    definition: "To give something — time, money, effort — to help achieve a goal.",
+    example: "Every member of the family contributes to preparing the Friday dinner, from cooking to setting the table.",
+  },
+  {
+    term: "atmosphere",
+    definition: "The feeling or mood of a place or situation, or the air around the Earth.",
+    example: "The atmosphere during Ramadan nights in Amman is warm and festive, with families gathering after iftar.",
+  },
+  {
+    term: "commentary",
+    definition: "A spoken or written description of an event, especially during a sports match or TV programme.",
+    example: "The football commentator's enthusiastic commentary made the match feel even more exciting for the listeners at home.",
+  },
+  {
+    term: "underrepresented",
+    definition: "Having fewer members or less presence than would be expected or fair in a group or area.",
+    example: "Women are still underrepresented in some fields of engineering in Jordan, but organisations like Women Who Code are working to change that.",
+  },
+  {
+    term: "deliberate",
+    definition: "Done on purpose; intentional and carefully considered.",
+    example: "The deliberate choice to teach in both Arabic and English helps students build bilingual skills from an early age.",
+  },
+  {
+    term: "mission",
+    definition: "An important goal or purpose that a person or organisation works to achieve.",
+    example: "The organisation's mission is to provide free English classes to young people in refugee camps.",
+  },
+  {
+    term: "barriers",
+    definition: "Obstacles or difficulties that prevent progress or access.",
+    example: "Language barriers can make it difficult for new students to participate in class, but supportive teachers help them overcome these challenges.",
+  },
+  {
+    term: "launched",
+    definition: "Started or introduced something new, such as a product, service, or programme.",
+    example: "The university launched a new programme to help students develop entrepreneurship skills.",
+  },
+  {
+    term: "water-scarce",
+    definition: "Having very little water available for people, animals, and plants.",
+    example: "As one of the most water-scarce countries in the world, Jordan has become a leader in water conservation technology.",
+  },
+  {
+    term: "infrastructure",
+    definition: "The basic systems and services a country needs to function, such as roads, water supply, and electricity.",
+    example: "Jordan has invested heavily in water infrastructure to ensure clean drinking water reaches every neighbourhood.",
+  },
+  {
+    term: "conveyance",
+    definition: "The act of carrying or transporting something from one place to another.",
+    example: "The conveyance of water from the reservoir to the farms in the Jordan Valley requires an extensive network of pipes and channels.",
+  },
+  {
+    term: "fossil groundwater",
+    definition: "Water stored deep underground for thousands of years, originally from ancient rainfall.",
+    example: "Much of Jordan's water comes from fossil groundwater, a resource that took thousands of years to accumulate and cannot be quickly replaced.",
+  },
+  {
+    term: "desalination",
+    definition: "The process of removing salt from seawater to make it safe for drinking and farming.",
+    example: "Jordan is exploring desalination plants near Aqaba to help address the country's growing water needs.",
+  },
+  {
+    term: "hydrologist",
+    definition: "A scientist who studies water — its movement, distribution, and quality on Earth.",
+    example: "The hydrologist from the University of Jordan warned that over-pumping groundwater could have serious long-term consequences.",
+  },
+  {
+    term: "contracted",
+    definition: "Became smaller or shorter, or entered into a formal agreement.",
+    example: "As the population grew, the amount of agricultural land around Amman contracted significantly.",
+  },
+  {
+    term: "extraction",
+    definition: "The process of removing something, such as water or minerals, from the ground.",
+    example: "The unsustainable extraction of groundwater has led to a drop in water levels across the region.",
+  },
+  {
+    term: "hydroelectric",
+    definition: "Related to the production of electricity using the power of flowing water.",
+    example: "Jordan has considered building a small hydroelectric plant on the Yarmouk River to generate clean energy.",
+  },
+  {
+    term: "precipitation",
+    definition: "Water that falls from the sky as rain, snow, or hail.",
+    example: "Jordan receives very little precipitation, making every rainfall a reason for celebration among farmers.",
+  },
+  {
+    term: "replenishing",
+    definition: "Filling something up again after it has been used or emptied.",
+    example: "Replenishing the country's groundwater reserves will take decades of careful water management.",
+  },
+  {
+    term: "brine",
+    definition: "Water that is very salty, especially as a by-product of desalination processes.",
+    example: "The brine produced by desalination plants must be disposed of carefully to avoid harming marine life in the Gulf of Aqaba.",
+  },
+  {
+    term: "diaspora",
+    definition: "A group of people who have spread or dispersed from their original homeland to live in other countries.",
+    example: "The Palestinian diaspora in Jordan has enriched the country's culture, cuisine, and intellectual life for decades.",
+  },
+  {
+    term: "reinforced",
+    definition: "Made stronger or more solid, often by adding extra material or support.",
+    example: "The cultural bonds between Palestinians and Jordanians have been reinforced through shared history and family ties.",
+  },
+  {
+    term: "profoundly",
+    definition: "Very deeply or extremely.",
+    example: "The experience of displacement has profoundly shaped the identity and creativity of Palestinian writers and artists.",
+  },
+  {
+    term: "contradiction",
+    definition: "A situation in which two things seem to be opposite or cannot both be true.",
+    example: "Living in Amman while dreaming of Jerusalem created a contradiction that many Palestinians in the diaspora learned to carry with grace.",
+  },
+  {
+    term: "dual consciousness",
+    definition: "The experience of feeling connected to two different identities, places, or cultures at the same time.",
+    example: "Many young Palestinians in Jordan live with a dual consciousness — fully at home in Amman, yet deeply connected to the villages of their grandparents.",
+  },
+  {
+    term: "tech-savvy",
+    definition: "Good at using modern technology, especially computers and the internet.",
+    example: "Jordan's tech-savvy youth are building apps and startups that attract international attention.",
+  },
+  {
+    term: "penetration",
+    definition: "The extent to which something reaches or spreads into a market or area.",
+    example: "Mobile phone penetration in Jordan is among the highest in the region, with most people using smartphones daily.",
+  },
+  {
+    term: "last-mile delivery",
+    definition: "The final step of delivering a product from a distribution centre to the customer's door.",
+    example: "Getting last-mile delivery right in the narrow streets of Jabal Amman can be a real challenge for courier companies.",
+  },
+  {
+    term: "dominant",
+    definition: "Having the most power, influence, or control over others.",
+    example: "Cash on delivery remains the dominant payment method for online shoppers in Jordan.",
+  },
+  {
+    term: "inefficiencies",
+    definition: "Waste of time, money, or energy caused by poor systems or methods.",
+    example: "The company reduced its inefficiencies by switching to a new inventory management system.",
+  },
+  {
+    term: "regulatory",
+    definition: "Related to the rules and laws that control how something is done.",
+    example: "Regulatory changes in Jordan have made it easier for small businesses to register and operate legally.",
+  },
+  {
+    term: "elaborate",
+    definition: "Very detailed and carefully planned, often with many decorative elements.",
+    example: "The elaborate stonework on the buildings in Salt shows the skill of Ottoman-era craftsmen.",
+  },
+  {
+    term: "limestone",
+    definition: "A type of light-coloured rock often used in building.",
+    example: "The white limestone buildings of Amman give the city its distinctive appearance against the blue sky.",
+  },
+  {
+    term: "insulation",
+    definition: "Material that prevents heat, cold, or sound from passing through.",
+    example: "The thick stone walls of traditional houses in Salt provide natural insulation against both summer heat and winter cold.",
+  },
+  {
+    term: "courtyards",
+    definition: "Open areas surrounded by walls or buildings, often used as outdoor living spaces.",
+    example: "The shaded courtyards of old Amman houses were where families gathered in the evening to drink tea and tell stories.",
+  },
+  {
+    term: "deteriorated",
+    definition: "Became worse in condition or quality over time.",
+    example: "Some of the historic buildings in Salt have deteriorated, but restoration projects are working to save them.",
+  },
+  {
+    term: "preservation",
+    definition: "The act of protecting something from damage, decay, or disappearance.",
+    example: "The preservation of traditional architecture in Salt has become a priority for the city's cultural organisations.",
+  },
+  {
+    term: "stigma",
+    definition: "A negative social attitude or belief about something, often based on misunderstanding.",
+    example: "There is still a stigma around mental health in many communities, but awareness campaigns are slowly changing attitudes.",
+  },
+  {
+    term: "clinical",
+    definition: "Related to a hospital or medical treatment, or very cold and efficient.",
+    example: "The university's clinical psychology programme trains students to provide counselling in community health centres.",
+  },
+  {
+    term: "traumatised",
+    definition: "Deeply affected by a very distressing or frightening experience.",
+    example: "Many children in conflict zones have been traumatised by violence, and specialised programmes are needed to help them recover.",
+  },
+  {
+    term: "psychosocial",
+    definition: "Relating to the connection between the mind and social environment, especially regarding wellbeing.",
+    example: "Psychosocial support programmes in Jordan help refugees cope with the stress of displacement and build resilience in their new communities.",
+  },
+  {
+    term: "unprecedented",
+    definition: "Never done, experienced, or seen before.",
+    example: "Jordan's response to hosting millions of refugees was unprecedented and drew admiration from the international community.",
+  },
+  {
+    term: "campaign",
+    definition: "A planned series of actions aimed at achieving a specific social, political, or commercial goal.",
+    example: "The mental health awareness campaign in Jordan encouraged young people to speak openly about their feelings.",
+  },
+  {
+    term: "vulnerability",
+    definition: "The quality of being easily harmed or affected, physically or emotionally.",
+    example: "Acknowledging vulnerability is not a weakness — it is the first step towards finding the support you need.",
+  },
+  {
+    term: "leveraging",
+    definition: "Using something you already have to gain an advantage or achieve a result.",
+    example: "Jordanian farmers are leveraging solar energy to power water pumps in the Jordan Valley.",
+  },
+  {
+    term: "capacity",
+    definition: "The maximum amount that something can hold, produce, or contain.",
+    example: "Jordan's solar energy capacity has grown rapidly in recent years, helping to reduce dependence on imported fuel.",
+  },
+  {
+    term: "intermittent",
+    definition: "Not continuous; stopping and starting at intervals.",
+    example: "Intermittent rainfall in southern Jordan means farmers must use water storage systems carefully.",
+  },
+  {
+    term: "deployment",
+    definition: "The act of moving something into position for use, often referring to technology or military forces.",
+    example: "The deployment of solar panels across Jordanian universities has significantly reduced their electricity bills.",
+  },
+  {
+    term: "flagship",
+    definition: "The most important or best example of something; a leading product or project.",
+    example: "The Queen Rania Centre for Entrepreneurship is the flagship programme for startup support at the University of Jordan.",
+  },
+  {
+    term: "culinary",
+    definition: "Related to cooking and food preparation.",
+    example: "Palestinian culinary traditions, passed down through generations, are a source of pride and identity for families across Jordan.",
+  },
+  {
+    term: "caramelised",
+    definition: "Cooked until sugar turns brown and develops a sweet, rich flavour.",
+    example: "The caramelised onions on top of the maqloubeh gave it a delicious golden colour and deep flavour.",
+  },
+  {
+    term: "continuity",
+    definition: "The state of continuing without interruption over time.",
+    example: "Cooking the same dishes her grandmother made gives a sense of continuity that connects the family across generations.",
+  },
+  {
+    term: "anthropologists",
+    definition: "Scientists who study human societies, cultures, and their development over time.",
+    example: "Anthropologists have documented how Palestinian families preserve their traditions through food, even when living far from home.",
+  },
+  {
+    term: "disproportionately",
+    definition: "To an extent that is too large or too small compared to something else.",
+    example: "Women in rural areas of Jordan are disproportionately affected by limited access to transport and educational resources.",
+  },
+  {
+    term: "brain drain",
+    definition: "The departure of highly educated or skilled people from a country to seek better opportunities abroad.",
+    example: "Brain drain is a challenge for Jordan — many talented engineers and doctors move to Gulf countries for higher salaries.",
+  },
+  {
+    term: "pipeline",
+    definition: "A channel or system through which something flows, or a process of developing talent over time.",
+    example: "Jordanian universities are building a stronger pipeline of tech talent through improved computer science programmes.",
+  },
+  {
+    term: "absorb",
+    definition: "To take in or soak up something, such as information, knowledge, or liquid.",
+    example: "Young children absorb new languages quickly, which is why starting English lessons early is so effective.",
+  },
+  {
+    term: "architecture",
+    definition: "The design and construction of buildings and other structures.",
+    example: "The architecture of Amman blends modern towers with traditional stone houses, creating a unique cityscape.",
+  },
+  {
+    term: "sprawling",
+    definition: "Spreading out over a large area in an untidy or unplanned way.",
+    example: "The sprawling neighbourhoods of West Amman stretch from Sweifieh all the way to the edge of the city.",
+  },
+  {
+    term: "facade",
+    definition: "The front of a building, or a false appearance that hides the truth.",
+    example: "The ornate facade of the historic building on Rainbow Street hides a modern art gallery inside.",
+  },
+  {
+    term: "inadequate",
+    definition: "Not enough or not good enough for a particular purpose.",
+    example: "Inadequate public transport in some areas of Amman makes commuting difficult for students and workers.",
+  },
+  {
+    term: "coexistence",
+    definition: "The state of living together peacefully despite differences.",
+    example: "Jordan has long been a model of coexistence, where Muslims and Christians share neighbourhoods, schools, and celebrations.",
+  },
+  {
+    term: "bohemian",
+    definition: "Having an unconventional lifestyle, often associated with art, freedom, and creativity.",
+    example: "The bohemian cafes along Rainbow Street in Amman attract artists, writers, and musicians who gather to share ideas.",
+  },
+  {
+    term: "municipal",
+    definition: "Relating to a city or town and its local government.",
+    example: "The municipal council in Irbid approved a plan to build more public parks and green spaces for families to enjoy.",
+  },
 ];
 
 function findDailyDropVocabEntry(term: string): VocabEntry | undefined {
