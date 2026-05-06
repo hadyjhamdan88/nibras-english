@@ -4974,11 +4974,30 @@ export default function Home() {
                 <div className="text-2xl mb-2">&#x1F4D6;</div>
                 <h3 className="font-bold text-gray-900 text-sm">Read &amp; Reflect</h3>
                 <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                  Explore today&apos;s Daily Drop and discover useful vocabulary in context.
+                  Explore today&apos;s Daily Drop or shuffle to discover another passage with useful vocabulary in context.
                 </p>
-                <span className="inline-flex items-center gap-1 text-aqaba text-xs font-semibold mt-3 hover:underline">
-                  Open Daily Drop <ArrowRight className="size-3" />
-                </span>
+                <div className="flex flex-col sm:flex-row gap-2 mt-3">
+                  <span
+                    className="inline-flex items-center gap-1 text-aqaba text-xs font-semibold hover:underline cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setDailyDropOpen(true);
+                    }}
+                  >
+                    Open Daily Drop <ArrowRight className="size-3" />
+                  </span>
+                  <Button
+                    variant="outline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      shuffleDailyDrop();
+                      setDailyDropOpen(true);
+                    }}
+                    className="w-full sm:w-auto border-aqaba/30 text-aqaba hover:bg-aqaba/10 text-xs"
+                  >
+                    Shuffle Drop
+                  </Button>
+                </div>
               </CardContent>
             </Card>
             <Card
