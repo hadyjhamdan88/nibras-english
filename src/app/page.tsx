@@ -1931,31 +1931,27 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="fixed inset-y-0 right-0 left-0 z-50 w-screen max-w-none overflow-y-auto overflow-x-hidden bg-white p-0 sm:left-auto sm:w-full sm:max-w-3xl">
-        <SheetHeader className="p-6 pb-4 bg-gradient-to-r from-petra to-petra-dark">
-          <SheetTitle className="text-xl font-bold text-white flex items-center gap-2">
-            <Mic2 className="size-6" />
-            Pronunciation Lab
-          </SheetTitle>
-          <SheetDescription className="text-pink-100 text-sm">
-            Listen, notice the difference, repeat aloud.
-          </SheetDescription>
-        </SheetHeader>
-
-        <ScrollArea className="h-[calc(100vh-8rem)] pt-4 min-w-0 overflow-x-hidden">
-          {!ttsSupported ? (
-            <div className="text-center py-12 px-4">
-              <p className="text-gray-600 mb-2">
-                Your browser does not support text-to-speech.
-              </p>
-              <p className="text-gray-500 text-sm">
-                Please try the latest version of Chrome, Safari, or Firefox.
-              </p>
+      <SheetContent side="right" className="fixed inset-0 z-50 w-screen h-screen max-w-none overflow-y-auto overflow-x-hidden bg-white p-0 sm:inset-y-0 sm:left-auto sm:right-0 sm:w-full sm:max-w-4xl">
+        {/* ── Header ── */}
+        <div className="sticky top-0 z-10 bg-petra text-white px-4 sm:px-8 py-5 sm:py-8">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h2 className="text-2xl sm:text-4xl font-bold leading-tight">Pronunciation Lab</h2>
+              <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">Listen, notice the difference, repeat aloud.</p>
             </div>
-          ) : (
-            <>
-              <div className="w-full max-w-full min-w-0 overflow-x-hidden px-4 sm:px-6">
-              <div className="flex gap-2 mb-4 border-b border-gray-200 overflow-x-auto whitespace-nowrap -mx-1 px-1 pb-px">
+          </div>
+        </div>
+
+        {!ttsSupported ? (
+          <div className="text-center py-12 px-4">
+            <p className="text-gray-600 mb-2">Your browser does not support text-to-speech.</p>
+            <p className="text-gray-500 text-sm">Please try the latest version of Chrome, Safari, or Firefox.</p>
+          </div>
+        ) : (
+          <div className="w-full max-w-full overflow-x-hidden px-4 sm:px-8 py-6 space-y-6">
+            {/* ── Tab row ── */}
+            <div className="w-full overflow-x-auto overflow-y-hidden pb-2">
+              <div className="flex gap-2 min-w-max">
                 {pronunciationModules.map((m) => (
                   <button
                     key={m.id}
@@ -1973,66 +1969,74 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   </button>
                 ))}
               </div>
+            </div>
 
-              <div className="bg-gray-50 rounded-lg p-3 mb-4 space-y-2">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">
-                    Voice
-                  </label>
-                  <select
-                    value={selectedVoice}
-                    onChange={(e) => setSelectedVoice(e.target.value)}
-                    className="w-full text-sm border border-gray-200 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-petra"
-                  >
-                    {voices.length === 0 ? (
-                      <option>Loading voices...</option>
-                    ) : (
-                      voices.map((v) => (
-                        <option key={v.name} value={v.name}>
-                          {v.name} ({v.lang})
-                        </option>
-                      ))
-                    )}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">
-                    Speed: {rate.toFixed(2)}x
-                  </label>
-                  <input
-                    type="range"
-                    min="0.7"
-                    max="1.0"
-                    step="0.05"
-                    value={rate}
-                    onChange={(e) => setRate(parseFloat(e.target.value))}
-                    className="w-full accent-petra"
-                  />
-                </div>
+            {/* ── Voice / speed settings ── */}
+            <div className="w-full max-w-full overflow-hidden rounded-2xl bg-gray-50 p-4 sm:p-6 space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 mb-1">Voice</label>
+                <select
+                  value={selectedVoice}
+                  onChange={(e) => setSelectedVoice(e.target.value)}
+                  className="w-full max-w-full text-sm border border-gray-200 rounded px-2 py-1.5 bg-white focus:outline-none focus:border-petra"
+                >
+                  {voices.length === 0 ? (
+                    <option>Loading voices...</option>
+                  ) : (
+                    voices.map((v) => (
+                      <option key={v.name} value={v.name}>
+                        {v.name} ({v.lang})
+                      </option>
+                    ))
+                  )}
+                </select>
               </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  Speed: {rate.toFixed(2)}x
+                </label>
+                <input
+                  type="range"
+                  min="0.7"
+                  max="1.0"
+                  step="0.05"
+                  value={rate}
+                  onChange={(e) => setRate(parseFloat(e.target.value))}
+                  className="w-full accent-petra"
+                />
+              </div>
+            </div>
 
-              <p className="text-xs text-gray-500 italic mb-4 leading-relaxed">
-                These are computer-generated voices. They are a reliable reference for most contrasts, but trust your ear — if a single playback sounds off, try a different voice from the dropdown.
+            {/* ── Computer voice note ── */}
+            <p className="text-gray-600 italic leading-relaxed whitespace-normal break-words max-w-full">
+              These are computer-generated voices. They are a reliable reference for most contrasts, but trust your ear — if a single playback sounds off, try a different voice from the dropdown.
+            </p>
+
+            {/* ── Module description ── */}
+            <div>
+              <Badge className="bg-petra/10 text-petra border-petra/20 mb-2">
+                {activeModule.contrast}
+              </Badge>
+              <p className="text-gray-700 leading-relaxed whitespace-normal break-words max-w-full">
+                {activeModule.intro}
               </p>
+            </div>
 
-              <div className="mb-4">
-                <Badge className="bg-petra/10 text-petra border-petra/20 mb-2">
-                  {activeModule.contrast}
-                </Badge>
-                <p className="text-sm text-gray-700 leading-relaxed mb-2 whitespace-normal break-words max-w-full">
-                  {activeModule.intro}
-                </p>
-                <p className="text-sm text-gray-600 leading-relaxed bg-amber-50 border-l-4 border-amber-300 p-3 rounded max-w-full min-w-0 overflow-visible whitespace-normal break-words">
-                  <strong className="text-amber-700">Why it&apos;s tricky:</strong> {activeModule.whyHard}
-                </p>
-              </div>
+            {/* ── Why it&apos;s tricky ── */}
+            <div className="w-full max-w-full rounded-xl bg-yellow-50 border-l-4 border-yellow-400 p-4 overflow-visible">
+              <p className="text-gray-700 leading-relaxed whitespace-normal break-words max-w-full">
+                <strong className="text-amber-700">Why it&apos;s tricky:</strong> {activeModule.whyHard}
+              </p>
+            </div>
 
-              <Separator className="my-4" />
+            <Separator />
 
+            {/* ── Minimal Pairs ── */}
+            <div>
               <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">
                 Minimal Pairs ({activeModule.pairs.length})
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {activeModule.pairs.map((pair, idx) => {
                   const idA = `${activeModule.id}-${idx}-a`;
                   const idB = `${activeModule.id}-${idx}-b`;
@@ -2040,45 +2044,45 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   return (
                     <div
                       key={`${activeModule.id}-${idx}`}
-                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors w-full max-w-full min-w-0 overflow-hidden"
+                      className="w-full max-w-full rounded-2xl border border-gray-200 p-4 overflow-hidden"
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 w-full max-w-full min-w-0">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-full">
                         <button
                           onClick={() => speakWord(pair.a, idA)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 w-full overflow-hidden ${
+                          className={`w-full min-w-0 flex items-center gap-3 rounded-xl border p-3 text-left transition-all overflow-hidden ${
                             speakingId === idA
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
                           }`}
                         >
-                          <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
-                            <span className="text-petra text-xs">▶</span>
+                          <span className="size-8 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
+                            <span className="text-petra text-xs">A</span>
                           </span>
-                          <div className="text-left min-w-0 overflow-hidden">
-                            <div className="font-semibold text-gray-900 text-sm truncate">{pair.a}</div>
+                          <div className="min-w-0 flex-1">
+                            <div className="font-semibold text-base truncate">{pair.a}</div>
                             <div className="text-sm text-gray-500 truncate">{pair.ipaA}</div>
                           </div>
                         </button>
                         <button
                           onClick={() => speakWord(pair.b, idB)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 w-full overflow-hidden ${
+                          className={`w-full min-w-0 flex items-center gap-3 rounded-xl border p-3 text-left transition-all overflow-hidden ${
                             speakingId === idB
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
                           }`}
                         >
-                          <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
-                            <span className="text-petra text-xs">▶</span>
+                          <span className="size-8 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
+                            <span className="text-petra text-xs">B</span>
                           </span>
-                          <div className="text-left min-w-0 overflow-hidden">
-                            <div className="font-semibold text-gray-900 text-sm truncate">{pair.b}</div>
+                          <div className="min-w-0 flex-1">
+                            <div className="font-semibold text-base truncate">{pair.b}</div>
                             <div className="text-sm text-gray-500 truncate">{pair.ipaB}</div>
                           </div>
                         </button>
                       </div>
                       <button
                         onClick={() => speakPair(pair, idx)}
-                        className={`w-full text-xs font-semibold py-1.5 rounded transition-colors ${
+                        className={`w-full mt-3 text-xs font-semibold py-2 rounded-lg transition-colors ${
                           speakingId === idPair
                             ? "bg-petra text-white"
                             : "bg-gray-100 text-gray-600 hover:bg-petra/10 hover:text-petra"
@@ -2090,34 +2094,34 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   );
                 })}
               </div>
+            </div>
 
-              <Separator className="my-6" />
+            <Separator />
 
-              <div>
-                <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">
-                  How to Practice
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
-                    Listen to each pair at least three times before repeating.
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
-                    Slow the speed to 0.75x at first, then build up to 1.0x.
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
-                    Record yourself on your phone&apos;s voice memo app and compare.
-                  </li>
-                </ul>
-              </div>
+            {/* ── How to Practice ── */}
+            <div>
+              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">
+                How to Practice
+              </h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                  Listen to each pair at least three times before repeating.
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                  Slow the speed to 0.75x at first, then build up to 1.0x.
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="size-4 text-olive shrink-0 mt-0.5" />
+                  Record yourself on your phone&apos;s voice memo app and compare.
+                </li>
+              </ul>
+            </div>
 
-              <div className="h-8" />
-              </div>
-            </>
-          )}
-        </ScrollArea>
+            <div className="h-8" />
+          </div>
+        )}
       </SheetContent>
     </Sheet>
   );
