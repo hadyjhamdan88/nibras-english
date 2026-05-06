@@ -4863,6 +4863,7 @@ export default function Home() {
   const [vocabOpen, setVocabOpen] = useState(false);
   const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
+  const [manualDropIndex, setManualDropIndex] = useState<number | null>(null);
 
   const [streak, setStreak] = useState<StreakState>({ count: 1, label: "🔥 First day" });
 
@@ -4870,7 +4871,9 @@ export default function Home() {
     setStreak(loadAndUpdateStreak());
   }, []);
 
-  const todaysDrop = dailyDrops[getRotatedIndex(dailyDrops.length)];
+  const officialDropIndex = getRotatedIndex(dailyDrops.length);
+  const activeDropIndex = manualDropIndex ?? officialDropIndex;
+  const todaysDrop = dailyDrops[activeDropIndex];
   const todaysWord = wordsOfDay[getRotatedIndex(wordsOfDay.length)];
   const todaysDatePill = formatDatePill();
 
@@ -4885,6 +4888,21 @@ export default function Home() {
 
   function refreshMainIdioms() {
     setDisplayedIdioms(getRandomItems(allIdioms, 4));
+  }
+
+  function shuffleDailyDrop() {
+    if (dailyDrops.length <= 1) return;
+    let nextIndex = Math.floor(Math.random() * dailyDrops.length);
+    if (dailyDrops.length > 1) {
+      while (nextIndex === activeDropIndex) {
+        nextIndex = Math.floor(Math.random() * dailyDrops.length);
+      }
+    }
+    setManualDropIndex(nextIndex);
+  }
+
+  function resetDailyDrop() {
+    setManualDropIndex(null);
   }
 
   function handleOpenInterest(data: InterestCategory) {
@@ -4960,6 +4978,11 @@ export default function Home() {
                     Today&apos;s Daily Drop
                   </CardTitle>
                   <p className="text-xs text-gray-500 mt-1">{todaysDatePill}</p>
+                  {manualDropIndex !== null && (
+                    <p className="text-xs text-petra mt-1">
+                      Shuffled pick &middot; Today&apos;s official drop is still available
+                    </p>
+                  )}
                 </div>
                 <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs sm:text-sm shrink-0">
                   Level: {todaysDrop.level}
@@ -4973,9 +4996,33 @@ export default function Home() {
               <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
                 {todaysDrop.body.split(/\n\n+/)[0]}
               </p>
-              <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
-                Read full passage <ArrowRight className="size-4" />
-              </span>
+              <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+                <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
+                  Read full passage <ArrowRight className="size-4" />
+                </span>
+                <Button
+                  variant="outline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    shuffleDailyDrop();
+                  }}
+                  className="w-full sm:w-auto border-aqaba/30 text-aqaba hover:bg-aqaba/10"
+                >
+                  Read another Daily Drop
+                </Button>
+                {manualDropIndex !== null && (
+                  <Button
+                    variant="ghost"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      resetDailyDrop();
+                    }}
+                    className="w-full sm:w-auto text-gray-600 hover:text-aqaba"
+                  >
+                    Back to Today&apos;s Drop
+                  </Button>
+                )}
+              </div>
             </CardContent>
           </Card>
 
