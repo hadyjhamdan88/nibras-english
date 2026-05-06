@@ -2039,12 +2039,12 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   return (
                     <div
                       key={`${activeModule.id}-${idx}`}
-                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors w-full"
+                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors"
                     >
-                      <div className="grid grid-cols-2 gap-2 mb-2 w-full">
+                      <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 mb-2">
                         <button
                           onClick={() => speakWord(pair.a, idA)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 overflow-hidden ${
+                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
                             speakingId === idA
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
@@ -2053,14 +2053,14 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                           <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
                             <span className="text-petra text-xs">▶</span>
                           </span>
-                          <div className="text-left min-w-0">
+                          <div className="text-left">
                             <div className="font-semibold text-gray-900 text-sm">{pair.a}</div>
                             <div className="text-xs text-gray-500">{pair.ipaA}</div>
                           </div>
                         </button>
                         <button
                           onClick={() => speakWord(pair.b, idB)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 overflow-hidden ${
+                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
                             speakingId === idB
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
@@ -2069,7 +2069,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                           <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
                             <span className="text-petra text-xs">▶</span>
                           </span>
-                          <div className="text-left min-w-0">
+                          <div className="text-left">
                             <div className="font-semibold text-gray-900 text-sm">{pair.b}</div>
                             <div className="text-xs text-gray-500">{pair.ipaB}</div>
                           </div>
@@ -4884,17 +4884,17 @@ export default function Home() {
       {/* ─── Navigation ─── */}
       <nav className="bg-white shadow-md sticky top-0 z-40">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-4">
-          <div className="flex items-center gap-3 truncate min-w-0 mr-2">
+          <div className="flex items-center gap-3">
             <Image
               src="/logo-icon.png"
               alt="Nibras English Logo"
               width={42}
               height={42}
-              className="object-contain shrink-0"
+              className="object-contain"
               priority
             />
-            <div className="min-w-0">
-              <h1 className="text-xl sm:text-2xl font-bold text-aqaba leading-none truncate">
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold text-aqaba leading-none">
                 Nibras English
               </h1>
               <p className="text-xs text-gray-500 mt-1 hidden sm:block">
