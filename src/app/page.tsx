@@ -4935,22 +4935,22 @@ export default function Home() {
       </header>
 
       {/* ═══ HOMEPAGE SECTIONS ═══ */}
-      <main className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8 sm:space-y-10">
+      <main className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
         {/* ─── Daily Learning Section ─── */}
-        <div>
+        <section className="space-y-6">
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
               Daily Learning
             </h2>
-            <p className="text-gray-600 mt-2">
-              Read, explore vocabulary, and grow your English every day.
+            <p className="text-gray-600 mt-2 max-w-3xl">
+              Read, explore vocabulary, and discover practical English every day.
             </p>
           </div>
 
           {/* Daily Drop */}
           <Card
-            className="border-t-4 border-t-aqaba shadow-lg rounded-2xl cursor-pointer hover:shadow-xl transition-shadow mb-4 sm:mb-6"
+            className="border-t-4 border-t-aqaba shadow-md rounded-2xl cursor-pointer hover:shadow-lg transition-shadow mb-6"
             onClick={() => setDailyDropOpen(true)}
           >
             <CardHeader className="pb-2">
@@ -4983,7 +4983,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Word of the Day */}
             <Card
-              className="border-t-4 border-t-petra shadow-lg rounded-2xl cursor-pointer hover:shadow-xl transition-shadow"
+              className="border-t-4 border-t-petra shadow-md rounded-2xl cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setWordOfDayOpen(true)}
             >
               <CardContent className="p-5 sm:p-6">
@@ -5006,7 +5006,7 @@ export default function Home() {
             </Card>
 
             {/* Idioms Section */}
-            <Card className="border-t-4 border-t-olive shadow-lg rounded-2xl">
+            <Card className="border-t-4 border-t-olive shadow-md rounded-2xl">
               <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide">
@@ -5043,55 +5043,58 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </div>
 
-        {/* ─── Explore by Interest ─── */}
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
-            Explore by Interest
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            {interests.map((item) => (
-              <Card
-                key={item.title}
-                className="text-center cursor-pointer shadow hover:shadow-md transition-all duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-xl group"
-                onClick={() => handleOpenInterest(item)}
-              >
-                <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6 p-4 sm:p-5">
-                  <div className="text-3xl sm:text-4xl mb-2 group-hover:scale-110 transition-transform">
-                    {item.emoji}
-                  </div>
-                  <h4 className="font-semibold text-gray-800 group-hover:text-aqaba transition-colors text-sm sm:text-base">
-                    {item.title}
-                  </h4>
-                  <p className="text-[10px] sm:text-xs text-gray-500 mt-1 leading-snug">
-                    {item.description}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">Level: {item.level}</p>
-                  <div className="mt-3 flex items-center justify-center gap-1 text-aqaba opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-xs font-semibold">Explore</span>
-                    <ArrowRight className="size-3" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Explore by Interest */}
+          <div className="mt-2">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
+              Explore by Interest
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              {interests.map((item) => (
+                <Card
+                  key={item.title}
+                  className="text-center cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-2xl group"
+                  onClick={() => handleOpenInterest(item)}
+                >
+                  <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6 p-4 sm:p-5">
+                    <div className="text-3xl sm:text-4xl mb-2 group-hover:scale-110 transition-transform">
+                      {item.emoji}
+                    </div>
+                    <h4 className="font-semibold text-gray-800 group-hover:text-aqaba transition-colors text-sm sm:text-base">
+                      {item.title}
+                    </h4>
+                    <p className="text-[10px] sm:text-xs text-gray-500 mt-1 leading-snug">
+                      {item.description}
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">Level: {item.level}</p>
+                    <div className="mt-3 flex items-center justify-center gap-1 text-aqaba opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-xs font-semibold">Explore</span>
+                      <ArrowRight className="size-3" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* ── Section Divider ── */}
+        <div className="border-t border-gray-200 my-10 sm:my-14" />
 
         {/* ─── Learning Labs Section ─── */}
-        <div>
+        <section>
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-petra">
               Learning Labs
             </h2>
-            <p className="text-gray-600 mt-2">
-              Practice pronunciation, writing, grammar, and practical English skills.
+            <p className="text-gray-600 mt-2 max-w-3xl">
+              Practice pronunciation, writing, grammar, and practical English skills through interactive tools.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {/* Pronunciation Lab */}
             <Card
-              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-petra rounded-2xl"
+              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-petra rounded-2xl"
               onClick={() => setPronunciationOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5109,7 +5112,7 @@ export default function Home() {
 
             {/* Writing Lab */}
             <Card
-              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-purple-500 rounded-2xl"
+              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-purple-500 rounded-2xl"
               onClick={() => setWritingLabOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5127,7 +5130,7 @@ export default function Home() {
 
             {/* Grammar */}
             <Card
-              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-olive rounded-2xl"
+              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-olive rounded-2xl"
               onClick={() => setGrammarListOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5143,22 +5146,25 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </div>
+        </section>
+
+        {/* ── Section Divider ── */}
+        <div className="border-t border-gray-200 my-10 sm:my-14" />
 
         {/* ─── Practice & Support Section ─── */}
-        <div>
+        <section>
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-olive">
               Practice &amp; Support
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 mt-2 max-w-3xl">
               Check your level, practice English, and build confidence step by step.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
             {/* Quick CEFR Check */}
             <Card
-              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-aqaba rounded-2xl"
+              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-aqaba rounded-2xl"
               onClick={() => setPlacementOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
@@ -5175,7 +5181,7 @@ export default function Home() {
 
             {/* Idiom Practice */}
             <Card
-              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-amber-500 rounded-2xl"
+              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-amber-500 rounded-2xl"
               onClick={() => setIdiomSheetOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
@@ -5191,7 +5197,7 @@ export default function Home() {
             </Card>
 
             {/* AI Chat Coach */}
-            <Card className="border-l-4 border-l-gray-300 rounded-2xl sm:col-span-1">
+            <Card className="shadow-md rounded-2xl border-l-4 border-l-gray-300">
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
                   <MessageCircle className="size-6 text-gray-500" />
@@ -5204,7 +5210,10 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-        </div>
+        </section>
+
+        {/* ── Section Divider ── */}
+        <div className="border-t border-gray-200 my-10 sm:my-14" />
 
         {/* ─── About & Identity Section ─── */}
         <section>
