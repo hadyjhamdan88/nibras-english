@@ -4955,11 +4955,70 @@ export default function Home() {
       {/* ═══ HOMEPAGE SECTIONS ═══ */}
       <main className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
+        {/* ─── Explore Today ─── */}
+        <section className="mb-8 sm:mb-12">
+          <div className="mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+              Explore Today
+            </h2>
+            <p className="text-gray-600 mt-2 max-w-3xl">
+              Choose something that matches your mood, curiosity, or learning goal today.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <Card
+              className="bg-white shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 active:scale-[0.99] border border-gray-100 rounded-2xl cursor-pointer"
+              onClick={() => setDailyDropOpen(true)}
+            >
+              <CardContent className="p-5">
+                <div className="text-2xl mb-2">&#x1F4D6;</div>
+                <h3 className="font-bold text-gray-900 text-sm">Read &amp; Reflect</h3>
+                <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                  Explore today&apos;s Daily Drop and discover useful vocabulary in context.
+                </p>
+                <span className="inline-flex items-center gap-1 text-aqaba text-xs font-semibold mt-3 hover:underline">
+                  Open Daily Drop <ArrowRight className="size-3" />
+                </span>
+              </CardContent>
+            </Card>
+            <Card
+              className="bg-white shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 active:scale-[0.99] border border-gray-100 rounded-2xl cursor-pointer"
+              onClick={() => setPronunciationOpen(true)}
+            >
+              <CardContent className="p-5">
+                <div className="text-2xl mb-2">&#x1F3A7;</div>
+                <h3 className="font-bold text-gray-900 text-sm">Train Your Ear</h3>
+                <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                  Practice English sounds, minimal pairs, and pronunciation patterns.
+                </p>
+                <span className="inline-flex items-center gap-1 text-petra text-xs font-semibold mt-3 hover:underline">
+                  Open Pronunciation Lab <ArrowRight className="size-3" />
+                </span>
+              </CardContent>
+            </Card>
+            <Card
+              className="bg-white shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-1 active:scale-[0.99] border border-gray-100 rounded-2xl cursor-pointer"
+              onClick={() => setWritingLabOpen(true)}
+            >
+              <CardContent className="p-5">
+                <div className="text-2xl mb-2">&#x270D;&#xFE0F;</div>
+                <h3 className="font-bold text-gray-900 text-sm">Build Better Writing</h3>
+                <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                  Learn collocations, phrasal verbs, and practical writing skills.
+                </p>
+                <span className="inline-flex items-center gap-1 text-purple-600 text-xs font-semibold mt-3 hover:underline">
+                  Open Writing Lab <ArrowRight className="size-3" />
+                </span>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* ─── Daily Learning Section ─── */}
-        <section className="space-y-6">
+        <section className="space-y-6 rounded-2xl bg-aqaba/5 p-4 sm:p-6">
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
-              Daily Learning
+              &#x1F4D6; Daily Learning
             </h2>
             <p className="text-gray-600 mt-2 max-w-3xl">
               Read, explore vocabulary, and discover practical English every day.
@@ -4968,7 +5027,7 @@ export default function Home() {
 
           {/* Daily Drop */}
           <Card
-            className="border-t-4 border-t-aqaba shadow-md rounded-2xl cursor-pointer hover:shadow-lg transition-shadow mb-6"
+            className="border-t-4 border-t-aqaba shadow-md rounded-2xl cursor-pointer hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 mb-6"
             onClick={() => setDailyDropOpen(true)}
           >
             <CardHeader className="pb-2">
@@ -5030,7 +5089,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Word of the Day */}
             <Card
-              className="border-t-4 border-t-petra shadow-md rounded-2xl cursor-pointer hover:shadow-lg transition-shadow"
+              className="border-t-4 border-t-petra shadow-md rounded-2xl cursor-pointer hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200"
               onClick={() => setWordOfDayOpen(true)}
             >
               <CardContent className="p-5 sm:p-6">
@@ -5053,7 +5112,9 @@ export default function Home() {
             </Card>
 
             {/* Idioms Section */}
-            <Card className="border-t-4 border-t-olive shadow-md rounded-2xl">
+            <Card className="border-t-4 border-t-olive shadow-md rounded-2xl cursor-pointer hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200"
+              onClick={() => setIdiomSheetOpen(true)}
+            >
               <CardContent className="p-5 sm:p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide">
@@ -5100,7 +5161,7 @@ export default function Home() {
               {interests.map((item) => (
                 <Card
                   key={item.title}
-                  className="text-center cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-2xl group"
+                  className="text-center cursor-pointer shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-[0.99] transition-all duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-2xl group"
                   onClick={() => handleOpenInterest(item)}
                 >
                   <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6 p-4 sm:p-5">
@@ -5129,10 +5190,10 @@ export default function Home() {
         <div className="border-t border-gray-200 my-10 sm:my-14" />
 
         {/* ─── Learning Labs Section ─── */}
-        <section>
+        <section className="rounded-2xl bg-petra/5 p-4 sm:p-6">
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-petra">
-              Learning Labs
+              &#x1F9EA; Learning Labs
             </h2>
             <p className="text-gray-600 mt-2 max-w-3xl">
               Practice pronunciation, writing, grammar, and practical English skills through interactive tools.
@@ -5141,7 +5202,7 @@ export default function Home() {
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {/* Pronunciation Lab */}
             <Card
-              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-petra rounded-2xl"
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-petra rounded-2xl"
               onClick={() => setPronunciationOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5159,7 +5220,7 @@ export default function Home() {
 
             {/* Writing Lab */}
             <Card
-              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-purple-500 rounded-2xl"
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-purple-500 rounded-2xl"
               onClick={() => setWritingLabOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5177,7 +5238,7 @@ export default function Home() {
 
             {/* Grammar */}
             <Card
-              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-olive rounded-2xl"
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-olive rounded-2xl"
               onClick={() => setGrammarListOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-start gap-4">
@@ -5199,10 +5260,10 @@ export default function Home() {
         <div className="border-t border-gray-200 my-10 sm:my-14" />
 
         {/* ─── Practice & Support Section ─── */}
-        <section>
+        <section className="rounded-2xl bg-olive/5 p-4 sm:p-6">
           <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-olive">
-              Practice &amp; Support
+              &#x1F4AC; Practice &amp; Support
             </h2>
             <p className="text-gray-600 mt-2 max-w-3xl">
               Check your level, practice English, and build confidence step by step.
@@ -5211,7 +5272,7 @@ export default function Home() {
           <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
             {/* Quick CEFR Check */}
             <Card
-              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-aqaba rounded-2xl"
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-aqaba rounded-2xl"
               onClick={() => setPlacementOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
@@ -5228,7 +5289,7 @@ export default function Home() {
 
             {/* Idiom Practice */}
             <Card
-              className="cursor-pointer shadow-md hover:shadow-lg transition-shadow border-l-4 border-l-amber-500 rounded-2xl"
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-amber-500 rounded-2xl"
               onClick={() => setIdiomSheetOpen(true)}
             >
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
@@ -5244,7 +5305,7 @@ export default function Home() {
             </Card>
 
             {/* AI Chat Coach */}
-            <Card className="shadow-md rounded-2xl border-l-4 border-l-gray-300">
+            <Card className="shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 rounded-2xl border-l-4 border-l-gray-300">
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
                   <MessageCircle className="size-6 text-gray-500" />
