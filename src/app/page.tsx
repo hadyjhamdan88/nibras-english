@@ -1936,6 +1936,13 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
         <div className="sticky top-0 z-10 bg-petra text-white px-4 sm:px-8 py-5 sm:py-8">
           <div className="flex items-start justify-between gap-3">
             <div>
+              <button
+                type="button"
+                onClick={() => onOpenChange(false)}
+                className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm font-semibold shrink-0 mb-2"
+              >
+                &larr; Back
+              </button>
               <h2 className="text-2xl sm:text-4xl font-bold leading-tight">Pronunciation Lab</h2>
               <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">Listen, notice the difference, repeat aloud.</p>
             </div>
@@ -4886,317 +4893,360 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden bg-[#f8f6f1]">
       {/* ─── Navigation ─── */}
-      <nav className="bg-white shadow-md sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 px-4 py-3">
-          <div className="flex items-center gap-2 min-w-0 flex-1">
+      <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-3 min-w-0">
             <Image
               src="/logo-icon.png"
               alt="Nibras English Logo"
               width={42}
               height={42}
-              className="h-9 w-9 sm:h-11 sm:w-11 object-contain shrink-0"
+              className="h-10 w-10 object-contain shrink-0"
               priority
             />
             <div className="min-w-0">
-              <h1 className="text-lg sm:text-2xl font-bold text-aqaba tracking-tight leading-tight truncate">
+              <h1 className="text-xl sm:text-2xl font-bold text-aqaba leading-tight">
                 Nibras English
               </h1>
-              <p className="text-xs text-gray-500 mt-1 hidden sm:block">
+              <p className="hidden sm:block text-sm text-gray-500 mt-1">
                 Master English. Stay Rooted.
               </p>
             </div>
-          </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <Badge className="bg-green-100 text-olive border-none hover:bg-green-100 py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0">
-              {streak.label}
-            </Badge>
-            <FeatureExplorer
-              onGrammar={() => setGrammarListOpen(true)}
-              onVocab={() => handleOpenInterest(interests[0])}
-              onReading={() => setDailyDropOpen(true)}
-              onTest={() => setPlacementOpen(true)}
-              onIdioms={() => setIdiomSheetOpen(true)}
-              onPronunciation={() => setPronunciationOpen(true)}
-            />
-            <Button
-              onClick={() => setPlacementOpen(true)}
-              className="hidden sm:inline-flex bg-petra hover:bg-petra-dark text-white shadow rounded-md transition-colors text-sm"
-            >
-              Quick CEFR Check
-            </Button>
           </div>
         </div>
       </nav>
 
       {/* ─── Hero ─── */}
-      <header className="max-w-6xl mx-auto mt-8 sm:mt-10 px-4 sm:px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900 tracking-tight">
+      <header className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 text-center">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-gray-900 tracking-tight">
           Master English. Stay Rooted.
         </h2>
-        <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 mb-4 max-w-2xl mx-auto">
           Explore daily readings, practical vocabulary, and grammar tailored to
           your world.
         </p>
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
+          <Badge className="bg-green-100 text-olive border-none px-4 py-2 text-sm font-semibold">
+            {streak.label}
+          </Badge>
+        </div>
       </header>
 
-      {/* ─── Main Content Grid ─── */}
-      <main className="max-w-6xl mx-auto px-4 pb-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Daily Drop (2 cols) */}
-        <Card
-          className="md:col-span-2 border-t-4 border-t-aqaba shadow-lg rounded-xl cursor-pointer hover:shadow-xl transition-shadow"
-          onClick={() => setDailyDropOpen(true)}
-        >
-          <CardHeader className="pb-2">
-            <div className="flex justify-between items-start gap-2 flex-wrap">
-              <div>
-                <CardTitle className="text-xl sm:text-2xl text-aqaba">
-                  Today&apos;s Daily Drop
-                </CardTitle>
-                <p className="text-xs text-gray-500 mt-1">{todaysDatePill}</p>
-              </div>
-              <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs sm:text-sm shrink-0">
-                Level: {todaysDrop.level}
-              </Badge>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <h4 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
-              {todaysDrop.title}
-            </h4>
-            <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
-              {todaysDrop.body.split(/\n\n+/)[0]}
-            </p>
-            <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
-              Read full passage <ArrowRight className="size-4" />
-            </span>
-          </CardContent>
-        </Card>
+      {/* ═══ HOMEPAGE SECTIONS ═══ */}
+      <main className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8 sm:space-y-10">
 
-        {/* Sidebar: Word + Idioms */}
-        <aside className="space-y-6">
-          {/* Word of the Day */}
+        {/* ─── Daily Learning Section ─── */}
+        <div>
+          <div className="mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
+              Daily Learning
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Read, explore vocabulary, and grow your English every day.
+            </p>
+          </div>
+
+          {/* Daily Drop */}
           <Card
-            className="border-t-4 border-t-petra shadow-lg rounded-xl cursor-pointer hover:shadow-xl transition-shadow"
-            onClick={() => setWordOfDayOpen(true)}
+            className="border-t-4 border-t-aqaba shadow-lg rounded-2xl cursor-pointer hover:shadow-xl transition-shadow mb-4 sm:mb-6"
+            onClick={() => setDailyDropOpen(true)}
           >
-            <CardContent className="pt-6">
-              <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
-                Word of the Day
-              </h3>
-              <h4 className="text-2xl sm:text-3xl font-bold text-petra mb-1">
-                {todaysWord.word}
+            <CardHeader className="pb-2">
+              <div className="flex justify-between items-start gap-2 flex-wrap">
+                <div>
+                  <CardTitle className="text-xl sm:text-2xl text-aqaba">
+                    Today&apos;s Daily Drop
+                  </CardTitle>
+                  <p className="text-xs text-gray-500 mt-1">{todaysDatePill}</p>
+                </div>
+                <Badge variant="secondary" className="bg-blue-100 text-blue-800 text-xs sm:text-sm shrink-0">
+                  Level: {todaysDrop.level}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <h4 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
+                {todaysDrop.title}
               </h4>
-              <p className="text-xs sm:text-sm text-gray-600 italic mb-3">
-                {todaysWord.partOfSpeech} &bull; {todaysWord.phonetic}
+              <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
+                {todaysDrop.body.split(/\n\n+/)[0]}
               </p>
-              <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-2 rounded border-l-4 border-petra">
-                &ldquo;{todaysWord.example}&rdquo;
-              </p>
-              <span className="text-petra text-xs font-semibold mt-2 inline-flex items-center gap-1 hover:underline">
-                Tap to learn more <ArrowRight className="size-3" />
+              <span className="text-aqaba font-semibold hover:underline transition-colors text-sm sm:text-base inline-flex items-center gap-1">
+                Read full passage <ArrowRight className="size-4" />
               </span>
             </CardContent>
           </Card>
 
-          {/* Idioms Section (Multiple) */}
-          <Card className="border-t-4 border-t-olive shadow-lg rounded-xl">
-            <CardContent className="pt-6">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide">
-                  Idioms to Know
-                </h3>
-                <button
-                  onClick={refreshMainIdioms}
-                  className="text-olive hover:text-olive-dark transition-colors"
-                  title="Show different idioms"
-                >
-                  <RefreshCw className="size-4" />
-                </button>
-              </div>
-              <div className="space-y-3">
-                {displayedIdioms.map((idiom) => (
-                  <div
-                    key={idiom.idiom}
-                    className="cursor-pointer group"
-                    onClick={() => setIdiomSheetOpen(true)}
-                  >
-                    <h4 className="text-sm font-bold text-olive group-hover:text-olive-dark transition-colors">
-                      {idiom.idiom}
-                    </h4>
-                    <p className="text-xs text-gray-500 leading-snug">{idiom.definition}</p>
-                  </div>
-                ))}
-              </div>
-              <button
-                onClick={() => setIdiomSheetOpen(true)}
-                className="text-olive text-xs font-semibold mt-3 inline-flex items-center gap-1 hover:underline"
-              >
-                See all idioms <ArrowRight className="size-3" />
-              </button>
-            </CardContent>
-          </Card>
-        </aside>
-      </main>
-
-      {/* ─── Explore by Interest ─── */}
-      <section className="max-w-6xl mx-auto px-4 pb-12">
-        <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
-          Explore by Interest
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-          {interests.map((item) => (
+          {/* Word of Day + Idioms */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Word of the Day */}
             <Card
-              key={item.title}
-              className="text-center cursor-pointer shadow hover:shadow-md transition-all duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-lg group"
-              onClick={() => handleOpenInterest(item)}
+              className="border-t-4 border-t-petra shadow-lg rounded-2xl cursor-pointer hover:shadow-xl transition-shadow"
+              onClick={() => setWordOfDayOpen(true)}
             >
-              <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6">
-                <div className="text-3xl sm:text-4xl mb-2 group-hover:scale-110 transition-transform">
-                  {item.emoji}
-                </div>
-                <h4 className="font-semibold text-gray-800 group-hover:text-aqaba transition-colors text-sm sm:text-base">
-                  {item.title}
+              <CardContent className="p-5 sm:p-6">
+                <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">
+                  Word of the Day
+                </h3>
+                <h4 className="text-2xl sm:text-3xl font-bold text-petra mb-1">
+                  {todaysWord.word}
                 </h4>
-                <p className="text-[10px] sm:text-xs text-gray-500 mt-1 leading-snug">
-                  {item.description}
+                <p className="text-xs sm:text-sm text-gray-600 italic mb-3">
+                  {todaysWord.partOfSpeech} &bull; {todaysWord.phonetic}
                 </p>
-                <p className="text-xs text-gray-400 mt-1">Level: {item.level}</p>
-                <div className="mt-3 flex items-center justify-center gap-1 text-aqaba opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-xs font-semibold">Explore</span>
-                  <ArrowRight className="size-3" />
+                <p className="text-sm sm:text-base text-gray-600 bg-gray-50 p-2 rounded border-l-4 border-petra">
+                  &ldquo;{todaysWord.example}&rdquo;
+                </p>
+                <span className="text-petra text-xs font-semibold mt-3 inline-flex items-center gap-1 hover:underline">
+                  Tap to learn more <ArrowRight className="size-3" />
+                </span>
+              </CardContent>
+            </Card>
+
+            {/* Idioms Section */}
+            <Card className="border-t-4 border-t-olive shadow-lg rounded-2xl">
+              <CardContent className="p-5 sm:p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase tracking-wide">
+                    Idioms to Know
+                  </h3>
+                  <button
+                    onClick={refreshMainIdioms}
+                    className="text-olive hover:text-olive-dark transition-colors"
+                    title="Show different idioms"
+                  >
+                    <RefreshCw className="size-4" />
+                  </button>
+                </div>
+                <div className="space-y-3">
+                  {displayedIdioms.map((idiom) => (
+                    <div
+                      key={idiom.idiom}
+                      className="cursor-pointer group"
+                      onClick={() => setIdiomSheetOpen(true)}
+                    >
+                      <h4 className="text-sm font-bold text-olive group-hover:text-olive-dark transition-colors">
+                        {idiom.idiom}
+                      </h4>
+                      <p className="text-xs text-gray-500 leading-snug">{idiom.definition}</p>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={() => setIdiomSheetOpen(true)}
+                  className="text-olive text-xs font-semibold mt-3 inline-flex items-center gap-1 hover:underline"
+                >
+                  See all idioms <ArrowRight className="size-3" />
+                </button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* ─── Explore by Interest ─── */}
+        <div>
+          <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
+            Explore by Interest
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            {interests.map((item) => (
+              <Card
+                key={item.title}
+                className="text-center cursor-pointer shadow hover:shadow-md transition-all duration-200 border-b-2 border-gray-200 hover:border-aqaba rounded-xl group"
+                onClick={() => handleOpenInterest(item)}
+              >
+                <CardContent className="pt-5 sm:pt-6 pb-5 sm:pb-6 p-4 sm:p-5">
+                  <div className="text-3xl sm:text-4xl mb-2 group-hover:scale-110 transition-transform">
+                    {item.emoji}
+                  </div>
+                  <h4 className="font-semibold text-gray-800 group-hover:text-aqaba transition-colors text-sm sm:text-base">
+                    {item.title}
+                  </h4>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-1 leading-snug">
+                    {item.description}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">Level: {item.level}</p>
+                  <div className="mt-3 flex items-center justify-center gap-1 text-aqaba opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-xs font-semibold">Explore</span>
+                    <ArrowRight className="size-3" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* ─── Learning Labs Section ─── */}
+        <div>
+          <div className="mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-petra">
+              Learning Labs
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Practice pronunciation, writing, grammar, and practical English skills.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {/* Pronunciation Lab */}
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-petra rounded-2xl"
+              onClick={() => setPronunciationOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
+                  <Mic2 className="size-6 text-petra" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Pronunciation Lab</h4>
+                  <p className="text-xs text-gray-500 mt-1">Minimal pairs for Arabic speakers</p>
+                  <p className="text-xs text-gray-400 mt-1">{pronunciationModules.length} modules</p>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
+              </CardContent>
+            </Card>
+
+            {/* Writing Lab */}
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-purple-500 rounded-2xl"
+              onClick={() => setWritingLabOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
+                  <BookText className="size-6 text-purple-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Writing Lab</h4>
+                  <p className="text-xs text-gray-500 mt-1">Build stronger writing, one skill at a time</p>
+                  <Badge className="bg-olive/10 text-olive border-olive/20 shrink-0 text-xs mt-1">New</Badge>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
+              </CardContent>
+            </Card>
+
+            {/* Grammar */}
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-olive rounded-2xl"
+              onClick={() => setGrammarListOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                  <Languages className="size-6 text-olive" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Grammar Lessons</h4>
+                  <p className="text-xs text-gray-500 mt-1">Practical tips for real improvement</p>
+                  <p className="text-xs text-gray-400 mt-1">{grammarLessons.length} lessons</p>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* ─── Practice & Support Section ─── */}
+        <div>
+          <div className="mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-olive">
+              Practice &amp; Support
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Check your level, practice English, and build confidence step by step.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Quick CEFR Check */}
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-aqaba rounded-2xl"
+              onClick={() => setPlacementOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                  <GraduationCap className="size-6 text-aqaba" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Quick CEFR Check</h4>
+                  <p className="text-xs text-gray-500">30 questions across 6 levels</p>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0" />
+              </CardContent>
+            </Card>
+
+            {/* Idiom Practice */}
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-amber-500 rounded-2xl"
+              onClick={() => setIdiomSheetOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+                  <HelpCircle className="size-6 text-amber-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Idiom Practice</h4>
+                  <p className="text-xs text-gray-500">{allIdioms.length} expressions to master</p>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0" />
+              </CardContent>
+            </Card>
+
+            {/* AI Chat Coach */}
+            <Card className="border-l-4 border-l-gray-300 rounded-2xl sm:col-span-1">
+              <CardContent className="p-5 sm:p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                  <MessageCircle className="size-6 text-gray-500" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">AI Chat Coach</h4>
+                  <p className="text-xs text-gray-500">Get instant help with English questions</p>
+                  <p className="text-xs text-aqaba mt-1 font-medium">Tap the chat bubble below to start a conversation</p>
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── Quick Feature Cards ─── */}
-      <section className="max-w-6xl mx-auto px-4 pb-12">
-        <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">
-          Quick Practice
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-aqaba"
-            onClick={() => setPlacementOpen(true)}
-          >
-            <CardContent className="pt-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                <GraduationCap className="size-6 text-aqaba" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Take the Quick CEFR Check</h4>
-                <p className="text-xs text-gray-500">30 questions across 6 levels</p>
-              </div>
-              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
-            </CardContent>
-          </Card>
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-olive"
-            onClick={() => setGrammarListOpen(true)}
-          >
-            <CardContent className="pt-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center shrink-0">
-                <Languages className="size-6 text-olive" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Grammar Lessons</h4>
-                <p className="text-xs text-gray-500">Practical tips for real improvement</p>
-              </div>
-              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
-            </CardContent>
-          </Card>
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-amber-500"
-            onClick={() => setIdiomSheetOpen(true)}
-          >
-            <CardContent className="pt-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
-                <HelpCircle className="size-6 text-amber-600" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Idiom Practice</h4>
-                <p className="text-xs text-gray-500">{allIdioms.length} expressions to master</p>
-              </div>
-              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
-            </CardContent>
-          </Card>
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-petra"
-            onClick={() => setPronunciationOpen(true)}
-          >
-            <CardContent className="pt-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
-                <Mic2 className="size-6 text-petra" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Pronunciation Lab</h4>
-                <p className="text-xs text-gray-500">Minimal pairs for Arabic speakers</p>
-              </div>
-              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
-            </CardContent>
-          </Card>
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-all border-l-4 border-l-purple-500"
-            onClick={() => setWritingLabOpen(true)}
-          >
-            <CardContent className="pt-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
-                <BookText className="size-6 text-purple-600" />
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 text-sm">Writing Lab</h4>
-                <p className="text-xs text-gray-500">Build stronger writing, one skill at a time</p>
-              </div>
-              <Badge className="bg-olive/10 text-olive border-olive/20 shrink-0 text-xs">New</Badge>
-              <ArrowRight className="size-5 text-gray-400 ml-auto shrink-0" />
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* ─── About & Identity ─── */}
-      <section className="mt-10 sm:mt-14">
-        <div className="mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
-            About & Identity
-          </h2>
-          <p className="text-gray-600 mt-2 max-w-3xl">
-            Nibras English is built to help learners grow in English while staying connected to who they are.
-          </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
-          <Card className="border-none shadow-md">
-            <CardHeader>
-              <CardTitle className="text-xl text-aqaba">
-                About Nibras English
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700 leading-relaxed">
-                Nibras English is an ESL learning portal created for Arabic-speaking learners, especially students in Jordan and the wider region. It teaches English through daily reading, vocabulary, pronunciation, writing skills, and practical examples drawn from real life. The mission is simple: to help learners use English with confidence in study, work, and communication while staying rooted in their language, culture, and values.
-              </p>
-            </CardContent>
-          </Card>
+        {/* ─── About & Identity Section ─── */}
+        <section>
+          <div className="mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-aqaba">
+              About &amp; Identity
+            </h2>
+            <p className="text-gray-600 mt-2 max-w-3xl">
+              Nibras English is built to help learners grow in English while staying connected to who they are.
+            </p>
+          </div>
 
-          <Card className="border-none shadow-md">
-            <CardHeader>
-              <CardTitle className="text-xl text-olive">
-                Rooted in Jordan
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700 leading-relaxed">
-                Jordan is more than a setting for Nibras English; it is part of its voice. The platform reflects the everyday stories of Jordanian students, families, teachers, workers, and dreamers. It values hospitality, education, resilience, respect, and ambition. Through its examples and learning materials, Nibras presents a Jordanian narrative that is modern, generous, thoughtful, and deeply connected to its Arab identity.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+            <Card className="border-none shadow-md rounded-2xl">
+              <CardHeader>
+                <CardTitle className="text-xl text-aqaba">
+                  About Nibras English
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 leading-relaxed">
+                  Nibras English is an ESL learning portal created for Arabic-speaking learners, especially students in Jordan and the wider region. It teaches English through daily reading, vocabulary, pronunciation, writing skills, and practical examples drawn from real life. The mission is simple: to help learners use English with confidence in study, work, and communication while staying rooted in their language, culture, and values.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-md rounded-2xl">
+              <CardHeader>
+                <CardTitle className="text-xl text-olive">
+                  Rooted in Jordan
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 leading-relaxed">
+                  Jordan is more than a setting for Nibras English; it is part of its voice. The platform reflects the everyday stories of Jordanian students, families, teachers, workers, and dreamers. It values hospitality, education, resilience, respect, and ambition. Through its examples and learning materials, Nibras presents a Jordanian narrative that is modern, generous, thoughtful, and deeply connected to its Arab identity.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+      </main>
 
       {/* ─── Footer ─── */}
       <footer className="mt-auto bg-white border-t border-gray-200 py-6">
