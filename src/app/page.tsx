@@ -83,6 +83,15 @@ interface GrammarLesson {
   tips: string[];
 }
 
+interface VisualEnglishEntry {
+  expression: string;
+  image: string;
+  meaning: string;
+  example: string;
+  level: string;
+  category: string;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    PLACEMENT TEST DATA
    ═══════════════════════════════════════════════════════════════ */
@@ -421,6 +430,61 @@ const grammarLessons: GrammarLesson[] = [
       "Try tongue twisters: 'Peter Piper picked a peck of pickled peppers.'",
       "Remember: this takes time. Be patient with yourself. Even advanced speakers sometimes mix these up.",
     ],
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   VISUAL ENGLISH DATA
+   ═══════════════════════════════════════════════════════════════ */
+
+const visualEnglishCards: VisualEnglishEntry[] = [
+  {
+    expression: "pull an all-nighter",
+    image: "/pull-all-nighter.jpg",
+    meaning: "To stay awake all night studying or working.",
+    example: "Rami pulled an all-nighter before his engineering exam.",
+    level: "B1",
+    category: "University Life",
+  },
+  {
+    expression: "under pressure",
+    image: "/under-pressure.jpg",
+    meaning: "Feeling stressed because of responsibilities or expectations.",
+    example: "Maha felt under pressure before presenting her research project.",
+    level: "B1",
+    category: "Academic Life",
+  },
+  {
+    expression: "on the same page",
+    image: "/on-the-same-page.jpg",
+    meaning: "To understand and agree with each other.",
+    example: "The group finally got on the same page before submitting the project.",
+    level: "B1",
+    category: "Teamwork",
+  },
+  {
+    expression: "spill the beans",
+    image: "/spill-the-beans.jpg",
+    meaning: "To accidentally reveal a secret.",
+    example: "Omar spilled the beans about the surprise engagement dinner.",
+    level: "B2",
+    category: "Social Expressions",
+  },
+  {
+    expression: "stuck in traffic",
+    image: "/stuck-in-traffic.jpg",
+    meaning: "Unable to move because of heavy traffic.",
+    example: "Lina arrived late because she was stuck in traffic near Abdali.",
+    level: "A2",
+    category: "Daily Life",
+  },
+  {
+    expression: "hit the sack",
+    image: "/hit-the-sack.jpg",
+    meaning: "To go to bed or go to sleep.",
+    example: "After studying all evening, Ahmad decided to hit the sack.",
+    level: "A2",
+    category: "Daily Life",
   },
 ];
 
@@ -4847,6 +4911,86 @@ function WritingLabSheet({
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   VISUAL ENGLISH SHEET COMPONENT
+   ═══════════════════════════════════════════════════════════════ */
+
+function VisualEnglishSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="right" className="fixed inset-0 z-50 w-screen h-screen max-w-none overflow-y-auto overflow-x-hidden bg-white p-0 sm:inset-y-0 sm:left-auto sm:right-0 sm:w-full sm:max-w-5xl">
+        {/* ── Header ── */}
+        <div className="sticky top-0 z-10 bg-aqaba text-white px-4 sm:px-8 py-5 sm:py-8">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <button
+                type="button"
+                onClick={() => onOpenChange(false)}
+                className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm font-semibold shrink-0 mb-2"
+              >
+                &larr; Back
+              </button>
+              <h2 className="text-2xl sm:text-4xl font-bold leading-tight">Visual English</h2>
+              <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">Learn real English expressions through cinematic visual storytelling rooted in everyday life.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Cards Grid ── */}
+        <div className="px-4 sm:px-8 py-6 sm:py-10">
+          <div className="grid gap-6 md:grid-cols-2">
+            {visualEnglishCards.map((card) => (
+              <div
+                key={card.expression}
+                className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300"
+              >
+                {/* Image */}
+                <div className="relative w-full aspect-video overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.expression}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-5 sm:p-6">
+                  {/* Badges */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <Badge className="bg-aqaba/10 text-aqaba border-aqaba/20 text-xs font-semibold">
+                      {card.level}
+                    </Badge>
+                    <Badge className="bg-gray-100 text-gray-600 border-gray-200 text-xs">
+                      {card.category}
+                    </Badge>
+                  </div>
+
+                  {/* Expression */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-aqaba mb-2">
+                    {card.expression}
+                  </h3>
+
+                  {/* Meaning */}
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-3">
+                    {card.meaning}
+                  </p>
+
+                  {/* Example */}
+                  <p className="text-sm sm:text-base italic text-amber-800/80 leading-relaxed">
+                    &ldquo;{card.example}&rdquo;
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    MAIN PAGE
    ═══════════════════════════════════════════════════════════════ */
 
@@ -4860,6 +5004,7 @@ export default function Home() {
   const [idiomSheetOpen, setIdiomSheetOpen] = useState(false);
   const [pronunciationOpen, setPronunciationOpen] = useState(false);
   const [writingLabOpen, setWritingLabOpen] = useState(false);
+  const [visualEnglishOpen, setVisualEnglishOpen] = useState(false);
   const [vocabOpen, setVocabOpen] = useState(false);
   const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
@@ -5272,6 +5417,24 @@ export default function Home() {
                 <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
               </CardContent>
             </Card>
+
+            {/* Visual English */}
+            <Card
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-aqaba rounded-2xl"
+              onClick={() => setVisualEnglishOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center shrink-0">
+                  <Sparkles className="size-6 text-aqaba" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Visual English</h4>
+                  <p className="text-xs text-gray-500 mt-1">Learn English expressions through cinematic AI-generated scenes inspired by real life.</p>
+                  <Badge className="bg-aqaba/10 text-aqaba border-aqaba/20 shrink-0 text-xs mt-1">New</Badge>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -5449,6 +5612,9 @@ export default function Home() {
 
       {/* Writing Lab */}
       <WritingLabSheet open={writingLabOpen} onOpenChange={setWritingLabOpen} />
+
+      {/* Visual English */}
+      <VisualEnglishSheet open={visualEnglishOpen} onOpenChange={setVisualEnglishOpen} />
 
       {/* AI Chatbot */}
       <ChatBot />
