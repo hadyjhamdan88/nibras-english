@@ -1931,7 +1931,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full sm:max-w-lg bg-white p-0 overflow-hidden">
+      <SheetContent side="right" className="overflow-y-auto overflow-x-hidden w-[calc(100vw-1rem)] sm:max-w-3xl max-w-[calc(100vw-1rem)] bg-white p-0">
         <SheetHeader className="p-6 pb-4 bg-gradient-to-r from-petra to-petra-dark">
           <SheetTitle className="text-xl font-bold text-white flex items-center gap-2">
             <Mic2 className="size-6" />
@@ -1942,7 +1942,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
           </SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-8rem)] px-6 pt-4">
+        <ScrollArea className="h-[calc(100vh-8rem)] px-6 pt-4 min-w-0 overflow-x-hidden">
           {!ttsSupported ? (
             <div className="text-center py-12">
               <p className="text-gray-600 mb-2">
@@ -2039,12 +2039,12 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   return (
                     <div
                       key={`${activeModule.id}-${idx}`}
-                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors"
+                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors min-w-0 overflow-hidden"
                     >
-                      <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 mb-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 min-w-0">
                         <button
                           onClick={() => speakWord(pair.a, idA)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
+                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 w-full overflow-hidden ${
                             speakingId === idA
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
@@ -2053,14 +2053,14 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                           <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
                             <span className="text-petra text-xs">▶</span>
                           </span>
-                          <div className="text-left">
-                            <div className="font-semibold text-gray-900 text-sm">{pair.a}</div>
-                            <div className="text-xs text-gray-500">{pair.ipaA}</div>
+                          <div className="text-left min-w-0 overflow-hidden">
+                            <div className="font-semibold text-gray-900 text-sm truncate">{pair.a}</div>
+                            <div className="text-sm text-gray-500 truncate">{pair.ipaA}</div>
                           </div>
                         </button>
                         <button
                           onClick={() => speakWord(pair.b, idB)}
-                          className={`flex items-center gap-2 p-2 rounded border transition-all ${
+                          className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 w-full overflow-hidden ${
                             speakingId === idB
                               ? "border-petra bg-pink-50"
                               : "border-gray-200 hover:border-petra/40 hover:bg-pink-50/40"
@@ -2069,9 +2069,9 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                           <span className="size-7 rounded-full bg-petra/10 flex items-center justify-center shrink-0">
                             <span className="text-petra text-xs">▶</span>
                           </span>
-                          <div className="text-left">
-                            <div className="font-semibold text-gray-900 text-sm">{pair.b}</div>
-                            <div className="text-xs text-gray-500">{pair.ipaB}</div>
+                          <div className="text-left min-w-0 overflow-hidden">
+                            <div className="font-semibold text-gray-900 text-sm truncate">{pair.b}</div>
+                            <div className="text-sm text-gray-500 truncate">{pair.ipaB}</div>
                           </div>
                         </button>
                       </div>
@@ -4880,21 +4880,21 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       {/* ─── Navigation ─── */}
       <nav className="bg-white shadow-md sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-4">
-          <div className="flex items-center gap-3">
+        <div className="max-w-6xl mx-auto flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 px-4 py-3">
+          <div className="flex items-center gap-2 min-w-0 flex-1">
             <Image
               src="/logo-icon.png"
               alt="Nibras English Logo"
               width={42}
               height={42}
-              className="object-contain"
+              className="h-9 w-9 sm:h-11 sm:w-11 object-contain shrink-0"
               priority
             />
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-aqaba leading-none">
+            <div className="min-w-0">
+              <h1 className="text-lg sm:text-2xl font-bold text-aqaba tracking-tight leading-tight truncate">
                 Nibras English
               </h1>
               <p className="text-xs text-gray-500 mt-1 hidden sm:block">
@@ -4902,8 +4902,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <Badge className="bg-green-100 text-olive border-none hover:bg-green-100 py-1 px-3 text-xs sm:text-sm font-semibold">
+          <div className="flex items-center gap-2 shrink-0">
+            <Badge className="bg-green-100 text-olive border-none hover:bg-green-100 py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold whitespace-nowrap shrink-0">
               {streak.label}
             </Badge>
             <FeatureExplorer
@@ -4916,7 +4916,7 @@ export default function Home() {
             />
             <Button
               onClick={() => setPlacementOpen(true)}
-              className="bg-petra hover:bg-petra-dark text-white shadow rounded-md transition-colors text-sm"
+              className="hidden sm:inline-flex bg-petra hover:bg-petra-dark text-white shadow rounded-md transition-colors text-sm"
             >
               Quick CEFR Check
             </Button>
