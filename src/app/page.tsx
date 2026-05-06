@@ -1635,6 +1635,120 @@ const pronunciationModules: PronunciationModule[] = [
       { a: "knit", b: "neat", ipaA: "/nɪt/", ipaB: "/niːt/" },
     ],
   },
+  {
+    id: "ae-vs-eh",
+    title: "Cat vs Ket",
+    contrast: "/æ/ vs /ɛ/",
+    intro: "English has two short front vowels where Arabic has roughly one. The /æ/ in 'cat' is open and front; the /ɛ/ in 'ket' (as in 'ketchup') is mid and slightly higher. Many Jordanian learners pronounce both as a single Arabic /a/, so 'bad' and 'bed' sound identical.",
+    whyHard: "Arabic /a/ sits between English /æ/ and /ɛ/. To produce /æ/, drop your jaw lower and spread your lips slightly, almost like you are about to say 'aaah' at the doctor. For /ɛ/, the jaw is more relaxed and the tongue is a bit higher.",
+    pairs: [
+      { a: "cat", b: "ket", ipaA: "/kæt/", ipaB: "/kɛt/" },
+      { a: "bad", b: "bed", ipaA: "/bæd/", ipaB: "/bɛd/" },
+      { a: "sat", b: "set", ipaA: "/sæt/", ipaB: "/sɛt/" },
+      { a: "man", b: "men", ipaA: "/mæn/", ipaB: "/mɛn/" },
+      { a: "pan", b: "pen", ipaA: "/pæn/", ipaB: "/pɛn/" },
+      { a: "had", b: "head", ipaA: "/hæd/", ipaB: "/hɛd/" },
+      { a: "sad", b: "said", ipaA: "/sæd/", ipaB: "/sɛd/" },
+      { a: "lad", b: "led", ipaA: "/læd/", ipaB: "/lɛd/" },
+      { a: "ban", b: "Ben", ipaA: "/bæn/", ipaB: "/bɛn/" },
+      { a: "dad", b: "dead", ipaA: "/dæd/", ipaB: "/dɛd/" },
+    ],
+  },
+  {
+    id: "uh-vs-ae",
+    title: "Cup vs Cap",
+    contrast: "/ʌ/ vs /æ/",
+    intro: "The /ʌ/ in 'cup' is a central vowel made with the tongue relaxed in the middle of the mouth. The /æ/ in 'cap' is a front vowel made with the jaw lower and the tongue forward. Arabic L1 speakers often produce both as the same Arabic /a/, so 'cup' and 'cap' merge.",
+    whyHard: "For /ʌ/, keep your tongue and lips relaxed in a neutral position — it should feel like a quick, dull 'uh'. For /æ/, push your tongue forward and drop your jaw a bit more. The difference is location, not length.",
+    pairs: [
+      { a: "cup", b: "cap", ipaA: "/kʌp/", ipaB: "/kæp/" },
+      { a: "bun", b: "ban", ipaA: "/bʌn/", ipaB: "/bæn/" },
+      { a: "hut", b: "hat", ipaA: "/hʌt/", ipaB: "/hæt/" },
+      { a: "luck", b: "lack", ipaA: "/lʌk/", ipaB: "/læk/" },
+      { a: "mud", b: "mad", ipaA: "/mʌd/", ipaB: "/mæd/" },
+      { a: "but", b: "bat", ipaA: "/bʌt/", ipaB: "/bæt/" },
+      { a: "fun", b: "fan", ipaA: "/fʌn/", ipaB: "/fæn/" },
+      { a: "run", b: "ran", ipaA: "/rʌn/", ipaB: "/ræn/" },
+      { a: "stuck", b: "stack", ipaA: "/stʌk/", ipaB: "/stæk/" },
+      { a: "duck", b: "dack", ipaA: "/dʌk/", ipaB: "/dæk/" },
+    ],
+  },
+  {
+    id: "short-u-vs-long-u",
+    title: "Full vs Fool",
+    contrast: "/ʊ/ vs /uː/",
+    intro: "English has a short, relaxed /ʊ/ (as in 'full') and a long, tense /uː/ (as in 'fool'). Arabic has only one back rounded vowel, so most learners produce only the long version. This makes 'full' and 'fool' sound the same, which can confuse listeners.",
+    whyHard: "For /ʊ/, the lips are slightly rounded but loose, and the sound is short. For /uː/, push your lips forward into a tight circle and hold the sound longer, almost like you are blowing out a candle. Length and lip tension are the keys.",
+    pairs: [
+      { a: "full", b: "fool", ipaA: "/fʊl/", ipaB: "/fuːl/" },
+      { a: "pull", b: "pool", ipaA: "/pʊl/", ipaB: "/puːl/" },
+      { a: "look", b: "Luke", ipaA: "/lʊk/", ipaB: "/luːk/" },
+      { a: "should", b: "shoed", ipaA: "/ʃʊd/", ipaB: "/ʃuːd/" },
+      { a: "could", b: "cooed", ipaA: "/kʊd/", ipaB: "/kuːd/" },
+      { a: "stood", b: "stewed", ipaA: "/stʊd/", ipaB: "/stuːd/" },
+      { a: "wood", b: "wooed", ipaA: "/wʊd/", ipaB: "/wuːd/" },
+      { a: "good", b: "goo'd", ipaA: "/ɡʊd/", ipaB: "/ɡuːd/" },
+      { a: "soot", b: "suit", ipaA: "/sʊt/", ipaB: "/suːt/" },
+      { a: "book", b: "buke", ipaA: "/bʊk/", ipaB: "/buːk/" },
+    ],
+  },
+  {
+    id: "er-vs-or",
+    title: "Bird vs Bored",
+    contrast: "/ɜːr/ vs /ɔːr/",
+    intro: "Both of these vowels involve the letter 'r' in writing, but they are very different sounds. /ɜːr/ in 'bird' is a central vowel with the tongue in the middle of the mouth. /ɔːr/ in 'bored' is a back rounded vowel with the lips pushed forward. Arabic L1 speakers often merge them into a single 'or' sound.",
+    whyHard: "For /ɜːr/, keep your lips relaxed (not rounded) and curl your tongue slightly back — it should feel neutral, almost lazy. For /ɔːr/, round your lips firmly and pull the tongue back. The lip position is the easiest visual cue.",
+    pairs: [
+      { a: "bird", b: "bored", ipaA: "/bɜːrd/", ipaB: "/bɔːrd/" },
+      { a: "heard", b: "horde", ipaA: "/hɜːrd/", ipaB: "/bɔːrd/" },
+      { a: "her", b: "horror", ipaA: "/hɜːr/", ipaB: "/hɔːrər/" },
+      { a: "burn", b: "born", ipaA: "/bɜːrn/", ipaB: "/bɔːrn/" },
+      { a: "turn", b: "torn", ipaA: "/tɜːrn/", ipaB: "/bɔːrn/" },
+      { a: "shirt", b: "short", ipaA: "/ʃɜːrt/", ipaB: "/ʃɔːrt/" },
+      { a: "hurt", b: "horde", ipaA: "/hɜːrt/", ipaB: "/bɔːrd/" },
+      { a: "stir", b: "store", ipaA: "/stɜːr/", ipaB: "/stɔːr/" },
+      { a: "fern", b: "fawn", ipaA: "/fɜːrn/", ipaB: "/bɔːn/" },
+      { a: "purr", b: "pour", ipaA: "/pɜːr/", ipaB: "/bɔːr/" },
+    ],
+  },
+  {
+    id: "ay-vs-eh",
+    title: "Late vs Let",
+    contrast: "/eɪ/ vs /ɛ/",
+    intro: "English /eɪ/ is a diphthong — your tongue glides from one position to another, starting at /ɛ/ and ending close to /i/. The /ɛ/ in 'let' is a single, steady vowel. Arabic L1 speakers sometimes produce both as a flat /e/, missing the glide in 'late'.",
+    whyHard: "Say /ɛ/ and hold it. Now, while saying it, slide your tongue up and forward toward /i/ — that movement is /eɪ/. The mouth opens slightly at the start and closes a little at the end. /ɛ/ has no movement; it stays put.",
+    pairs: [
+      { a: "late", b: "let", ipaA: "/leɪt/", ipaB: "/lɛt/" },
+      { a: "pain", b: "pen", ipaA: "/peɪn/", ipaB: "/pɛn/" },
+      { a: "taste", b: "test", ipaA: "/teɪst/", ipaB: "/lɛst/" },
+      { a: "wait", b: "wet", ipaA: "/weɪt/", ipaB: "/wɛt/" },
+      { a: "main", b: "men", ipaA: "/meɪn/", ipaB: "/mɛn/" },
+      { a: "sale", b: "sell", ipaA: "/seɪl/", ipaB: "/sɛl/" },
+      { a: "raid", b: "red", ipaA: "/reɪd/", ipaB: "/rɛd/" },
+      { a: "paper", b: "pepper", ipaA: "/ˈpeɪpər/", ipaB: "/ˈpɛpər/" },
+      { a: "fail", b: "fell", ipaA: "/feɪl/", ipaB: "/fɛl/" },
+      { a: "gate", b: "get", ipaA: "/ɡeɪt/", ipaB: "/ɡɛt/" },
+    ],
+  },
+  {
+    id: "ai-vs-ay",
+    title: "Mile vs Male",
+    contrast: "/aɪ/ vs /eɪ/",
+    intro: "Both of these are diphthongs, but they start in very different places. /aɪ/ begins with the open /a/ sound (like the Arabic فتحة) and glides up to /i/. /eɪ/ begins with /ɛ/ and glides up to /i/. Confusing them turns 'write' into 'rate' and 'mile' into 'male'.",
+    whyHard: "Drop your jaw fully for the start of /aɪ/ — your mouth should feel open. For /eɪ/, the jaw stays much higher; only your tongue moves. The starting position is everything: open mouth = /aɪ/, mid mouth = /eɪ/.",
+    pairs: [
+      { a: "mile", b: "male", ipaA: "/maɪl/", ipaB: "/meɪl/" },
+      { a: "bite", b: "bait", ipaA: "/baɪt/", ipaB: "/beɪt/" },
+      { a: "write", b: "rate", ipaA: "/raɪt/", ipaB: "/reɪt/" },
+      { a: "like", b: "lake", ipaA: "/laɪk/", ipaB: "/leɪk/" },
+      { a: "light", b: "late", ipaA: "/laɪt/", ipaB: "/leɪt/" },
+      { a: "pie", b: "pay", ipaA: "/paɪ/", ipaB: "/peɪ/" },
+      { a: "wide", b: "wade", ipaA: "/waɪd/", ipaB: "/weɪd/" },
+      { a: "tile", b: "tail", ipaA: "/taɪl/", ipaB: "/teɪl/" },
+      { a: "die", b: "day", ipaA: "/daɪ/", ipaB: "/deɪ/" },
+      { a: "five", b: "fave", ipaA: "/faɪv/", ipaB: "/feɪv/" },
+    ],
+  },
 ];
 
 const collocationLessons: WritingLabLesson[] = [
@@ -1840,7 +1954,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
             </div>
           ) : (
             <>
-              <div className="flex gap-2 mb-4 border-b border-gray-200">
+              <div className="flex gap-2 mb-4 border-b border-gray-200 overflow-x-auto whitespace-nowrap -mx-1 px-1 pb-px">
                 {pronunciationModules.map((m) => (
                   <button
                     key={m.id}
@@ -1848,7 +1962,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                       stopAll();
                       setActiveModuleId(m.id);
                     }}
-                    className={`px-4 py-2 text-sm font-semibold border-b-2 transition-colors ${
+                    className={`px-4 py-2 text-sm font-semibold border-b-2 transition-colors shrink-0 ${
                       activeModuleId === m.id
                         ? "border-petra text-petra"
                         : "border-transparent text-gray-500 hover:text-gray-700"
