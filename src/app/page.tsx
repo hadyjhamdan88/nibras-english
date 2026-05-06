@@ -1931,7 +1931,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="overflow-y-auto overflow-x-hidden w-[calc(100vw-1rem)] sm:max-w-3xl max-w-[calc(100vw-1rem)] bg-white p-0">
+      <SheetContent side="right" className="fixed inset-y-0 right-0 left-0 z-50 w-screen max-w-none overflow-y-auto overflow-x-hidden bg-white p-0 sm:left-auto sm:w-full sm:max-w-3xl">
         <SheetHeader className="p-6 pb-4 bg-gradient-to-r from-petra to-petra-dark">
           <SheetTitle className="text-xl font-bold text-white flex items-center gap-2">
             <Mic2 className="size-6" />
@@ -1942,9 +1942,9 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
           </SheetDescription>
         </SheetHeader>
 
-        <ScrollArea className="h-[calc(100vh-8rem)] px-6 pt-4 min-w-0 overflow-x-hidden">
+        <ScrollArea className="h-[calc(100vh-8rem)] pt-4 min-w-0 overflow-x-hidden">
           {!ttsSupported ? (
-            <div className="text-center py-12">
+            <div className="text-center py-12 px-4">
               <p className="text-gray-600 mb-2">
                 Your browser does not support text-to-speech.
               </p>
@@ -1954,6 +1954,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
             </div>
           ) : (
             <>
+              <div className="w-full max-w-full min-w-0 overflow-x-hidden px-4 sm:px-6">
               <div className="flex gap-2 mb-4 border-b border-gray-200 overflow-x-auto whitespace-nowrap -mx-1 px-1 pb-px">
                 {pronunciationModules.map((m) => (
                   <button
@@ -2018,10 +2019,10 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                 <Badge className="bg-petra/10 text-petra border-petra/20 mb-2">
                   {activeModule.contrast}
                 </Badge>
-                <p className="text-sm text-gray-700 leading-relaxed mb-2">
+                <p className="text-sm text-gray-700 leading-relaxed mb-2 whitespace-normal break-words max-w-full">
                   {activeModule.intro}
                 </p>
-                <p className="text-sm text-gray-600 leading-relaxed bg-amber-50 border-l-4 border-amber-300 p-3 rounded">
+                <p className="text-sm text-gray-600 leading-relaxed bg-amber-50 border-l-4 border-amber-300 p-3 rounded max-w-full min-w-0 overflow-visible whitespace-normal break-words">
                   <strong className="text-amber-700">Why it&apos;s tricky:</strong> {activeModule.whyHard}
                 </p>
               </div>
@@ -2039,9 +2040,9 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
                   return (
                     <div
                       key={`${activeModule.id}-${idx}`}
-                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors min-w-0 overflow-hidden"
+                      className="border border-gray-200 rounded-lg p-3 hover:border-petra/30 transition-colors w-full max-w-full min-w-0 overflow-hidden"
                     >
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 min-w-0">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2 w-full max-w-full min-w-0">
                         <button
                           onClick={() => speakWord(pair.a, idA)}
                           className={`flex items-center gap-2 p-2 rounded border transition-all min-w-0 w-full overflow-hidden ${
@@ -2113,6 +2114,7 @@ function PronunciationLab({ open, onOpenChange }: { open: boolean; onOpenChange:
               </div>
 
               <div className="h-8" />
+              </div>
             </>
           )}
         </ScrollArea>
