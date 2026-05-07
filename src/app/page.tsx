@@ -92,6 +92,12 @@ interface VisualEnglishEntry {
   category: string;
 }
 
+interface IELTSLessonSection {
+  title: string;
+  content: string;
+  bullets?: string[];
+}
+
 /* ═══════════════════════════════════════════════════════════════
    PLACEMENT TEST DATA
    ═══════════════════════════════════════════════════════════════ */
@@ -429,6 +435,127 @@ const grammarLessons: GrammarLesson[] = [
       "Practice with words relevant to your life: 'Pepsi' vs 'Bebzi', 'phone' vs 'bone'.",
       "Try tongue twisters: 'Peter Piper picked a peck of pickled peppers.'",
       "Remember: this takes time. Be patient with yourself. Even advanced speakers sometimes mix these up.",
+    ],
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   IELTS LESSON DATA
+   ═══════════════════════════════════════════════════════════════ */
+
+const ieltsWritingLessonSections: IELTSLessonSection[] = [
+  {
+    title: "The Goal of High-Stakes Writing",
+    content:
+      "IELTS Writing Task 2 is not only about expressing ideas. It is about organizing ideas strategically, answering every part of the prompt, and showing control over academic language under time pressure.",
+    bullets: [
+      "Address all parts of the question.",
+      "Organize ideas clearly.",
+      "Use precise academic vocabulary.",
+      "Vary sentence structures.",
+    ],
+  },
+  {
+    title: "The Four IELTS Writing Pillars",
+    content:
+      "A strong IELTS essay must respond to the task, guide the reader logically, use accurate vocabulary, and show grammatical range.",
+    bullets: [
+      "Task Achievement: fully answer the prompt.",
+      "Coherence and Cohesion: connect ideas smoothly.",
+      "Lexical Resource: use precise and varied vocabulary.",
+      "Grammatical Range and Accuracy: use varied sentence structures accurately.",
+    ],
+  },
+  {
+    title: "Why Five Paragraphs?",
+    content:
+      "For Discuss Both Views essays, a five-paragraph structure gives the writer more control. It allows both views to be explained objectively before the writer presents a clear personal opinion.",
+    bullets: [
+      "Paragraph 1: Introduction.",
+      "Paragraph 2: First viewpoint.",
+      "Paragraph 3: Second viewpoint.",
+      "Paragraph 4: Personal take.",
+      "Paragraph 5: Conclusion.",
+    ],
+  },
+  {
+    title: "Paragraph 1: Introduction",
+    content:
+      "The introduction should paraphrase the prompt and briefly signal your opinion. Avoid copying the question directly. Show the examiner that you can express the same idea using your own academic language.",
+    bullets: [
+      "Restate the topic using new wording.",
+      "Introduce the debate clearly.",
+      "Give a brief opinion.",
+      "Avoid vague phrases like \u201Cthere are pros and cons.\u201D",
+    ],
+  },
+  {
+    title: "Paragraph 2: First Viewpoint",
+    content:
+      "This paragraph explains one side of the debate objectively. The goal is to show that you understand the argument and can support it with reasoning or an example.",
+    bullets: [
+      "Use phrases like \u201Cproponents argue\u201D.",
+      "Explain the view clearly.",
+      "Add a specific example.",
+      "Do not give your full personal opinion yet.",
+    ],
+  },
+  {
+    title: "Paragraph 3: Second Viewpoint",
+    content:
+      "This paragraph presents the opposing view. Use a clear transition such as \u201CConversely\u201D or \u201COn the other hand\u201D to show contrast.",
+    bullets: [
+      "Introduce the counter-perspective.",
+      "Explain why some people support it.",
+      "Use balanced academic language.",
+      "Avoid emotional or one-sided phrasing.",
+    ],
+  },
+  {
+    title: "Paragraph 4: Personal Take",
+    content:
+      "This is the analytical heart of the essay. Here, you explain your own position and may use the counter-utilization strategy: take an example from the opposing side and show how it actually supports your argument.",
+    bullets: [
+      "State your position clearly.",
+      "Use deeper reasoning.",
+      "Respond to the opposing view.",
+      "Show mature academic judgment.",
+    ],
+  },
+  {
+    title: "Paragraph 5: Conclusion",
+    content:
+      "The conclusion should synthesize the essay. It should summarize both views briefly, restate your opinion in fresh language, and end with a clear final thought.",
+    bullets: [
+      "Do not introduce new ideas.",
+      "Restate your position.",
+      "Use different wording from the introduction.",
+      "End with a strong final sentence.",
+    ],
+  },
+  {
+    title: "Useful Academic Signals",
+    content:
+      "High-band writing depends on precise academic signaling. These phrases help the reader follow your argument clearly.",
+    bullets: [
+      "proponents argue",
+      "critics warn",
+      "conversely",
+      "take precedence over",
+      "far outweigh",
+      "undermine the value of",
+      "contextually appropriate",
+    ],
+  },
+  {
+    title: "Grammar Upgrade",
+    content:
+      "To move from functional writing to high-band writing, avoid repetitive simple sentences. Use complex and compound-complex structures to show control.",
+    bullets: [
+      "Use not only... but also...",
+      "Use although, while, whereas, and because.",
+      "Combine ideas logically.",
+      "Avoid repeating \u201CThe first benefit is...\u201D and \u201CThe second benefit is...\u201D",
     ],
   },
 ];
@@ -4911,6 +5038,99 @@ function WritingLabSheet({
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   IELTS LAB SHEET COMPONENT
+   ═══════════════════════════════════════════════════════════════ */
+
+function IELTSLabSheet({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) {
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent className="fixed inset-0 z-50 w-screen h-screen max-w-none overflow-y-auto overflow-x-hidden bg-white p-0 sm:inset-y-0 sm:left-auto sm:right-0 sm:w-full sm:max-w-5xl">
+        <div className="sticky top-0 z-10 bg-aqaba text-white px-4 sm:px-8 py-5 sm:py-8">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <button
+                type="button"
+                onClick={() => onOpenChange(false)}
+                className="inline-flex items-center gap-2 text-white/90 hover:text-white text-sm font-semibold mb-3"
+              >
+                &larr; Back
+              </button>
+
+              <h2 className="text-2xl sm:text-4xl font-bold leading-tight">
+                IELTS Lab
+              </h2>
+
+              <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">
+                Writing Task 2 strategies for clearer, stronger academic essays.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-full overflow-x-hidden px-4 sm:px-8 py-6 space-y-6">
+          <div className="rounded-2xl border border-aqaba/10 bg-aqaba/5 p-5 sm:p-6">
+            <Badge className="bg-aqaba text-white mb-3">
+              Writing Task 2
+            </Badge>
+
+            <h3 className="text-2xl font-bold text-aqaba mb-3">
+              Mastering the Five-Paragraph Comparative Essay
+            </h3>
+
+            <p className="text-gray-700 leading-relaxed">
+              This lesson teaches a practical structure for IELTS &ldquo;Discuss Both Views&rdquo; essays. It helps learners discuss both sides clearly, protect their own opinion, and build a more mature academic response.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:gap-6">
+            {ieltsWritingLessonSections.map((section, index) => (
+              <div
+                key={section.title}
+                className="rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-sm"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge className="bg-olive/10 text-olive border-olive/20">
+                    Step {index + 1}
+                  </Badge>
+
+                  <h4 className="text-xl font-bold text-gray-900">
+                    {section.title}
+                  </h4>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {section.content}
+                </p>
+
+                {section.bullets && (
+                  <ul className="space-y-2">
+                    {section.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex gap-2 text-gray-700 leading-relaxed"
+                      >
+                        <span className="text-petra font-bold">&bull;</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    VISUAL ENGLISH SHEET COMPONENT
    ═══════════════════════════════════════════════════════════════ */
 
@@ -5005,6 +5225,7 @@ export default function Home() {
   const [pronunciationOpen, setPronunciationOpen] = useState(false);
   const [writingLabOpen, setWritingLabOpen] = useState(false);
   const [visualEnglishOpen, setVisualEnglishOpen] = useState(false);
+  const [ieltsLabOpen, setIeltsLabOpen] = useState(false);
   const [vocabOpen, setVocabOpen] = useState(false);
   const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
@@ -5435,6 +5656,45 @@ export default function Home() {
                 <ArrowRight className="size-5 text-gray-400 shrink-0 mt-1" />
               </CardContent>
             </Card>
+
+            {/* IELTS Lab */}
+            <Card
+              className="rounded-2xl border-none shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-1 active:scale-[0.99] cursor-pointer"
+              onClick={() => setIeltsLabOpen(true)}
+            >
+              <CardHeader>
+                <div className="flex justify-between items-start gap-2">
+                  <div>
+                    <CardTitle className="text-xl sm:text-2xl text-aqaba">
+                      IELTS Lab
+                    </CardTitle>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Writing Task 2 strategies
+                    </p>
+                  </div>
+
+                  <Badge className="bg-petra/10 text-petra border-petra/20 shrink-0">
+                    New
+                  </Badge>
+                </div>
+              </CardHeader>
+
+              <CardContent>
+                <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
+                  Prepare for IELTS with clear strategies, essay frameworks, and high-band writing techniques.
+                </p>
+
+                <Button
+                  className="bg-aqaba hover:bg-aqaba/90 text-white w-full sm:w-auto"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIeltsLabOpen(true);
+                  }}
+                >
+                  Open IELTS Lab
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -5615,6 +5875,12 @@ export default function Home() {
 
       {/* Visual English */}
       <VisualEnglishSheet open={visualEnglishOpen} onOpenChange={setVisualEnglishOpen} />
+
+      {/* IELTS Lab */}
+      <IELTSLabSheet
+        open={ieltsLabOpen}
+        onOpenChange={setIeltsLabOpen}
+      />
 
       {/* AI Chatbot */}
       <ChatBot />
