@@ -98,6 +98,17 @@ interface IELTSLessonSection {
   bullets?: string[];
 }
 
+interface IELTSSpeakingSection {
+  title: string;
+  content: string;
+  bullets?: string[];
+}
+
+interface IELTSSpeakingQA {
+  question: string;
+  answer: string;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    PLACEMENT TEST DATA
    ═══════════════════════════════════════════════════════════════ */
@@ -557,6 +568,143 @@ const ieltsWritingLessonSections: IELTSLessonSection[] = [
       "Combine ideas logically.",
       "Avoid repeating “The first benefit is...” and “The second benefit is...”",
     ],
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   IELTS SPEAKING DATA
+   ═══════════════════════════════════════════════════════════════ */
+
+const ieltsSpeakingSections: IELTSSpeakingSection[] = [
+  {
+    title: "What Is the IELTS Speaking Test?",
+    content:
+      "The IELTS Speaking test is a face-to-face interview that usually lasts 11 to 14 minutes. It checks how naturally, clearly, and accurately you can speak English.",
+    bullets: [
+      "Part 1: Introduction and interview, usually 4\u20135 minutes.",
+      "Part 2: Long turn, where you speak for 1\u20132 minutes on a topic card.",
+      "Part 3: Discussion, with more abstract questions related to Part 2.",
+    ],
+  },
+  {
+    title: "How Speaking Is Assessed",
+    content:
+      "Your score is based on four main criteria. A strong answer is not only correct; it is clear, organized, natural, and easy to understand.",
+    bullets: [
+      "Fluency and Coherence: speaking smoothly and connecting ideas clearly.",
+      "Lexical Resource: using varied and accurate vocabulary.",
+      "Grammatical Range and Accuracy: using different sentence structures correctly.",
+      "Pronunciation: speaking clearly with natural stress and intonation.",
+    ],
+  },
+  {
+    title: "Part 1: Keep It Natural",
+    content:
+      "In Part 1, you answer simple questions about yourself, your studies, hobbies, hometown, family, or daily life. You should not give one-word answers. Aim for 2\u20133 natural sentences.",
+    bullets: [
+      "Answer directly.",
+      "Add a reason or example.",
+      "Sound conversational, not memorized.",
+      "Avoid repeating the same words too much.",
+    ],
+  },
+  {
+    title: "Part 2: The Long Turn",
+    content:
+      "In Part 2, you receive a topic card and have one minute to prepare. Write keywords, not full sentences. Then speak for 1\u20132 minutes with a clear beginning, details, and ending.",
+    bullets: [
+      "Use the bullet points on the card.",
+      "Organize your answer like a short story.",
+      "Add personal details.",
+      "Keep speaking until the examiner stops you.",
+    ],
+  },
+  {
+    title: "Part 3: Discussion",
+    content:
+      "Part 3 asks deeper questions connected to the Part 2 topic. This is where you show your ability to explain opinions, compare ideas, and discuss society in a more mature way.",
+    bullets: [
+      "Give a clear opinion.",
+      "Explain why.",
+      "Use examples from society, education, work, or culture.",
+      "Avoid very short answers.",
+    ],
+  },
+];
+
+const ieltsSpeakingPart1QA: IELTSSpeakingQA[] = [
+  {
+    question: "What do you study?",
+    answer:
+      "I study English at university. I\u2019m especially interested in communication and translation because they help people understand each other across cultures.",
+  },
+  {
+    question: "What do you like to do in your free time?",
+    answer:
+      "In my free time, I enjoy reading and walking with my friends. I also like visiting quiet caf\u00E9s in Amman because they help me relax and think clearly.",
+  },
+  {
+    question: "Can you tell me about your hometown?",
+    answer:
+      "I\u2019m from Amman, the capital of Jordan. It is a busy city, but it also has many beautiful old areas, like Jabal Amman, where you can feel both history and modern life together.",
+  },
+  {
+    question: "What is your favorite dish?",
+    answer:
+      "My favorite dish is mansaf, which is a traditional Jordanian meal made with lamb, rice, and jameed. I like it because it is connected to family gatherings and special occasions.",
+  },
+];
+
+const ieltsSpeakingPart2Topic = {
+  title: "Describe a place you visited that you would like to visit again.",
+  points: [
+    "Where the place is",
+    "Why you went there",
+    "What you did there",
+    "Why you would like to go back",
+  ],
+  answer:
+    "One place I visited and would really like to visit again is Aqaba, in the south of Jordan. I went there with my family during a short holiday because we wanted to spend some time near the sea and take a break from our usual routine in Amman. While we were there, we walked by the beach, tried local seafood, and enjoyed the calm atmosphere in the evening. What I liked most was the contrast between the sea, the mountains, and the warm weather. I would love to go back because Aqaba gives me a feeling of relaxation, and there are still many activities I would like to try, such as visiting more historical sites and spending more time near the Red Sea.",
+};
+
+const ieltsSpeakingPart3QA: IELTSSpeakingQA[] = [
+  {
+    question: "Why do people like visiting places they have been to before?",
+    answer:
+      "I think people return to familiar places because they connect them with positive memories. For example, a family may visit Aqaba again because it reminds them of a peaceful holiday. Familiar places can also feel comfortable because people already know what to expect.",
+  },
+  {
+    question: "Do you think tourism is important for Jordan?",
+    answer:
+      "Yes, tourism is very important for Jordan because it supports the economy and introduces visitors to the country\u2019s culture and history. Places like Petra, Wadi Rum, and the Dead Sea show different sides of Jordan and help people understand its identity more deeply.",
+  },
+  {
+    question: "How can travel affect a person\u2019s way of thinking?",
+    answer:
+      "Travel can make people more open-minded because it allows them to see different lifestyles and traditions. Even traveling inside one\u2019s own country can be meaningful, as people may discover how diverse their society is.",
+  },
+];
+
+const ieltsSpeakingDifficultScenarios: IELTSSpeakingQA[] = [
+  {
+    question: "If you don\u2019t understand the question",
+    answer:
+      "I\u2019m sorry, could you please repeat the question?",
+  },
+  {
+    question: "If you don\u2019t understand a word",
+    answer:
+      "I\u2019m not sure I understand what you mean by that word. Could you explain it, please?",
+  },
+  {
+    question: "If the examiner asks about something you do not like",
+    answer:
+      "Actually, I\u2019m not really a fan of that, but I do enjoy other activities such as reading, watching documentaries, or spending time with family.",
+  },
+  {
+    question: "If you need a moment to think",
+    answer:
+      "That\u2019s an interesting question. I haven\u2019t thought about it deeply before, but I would say that...",
   },
 ];
 
@@ -5067,7 +5215,7 @@ function IELTSLabSheet({
               </h2>
 
               <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">
-                Writing Task 2 strategies for clearer, stronger academic essays.
+                Writing Task 2 strategies and IELTS Speaking preparation for stronger academic performance.
               </p>
             </div>
           </div>
@@ -5217,6 +5365,187 @@ function IELTSLabSheet({
                 <span>The examples are realistic and connected to education and society.</span>
               </li>
             </ul>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════
+              IELTS SPEAKING SECTION
+             ═══════════════════════════════════════════════════════ */}
+
+          {/* ── Speaking Overview Header ── */}
+          <div className="rounded-2xl border border-petra/10 bg-petra/5 p-5 sm:p-6">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <Badge className="bg-petra text-white">
+                IELTS Speaking
+              </Badge>
+              <Badge className="bg-white text-petra border-petra/20">
+                11\u201314 minutes
+              </Badge>
+            </div>
+
+            <h3 className="text-2xl font-bold text-petra mb-3">
+              Speaking Test Strategy
+            </h3>
+
+            <p className="text-gray-700 leading-relaxed">
+              Learn how to answer IELTS Speaking questions naturally, clearly, and confidently while using examples rooted in real life.
+            </p>
+          </div>
+
+          {/* ── Speaking Overview Sections ── */}
+          <div className="grid gap-4 sm:gap-6">
+            {ieltsSpeakingSections.map((section, index) => (
+              <div
+                key={section.title}
+                className="rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-sm"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge className="bg-petra/10 text-petra border-petra/20">
+                    {index + 1}
+                  </Badge>
+
+                  <h4 className="text-xl font-bold text-gray-900">
+                    {section.title}
+                  </h4>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {section.content}
+                </p>
+
+                {section.bullets && (
+                  <ul className="space-y-2">
+                    {section.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex gap-2 text-gray-700 leading-relaxed"
+                      >
+                        <span className="text-petra font-bold">&bull;</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* ── Part 1: Introduction & Interview ── */}
+          <div className="rounded-2xl border border-aqaba/10 bg-aqaba/5 p-5 sm:p-6">
+            <h3 className="text-2xl font-bold text-aqaba mb-2">
+              Part 1: Introduction &amp; Interview
+            </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Answer naturally in 2\u20133 sentences. Avoid one-word answers.
+            </p>
+
+            <div className="grid gap-4 sm:gap-5">
+              {ieltsSpeakingPart1QA.map((qa) => (
+                <div
+                  key={qa.question}
+                  className="rounded-xl bg-white p-4 sm:p-5 border border-aqaba/10"
+                >
+                  <p className="font-bold text-gray-900 mb-2">
+                    {qa.question}
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    {qa.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Part 2: Long Turn ── */}
+          <div className="rounded-2xl border border-petra/10 bg-petra/5 p-5 sm:p-6">
+            <h3 className="text-2xl font-bold text-petra mb-2">
+              Part 2: Long Turn
+            </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              You have 1 minute to prepare and 1\u20132 minutes to speak.
+            </p>
+
+            {/* Topic Card */}
+            <div className="rounded-xl bg-white p-5 sm:p-6 border border-petra/20 shadow-sm mb-5">
+              <p className="text-xs text-petra font-semibold uppercase tracking-wide mb-2">
+                Topic Card
+              </p>
+              <h4 className="text-lg font-bold text-gray-900 mb-4">
+                {ieltsSpeakingPart2Topic.title}
+              </h4>
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">
+                You should say:
+              </p>
+              <ul className="space-y-2 mb-0">
+                {ieltsSpeakingPart2Topic.points.map((point) => (
+                  <li key={point} className="flex gap-2 text-gray-700 leading-relaxed">
+                    <span className="text-petra font-bold">&bull;</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Model Answer */}
+            <div className="rounded-xl bg-white p-5 sm:p-6 border border-aqaba/10">
+              <p className="text-xs text-aqaba font-semibold uppercase tracking-wide mb-2">
+                Model Answer
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                {ieltsSpeakingPart2Topic.answer}
+              </p>
+            </div>
+          </div>
+
+          {/* ── Part 3: Discussion ── */}
+          <div className="rounded-2xl border border-olive/10 bg-olive/5 p-5 sm:p-6">
+            <h3 className="text-2xl font-bold text-olive mb-2">
+              Part 3: Discussion
+            </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Develop your answers with reasons, examples, and broader social ideas.
+            </p>
+
+            <div className="grid gap-4 sm:gap-5">
+              {ieltsSpeakingPart3QA.map((qa) => (
+                <div
+                  key={qa.question}
+                  className="rounded-xl bg-white p-4 sm:p-5 border border-olive/10"
+                >
+                  <p className="font-bold text-gray-900 mb-2">
+                    {qa.question}
+                  </p>
+                  <p className="text-gray-700 leading-relaxed">
+                    {qa.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Difficult Scenarios ── */}
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5 sm:p-6">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              Useful Responses for Difficult Moments
+            </h3>
+            <p className="text-gray-600 text-sm mb-4">
+              It is acceptable to ask for repetition or clarification. It is better to ask politely than to stay silent or answer incorrectly.
+            </p>
+
+            <div className="grid gap-4 sm:gap-5">
+              {ieltsSpeakingDifficultScenarios.map((qa) => (
+                <div
+                  key={qa.question}
+                  className="rounded-xl bg-white p-4 sm:p-5 border border-gray-200"
+                >
+                  <p className="font-bold text-gray-900 mb-2">
+                    {qa.question}
+                  </p>
+                  <p className="text-gray-700 leading-relaxed italic">
+                    {qa.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </SheetContent>
@@ -5763,7 +6092,7 @@ export default function Home() {
                       IELTS Lab
                     </CardTitle>
                     <p className="text-xs text-gray-500 mt-1">
-                      Writing Task 2 strategies
+                      Writing &amp; Speaking strategies
                     </p>
                   </div>
 
@@ -5775,7 +6104,7 @@ export default function Home() {
 
               <CardContent>
                 <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
-                  Prepare for IELTS with clear strategies, essay frameworks, and high-band writing techniques.
+                  Prepare for IELTS with clear writing frameworks, speaking strategies, model answers, and high-band techniques.
                 </p>
 
                 <Button
