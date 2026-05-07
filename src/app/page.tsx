@@ -466,7 +466,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     expression: "spill the beans",
     image: "/spill-the-beans.jpg",
     meaning: "To accidentally reveal a secret.",
-    example: "Omar spilled the beans about the surprise engagement dinner.",
+    example: "Salma spilled the beans about the surprise engagement dinner.",
     level: "B2",
     category: "Social Expressions",
   },
