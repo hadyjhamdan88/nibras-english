@@ -5124,6 +5124,100 @@ function IELTSLabSheet({
               </div>
             ))}
           </div>
+
+          {/* ── Practice Question ── */}
+          <div className="rounded-2xl border border-petra/10 bg-petra/5 p-5 sm:p-6">
+            <Badge className="bg-petra text-white mb-3">
+              IELTS Writing Task 2
+            </Badge>
+
+            <h3 className="text-2xl font-bold text-petra mb-4">
+              Practice Question
+            </h3>
+
+            <div className="rounded-xl bg-white p-5 border border-petra/10">
+              <p className="text-gray-800 leading-relaxed font-medium">
+                Some people believe that technology is harmful to society, while others argue that its advantages outweigh the disadvantages.
+              </p>
+
+              <p className="text-gray-800 leading-relaxed font-medium mt-4">
+                Discuss both views and give your own opinion.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Model Essay ── */}
+          <div className="rounded-2xl border border-aqaba/10 bg-aqaba/5 p-5 sm:p-6">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <Badge className="bg-aqaba text-white">
+                Band 8+ Model
+              </Badge>
+
+              <Badge className="bg-olive/10 text-olive border-olive/20">
+                Discuss Both Views
+              </Badge>
+            </div>
+
+            <h3 className="text-2xl font-bold text-aqaba mb-4">
+              Model Essay
+            </h3>
+
+            <div className="space-y-5 text-gray-700 leading-relaxed">
+              <p>
+                Technology has become an inseparable part of modern life, transforming the way people communicate, study, and work. While some individuals believe that technological advancement has negatively affected societies by reducing human interaction and increasing dependency, I believe that its advantages far outweigh its drawbacks when used responsibly.
+              </p>
+
+              <p>
+                On the one hand, critics argue that technology has weakened social relationships and created unhealthy lifestyles. Many people spend long hours on their phones or computers instead of engaging in face-to-face communication with family and friends. Furthermore, excessive reliance on technology may reduce physical activity and contribute to problems such as stress, isolation, and lack of concentration. For example, some students become distracted by social media during study sessions, which can negatively affect their academic performance.
+              </p>
+
+              <p>
+                Conversely, supporters of technology argue that it has significantly improved efficiency, communication, and access to knowledge. Educational platforms, online courses, and artificial intelligence tools now allow learners to study from almost anywhere in the world. In addition, technology has transformed healthcare, transportation, and business by saving both time and effort. For instance, students in Jordan can now attend international workshops and language courses online without traveling abroad, which creates opportunities that were previously inaccessible.
+              </p>
+
+              <p>
+                From my perspective, although technology may create certain social and psychological challenges, these problems usually result from misuse rather than the technology itself. When used wisely, technological tools can support education, strengthen communication, and improve productivity. Rather than rejecting technology, societies should focus on teaching people how to use it in balanced and responsible ways.
+              </p>
+
+              <p>
+                In conclusion, while technology can negatively influence social interaction and daily habits, I strongly believe that its benefits greatly overshadow its disadvantages. With proper awareness and responsible usage, technology can continue to play a positive role in improving people\u2019s lives and expanding educational and professional opportunities.
+              </p>
+            </div>
+          </div>
+
+          {/* ── Essay Analysis ── */}
+          <div className="rounded-2xl border border-olive/10 bg-olive/5 p-5 sm:p-6">
+            <h3 className="text-2xl font-bold text-olive mb-4">
+              Why This Essay Scores Highly
+            </h3>
+
+            <ul className="space-y-3 text-gray-700 leading-relaxed">
+              <li className="flex gap-2">
+                <span className="text-olive font-bold">&bull;</span>
+                <span>Both viewpoints are discussed clearly and objectively.</span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-olive font-bold">&bull;</span>
+                <span>The opinion is clear from the introduction and reinforced in the conclusion.</span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-olive font-bold">&bull;</span>
+                <span>The essay uses academic connectors such as \u201CConversely,\u201D \u201CFurthermore,\u201D and \u201CIn conclusion.\u201D</span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-olive font-bold">&bull;</span>
+                <span>Complex sentence structures are used naturally throughout the essay.</span>
+              </li>
+
+              <li className="flex gap-2">
+                <span className="text-olive font-bold">&bull;</span>
+                <span>The examples are realistic and connected to education and society.</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
