@@ -109,6 +109,24 @@ interface IELTSSpeakingQA {
   answer: string;
 }
 
+interface IELTSReadingOption {
+  label: string;
+  text: string;
+  explanation: string;
+  correct?: boolean;
+}
+
+interface IELTSReadingExercise {
+  type: string;
+  title: string;
+  passage: string;
+  question: string;
+  options: IELTSReadingOption[];
+  correctAnswer: string;
+  whyCorrect: string;
+  commonTrap: string;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    PLACEMENT TEST DATA
    ═══════════════════════════════════════════════════════════════ */
@@ -705,6 +723,193 @@ const ieltsSpeakingDifficultScenarios: IELTSSpeakingQA[] = [
     question: "If you need a moment to think",
     answer:
       "That\u2019s an interesting question. I haven\u2019t thought about it deeply before, but I would say that...",
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   IELTS READING DATA
+   ═══════════════════════════════════════════════════════════════ */
+
+const ieltsReadingStrategies = [
+  {
+    title: "Skimming vs Scanning",
+    content:
+      "Strong IELTS readers do not read every line with the same level of attention. Skimming helps identify the general purpose of a passage, while scanning helps locate specific information quickly.",
+  },
+  {
+    title: "Paraphrasing Awareness",
+    content:
+      "IELTS rarely repeats the exact wording from the passage. Instead, it uses synonyms, restructuring, and implied meaning. Students must focus on meaning rather than matching keywords mechanically.",
+  },
+  {
+    title: "Managing Time Strategically",
+    content:
+      "Difficult questions should not consume excessive time. Strong candidates move strategically, answer easier questions first, and return later when necessary.",
+  },
+  {
+    title: "Understanding Distractors",
+    content:
+      "Many IELTS options sound partially correct. However, only one fully matches the meaning, scope, and logic of the passage. Students must learn why tempting distractors fail.",
+  },
+];
+
+const ieltsReadingExercises: IELTSReadingExercise[] = [
+  {
+    type: "Matching Headings",
+    title: "Technology and Independent Thinking",
+    passage:
+      "Although artificial intelligence has significantly increased efficiency in many workplaces, some researchers argue that overdependence on automated systems may gradually reduce employees\u2019 ability to solve problems independently. Others, however, believe that technological adaptation simply changes the nature of human skills rather than weakening them.",
+    question:
+      "Which heading best matches the paragraph?",
+    options: [
+      {
+        label: "A",
+        text: "The economic impact of workplace automation",
+        explanation:
+          "The passage discusses intellectual and cognitive consequences rather than financial or economic outcomes.",
+      },
+      {
+        label: "B",
+        text: "Concerns about technology\u2019s influence on independent thinking",
+        explanation:
+          "This option captures the central debate of the paragraph: whether technology weakens independent thought.",
+        correct: true,
+      },
+      {
+        label: "C",
+        text: "The historical development of artificial intelligence",
+        explanation:
+          "Artificial intelligence is mentioned, but the passage never discusses its historical development.",
+      },
+      {
+        label: "D",
+        text: "Why employees resist technological change",
+        explanation:
+          "The paragraph discusses consequences of technology, not resistance to it.",
+      },
+    ],
+    correctAnswer: "B",
+    whyCorrect:
+      "Option B reflects the paragraph\u2019s core concern: the possible decline of independent problem-solving due to overreliance on technology.",
+    commonTrap:
+      "Students often choose options based on repeated keywords such as \u201Ctechnology\u201D or \u201Cartificial intelligence\u201D rather than identifying the main idea.",
+  },
+
+  {
+    type: "True / False / Not Given",
+    title: "Hybrid Learning in Jordan",
+    passage:
+      "Several universities in Jordan have recently integrated hybrid learning systems into their academic programs. According to educational researchers, this approach may improve flexibility for students who balance university studies with part-time employment. Nevertheless, some instructors remain concerned about reduced classroom interaction and long-term student engagement.",
+    question:
+      "Hybrid learning has improved academic performance in most Jordanian universities.",
+    options: [
+      {
+        label: "A",
+        text: "TRUE",
+        explanation:
+          "The passage never states that academic performance improved.",
+      },
+      {
+        label: "B",
+        text: "FALSE",
+        explanation:
+          "The passage does not directly contradict the statement either.",
+      },
+      {
+        label: "C",
+        text: "NOT GIVEN",
+        explanation:
+          "The passage discusses flexibility and engagement, but academic performance is never mentioned.",
+        correct: true,
+      },
+    ],
+    correctAnswer: "C",
+    whyCorrect:
+      "The statement introduces academic performance, which does not appear anywhere in the passage.",
+    commonTrap:
+      "Many students incorrectly assume that flexibility automatically means improved performance, but IELTS only rewards information explicitly stated or logically inferable.",
+  },
+
+  {
+    type: "Inferring Information",
+    title: "Presentation Anxiety",
+    passage:
+      "Although Sami had rehearsed his presentation several times, he continued reorganizing his notes moments before entering the conference hall. He avoided eye contact with the other participants and repeatedly checked whether his slides were functioning correctly.",
+    question:
+      "What can reasonably be inferred about Sami?",
+    options: [
+      {
+        label: "A",
+        text: "He regretted attending the conference.",
+        explanation:
+          "The passage does not suggest regret.",
+      },
+      {
+        label: "B",
+        text: "He lacked preparation.",
+        explanation:
+          "The passage clearly states that he rehearsed several times.",
+      },
+      {
+        label: "C",
+        text: "He was experiencing anxiety.",
+        explanation:
+          "His repeated checking, avoidance of eye contact, and nervous behavior strongly imply anxiety.",
+        correct: true,
+      },
+      {
+        label: "D",
+        text: "He disliked the other participants.",
+        explanation:
+          "Avoiding eye contact does not necessarily indicate dislike.",
+      },
+    ],
+    correctAnswer: "C",
+    whyCorrect:
+      "The behavioral clues collectively suggest nervousness and anxiety before the presentation.",
+    commonTrap:
+      "Students sometimes interpret isolated details emotionally without considering the overall behavioral pattern.",
+  },
+
+  {
+    type: "Vocabulary in Context",
+    title: "Water Sustainability",
+    passage:
+      "Environmental organizations have repeatedly warned that excessive water consumption in arid regions may create long-term sustainability challenges if preventative measures are not implemented promptly.",
+    question:
+      "Which phrase is closest in meaning to \u201Cimplemented promptly\u201D?",
+    options: [
+      {
+        label: "A",
+        text: "avoided entirely",
+        explanation:
+          "This changes the meaning completely.",
+      },
+      {
+        label: "B",
+        text: "introduced quickly",
+        explanation:
+          "\u201CImplemented promptly\u201D means put into action quickly.",
+        correct: true,
+      },
+      {
+        label: "C",
+        text: "analyzed carefully",
+        explanation:
+          "The passage discusses action, not analysis.",
+      },
+      {
+        label: "D",
+        text: "expanded gradually",
+        explanation:
+          "Gradual expansion does not match the urgency implied by \u201Cpromptly.\u201D",
+      },
+    ],
+    correctAnswer: "B",
+    whyCorrect:
+      "The phrase refers to taking action without delay.",
+    commonTrap:
+      "Students often focus on individual words rather than interpreting the entire phrase in context.",
   },
 ];
 
@@ -5215,7 +5420,7 @@ function IELTSLabSheet({
               </h2>
 
               <p className="text-white/90 mt-2 text-base sm:text-xl leading-relaxed">
-                Writing Task 2 strategies and IELTS Speaking preparation for stronger academic performance.
+                Writing Task 2 strategies, Speaking preparation, and Reading analysis for stronger academic performance.
               </p>
             </div>
           </div>
@@ -5546,6 +5751,159 @@ function IELTSLabSheet({
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════
+              IELTS READING SECTION
+             ═══════════════════════════════════════════════════════ */}
+
+          {/* ── Reading Header ── */}
+          <div className="rounded-2xl border border-olive/10 bg-olive/5 p-5 sm:p-6">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <Badge className="bg-olive text-white">
+                IELTS Reading
+              </Badge>
+              <Badge className="bg-white text-olive border-olive/20">
+                Strategy &amp; Analysis
+              </Badge>
+            </div>
+
+            <h3 className="text-2xl font-bold text-olive mb-3">
+              Reading Beyond Keywords
+            </h3>
+
+            <p className="text-gray-700 leading-relaxed">
+              Strong IELTS Reading performance depends on inference, paraphrasing awareness, and understanding why distractors fail &mdash; not simply matching words mechanically.
+            </p>
+          </div>
+
+          {/* ── Reading Strategies ── */}
+          <div className="grid gap-4 sm:gap-6">
+            {ieltsReadingStrategies.map((strategy) => (
+              <div
+                key={strategy.title}
+                className="rounded-2xl bg-white border border-gray-100 shadow-sm p-5 sm:p-6"
+              >
+                <h4 className="text-xl font-bold text-gray-900 mb-2">
+                  {strategy.title}
+                </h4>
+                <p className="text-gray-700 leading-relaxed">
+                  {strategy.content}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Advanced Exercises ── */}
+          <div className="grid gap-6 sm:gap-8">
+            {ieltsReadingExercises.map((exercise) => (
+              <div
+                key={exercise.title}
+                className="rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-sm"
+              >
+                {/* Exercise Header */}
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <Badge className="bg-olive text-white text-xs">
+                    {exercise.type}
+                  </Badge>
+                  <h4 className="text-xl font-bold text-gray-900">
+                    {exercise.title}
+                  </h4>
+                </div>
+
+                {/* Passage */}
+                <div className="rounded-xl bg-gray-50 border border-gray-200 p-4 sm:p-5 mb-5">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">
+                    Passage
+                  </p>
+                  <p className="text-gray-800 leading-relaxed">
+                    {exercise.passage}
+                  </p>
+                </div>
+
+                {/* Question */}
+                <div className="mb-5">
+                  <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-2">
+                    Question
+                  </p>
+                  <p className="text-gray-900 font-medium leading-relaxed">
+                    {exercise.question}
+                  </p>
+                </div>
+
+                {/* Options */}
+                <div className="grid gap-3 mb-6">
+                  {exercise.options.map((option) => (
+                    <div
+                      key={option.label}
+                      className={`rounded-xl p-4 border ${
+                        option.correct
+                          ? "bg-green-50 border-green-200"
+                          : "bg-gray-50 border-gray-200"
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span
+                          className={`text-sm font-bold shrink-0 mt-0.5 ${
+                            option.correct
+                              ? "text-green-700"
+                              : "text-gray-500"
+                          }`}
+                        >
+                          {option.label}.
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p
+                            className={`font-medium leading-relaxed ${
+                              option.correct
+                                ? "text-green-900"
+                                : "text-gray-700"
+                            }`}
+                          >
+                            {option.text}
+                          </p>
+                          <p
+                            className={`text-sm mt-1 leading-relaxed ${
+                              option.correct
+                                ? "text-green-800"
+                                : "text-gray-500"
+                            }`}
+                          >
+                            {option.explanation}
+                          </p>
+                        </div>
+                        {option.correct && (
+                          <Badge className="bg-green-600 text-white text-xs shrink-0">
+                            Correct
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Analysis Sections */}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-xl bg-aqaba/5 border border-aqaba/10 p-4">
+                    <p className="text-xs text-aqaba uppercase tracking-wide font-semibold mb-2">
+                      Why the Correct Answer Works
+                    </p>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {exercise.whyCorrect}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-petra/5 border border-petra/10 p-4">
+                    <p className="text-xs text-petra uppercase tracking-wide font-semibold mb-2">
+                      Common Student Trap
+                    </p>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {exercise.commonTrap}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </SheetContent>
@@ -6092,7 +6450,7 @@ export default function Home() {
                       IELTS Lab
                     </CardTitle>
                     <p className="text-xs text-gray-500 mt-1">
-                      Writing &amp; Speaking strategies
+                      Writing, Speaking &amp; Reading strategies
                     </p>
                   </div>
 
@@ -6104,7 +6462,7 @@ export default function Home() {
 
               <CardContent>
                 <p className="text-gray-700 leading-relaxed mb-4 text-sm sm:text-base">
-                  Prepare for IELTS with clear writing frameworks, speaking strategies, model answers, and high-band techniques.
+                  Prepare for IELTS with academic writing frameworks, speaking strategies, reading analysis, model answers, and exam-level thinking techniques.
                 </p>
 
                 <Button
