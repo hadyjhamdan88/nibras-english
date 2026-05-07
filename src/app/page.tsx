@@ -439,7 +439,7 @@ const grammarLessons: GrammarLesson[] = [
 
 const visualEnglishCards: VisualEnglishEntry[] = [
   {
-    expression: "pull an all-nighter",
+    expression: "Pull an all-nighter",
     image: "/pull-all-nighter.jpg",
     meaning: "To stay awake all night studying or working.",
     example: "Rami pulled an all-nighter before his engineering exam.",
@@ -447,7 +447,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     category: "University Life",
   },
   {
-    expression: "under pressure",
+    expression: "Under pressure",
     image: "/under-pressure.jpg",
     meaning: "Feeling stressed because of responsibilities or expectations.",
     example: "Maha felt under pressure before presenting her research project.",
@@ -455,7 +455,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     category: "Academic Life",
   },
   {
-    expression: "on the same page",
+    expression: "On the same page",
     image: "/on-the-same-page.jpg",
     meaning: "To understand and agree with each other.",
     example: "The group finally got on the same page before submitting the project.",
@@ -463,7 +463,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     category: "Teamwork",
   },
   {
-    expression: "spill the beans",
+    expression: "Spill the beans",
     image: "/spill-the-beans.jpg",
     meaning: "To accidentally reveal a secret.",
     example: "Salma spilled the beans about the surprise engagement dinner.",
@@ -471,7 +471,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     category: "Social Expressions",
   },
   {
-    expression: "stuck in traffic",
+    expression: "Stuck in traffic",
     image: "/stuck-in-traffic.jpg",
     meaning: "Unable to move because of heavy traffic.",
     example: "Lina arrived late because she was stuck in traffic near Abdali.",
@@ -479,7 +479,7 @@ const visualEnglishCards: VisualEnglishEntry[] = [
     category: "Daily Life",
   },
   {
-    expression: "hit the sack",
+    expression: "Hit the sack",
     image: "/hit-the-sack.jpg",
     meaning: "To go to bed or go to sleep.",
     example: "After studying all evening, Ahmad decided to hit the sack.",
