@@ -486,7 +486,7 @@ const ieltsWritingLessonSections: IELTSLessonSection[] = [
       "Restate the topic using new wording.",
       "Introduce the debate clearly.",
       "Give a brief opinion.",
-      "Avoid vague phrases like \u201Cthere are pros and cons.\u201D",
+      "Avoid vague phrases like “there are pros and cons.”",
     ],
   },
   {
@@ -494,7 +494,7 @@ const ieltsWritingLessonSections: IELTSLessonSection[] = [
     content:
       "This paragraph explains one side of the debate objectively. The goal is to show that you understand the argument and can support it with reasoning or an example.",
     bullets: [
-      "Use phrases like \u201Cproponents argue\u201D.",
+      "Use phrases like “proponents argue”.",
       "Explain the view clearly.",
       "Add a specific example.",
       "Do not give your full personal opinion yet.",
@@ -503,7 +503,7 @@ const ieltsWritingLessonSections: IELTSLessonSection[] = [
   {
     title: "Paragraph 3: Second Viewpoint",
     content:
-      "This paragraph presents the opposing view. Use a clear transition such as \u201CConversely\u201D or \u201COn the other hand\u201D to show contrast.",
+      "This paragraph presents the opposing view. Use a clear transition such as “Conversely” or “On the other hand” to show contrast.",
     bullets: [
       "Introduce the counter-perspective.",
       "Explain why some people support it.",
@@ -555,7 +555,7 @@ const ieltsWritingLessonSections: IELTSLessonSection[] = [
       "Use not only... but also...",
       "Use although, while, whereas, and because.",
       "Combine ideas logically.",
-      "Avoid repeating \u201CThe first benefit is...\u201D and \u201CThe second benefit is...\u201D",
+      "Avoid repeating “The first benefit is...” and “The second benefit is...”",
     ],
   },
 ];
@@ -1945,7 +1945,7 @@ const pronunciationModules: PronunciationModule[] = [
 const collocationLessons: WritingLabLesson[] = [
   {
     title: "Make a Decision",
-    explanation: "Some verbs naturally go with certain nouns. In English, we say \u201Cmake a decision\u201D, not \u201Cdo a decision\u201D.",
+    explanation: "Some verbs naturally go with certain nouns. In English, we say “make a decision”, not “do a decision”.",
     correctExample: "After thinking about her major, Lina finally made a decision.",
     commonMistake: "She did a decision.",
     practice: "Choose the correct sentence: A) He made a decision. B) He did a decision.",
@@ -1953,7 +1953,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Take Responsibility",
-    explanation: "We use \u201Ctake responsibility\u201D when someone accepts that they must deal with a task, duty, or mistake.",
+    explanation: "We use “take responsibility” when someone accepts that they must deal with a task, duty, or mistake.",
     correctExample: "Samer took responsibility for the mistake in the email.",
     commonMistake: "Samer carried responsibility for the mistake.",
     practice: "Complete the sentence: A good team member should ___ responsibility.",
@@ -1961,7 +1961,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Pay Attention",
-    explanation: "We say \u201Cpay attention\u201D when someone listens, watches, or thinks carefully about something.",
+    explanation: "We say “pay attention” when someone listens, watches, or thinks carefully about something.",
     correctExample: "Khaled paid attention to the pharmacist's instructions.",
     commonMistake: "Khaled gave attention to the instructions.",
     practice: "Complete the sentence: Students should ___ attention during the lesson.",
@@ -1969,7 +1969,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Meet a Deadline",
-    explanation: "To \u201Cmeet a deadline\u201D means to finish something before the required time.",
+    explanation: "To “meet a deadline” means to finish something before the required time.",
     correctExample: "The group stayed late at the university library to meet the deadline.",
     commonMistake: "The group arrived the deadline.",
     practice: "Choose the correct phrase: A) meet a deadline B) reach a deadline",
@@ -1977,7 +1977,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Build Confidence",
-    explanation: "We use \u201Cbuild confidence\u201D when confidence grows slowly through practice or experience.",
+    explanation: "We use “build confidence” when confidence grows slowly through practice or experience.",
     correctExample: "Practicing every day helped Ahmad build confidence before his presentation.",
     commonMistake: "Practicing every day made confidence.",
     practice: "Complete the sentence: Speaking often can help you ___ confidence.",
@@ -1985,7 +1985,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Make Progress",
-    explanation: "To \u201Cmake progress\u201D means to improve or move forward in learning, work, or life.",
+    explanation: "To “make progress” means to improve or move forward in learning, work, or life.",
     correctExample: "With daily practice, Rasha made progress in English.",
     commonMistake: "Rasha did progress in English.",
     practice: "Choose the correct sentence: A) I made progress. B) I did progress.",
@@ -1993,7 +1993,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Have a Conversation",
-    explanation: "We say \u201Chave a conversation\u201D when people talk together.",
+    explanation: "We say “have a conversation” when people talk together.",
     correctExample: "The student had a warm conversation with the elderly woman during iftar.",
     commonMistake: "The student made a conversation.",
     practice: "Complete the sentence: They ___ a conversation after class.",
@@ -2001,7 +2001,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Give Advice",
-    explanation: "In English, we say \u201Cgive advice\u201D, not \u201Csay advice\u201D.",
+    explanation: "In English, we say “give advice”, not “say advice”.",
     correctExample: "Her teacher gave her useful advice before the exam.",
     commonMistake: "Her teacher said her useful advice.",
     practice: "Choose the correct phrase: A) give advice B) say advice",
@@ -2009,7 +2009,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Gain Experience",
-    explanation: "To \u201Cgain experience\u201D means to learn by doing something over time.",
+    explanation: "To “gain experience” means to learn by doing something over time.",
     correctExample: "Noor gained experience during her internship in Amman.",
     commonMistake: "Noor took experience during her internship.",
     practice: "Complete the sentence: Volunteering helps students ___ experience.",
@@ -2017,7 +2017,7 @@ const collocationLessons: WritingLabLesson[] = [
   },
   {
     title: "Keep a Promise",
-    explanation: "To \u201Ckeep a promise\u201D means to do what you said you would do.",
+    explanation: "To “keep a promise” means to do what you said you would do.",
     correctExample: "He kept his promise and helped his brother study.",
     commonMistake: "He saved his promise.",
     practice: "Choose the correct sentence: A) She kept her promise. B) She saved her promise.",
@@ -5180,7 +5180,7 @@ function IELTSLabSheet({
               </p>
 
               <p>
-                In conclusion, while technology can negatively influence social interaction and daily habits, I strongly believe that its benefits greatly overshadow its disadvantages. With proper awareness and responsible usage, technology can continue to play a positive role in improving people\u2019s lives and expanding educational and professional opportunities.
+                In conclusion, while technology can negatively influence social interaction and daily habits, I strongly believe that its benefits greatly overshadow its disadvantages. With proper awareness and responsible usage, technology can continue to play a positive role in improving people’s lives and expanding educational and professional opportunities.
               </p>
             </div>
           </div>
@@ -5204,7 +5204,7 @@ function IELTSLabSheet({
 
               <li className="flex gap-2">
                 <span className="text-olive font-bold">&bull;</span>
-                <span>The essay uses academic connectors such as \u201CConversely,\u201D \u201CFurthermore,\u201D and \u201CIn conclusion.\u201D</span>
+                <span>The essay uses academic connectors such as “Conversely,” “Furthermore,” and “In conclusion.”</span>
               </li>
 
               <li className="flex gap-2">
