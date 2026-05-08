@@ -33,7 +33,17 @@ import {
   ChevronDown,
   Paperclip,
   Mic2,
+  Search,
+  RotateCcw,
+  MapPin,
+  Lightbulb,
+  Globe,
+  Palette,
+  Volume2,
 } from "lucide-react";
+
+import { allCards as linguisticsCards, chapters as linguisticsChapters } from "@/lib/cards-data";
+import type { LinguisticsCard } from "@/lib/cards-data";
 
 /* ═══════════════════════════════════════════════════════════════
    TYPES
@@ -6011,6 +6021,11 @@ export default function Home() {
   const [selectedVocabTerm, setSelectedVocabTerm] = useState("");
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>(() => getRotatedItems(allIdioms, 4));
   const [manualDropIndex, setManualDropIndex] = useState<number | null>(null);
+  const [linguisticsOpen, setLinguisticsOpen] = useState(false);
+  const [lingSearch, setLingSearch] = useState("");
+  const [lingChapter, setLingChapter] = useState<number | null>(null);
+  const [selectedLingCard, setSelectedLingCard] = useState<LinguisticsCard | null>(null);
+  const [lingDetailOpen, setLingDetailOpen] = useState(false);
 
   const [streak, setStreak] = useState<StreakState>({ count: 1, label: "🔥 First day" });
 
@@ -6527,6 +6542,24 @@ export default function Home() {
               </CardContent>
             </Card>
 
+            {/* Linguistics Cards */}
+            <Card
+              className="cursor-pointer shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 border-l-4 border-l-purple-500 rounded-2xl"
+              onClick={() => setLinguisticsOpen(true)}
+            >
+              <CardContent className="p-5 sm:p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0">
+                  <BookOpen className="size-6 text-purple-600" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-bold text-gray-900 text-sm">Linguistics Cards</h4>
+                  <p className="text-xs text-gray-500">75 concepts from The Study of Language</p>
+                  <Badge className="bg-purple-100 text-purple-700 border-purple-200 shrink-0 text-[10px] mt-1">New</Badge>
+                </div>
+                <ArrowRight className="size-5 text-gray-400 shrink-0" />
+              </CardContent>
+            </Card>
+
             {/* AI Chat Coach */}
             <Card className="shadow-md hover:-translate-y-1 hover:shadow-xl active:scale-[0.99] transition-all duration-200 rounded-2xl border-l-4 border-l-gray-300">
               <CardContent className="p-5 sm:p-6 flex items-center gap-4">
@@ -6656,6 +6689,173 @@ export default function Home() {
 
       {/* Visual English */}
       <VisualEnglishSheet open={visualEnglishOpen} onOpenChange={setVisualEnglishOpen} />
+
+      {/* Linguistics Cards Lab */}
+      <Sheet open={linguisticsOpen} onOpenChange={setLinguisticsOpen}>
+        <SheetContent className="w-full sm:max-w-2xl overflow-y-auto p-0">
+          <SheetHeader className="p-6 pb-4">
+            <SheetTitle className="text-2xl font-bold">Linguistics Cards</SheetTitle>
+            <SheetDescription>75 concepts from The Study of Language by George Yule</SheetDescription>
+          </SheetHeader>
+
+          {/* Search */}
+          <div className="px-6 pb-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search concepts, meanings, or Arabic..."
+                value={lingSearch}
+                onChange={(e) => setLingSearch(e.target.value)}
+                className="w-full pl-10 pr-10 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-400 bg-gray-50"
+              />
+              {lingSearch && (
+                <button onClick={() => setLingSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <X className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Chapter Filters */}
+          <div className="px-6 pb-3 flex gap-2 overflow-x-auto pb-2">
+            <button
+              onClick={() => setLingChapter(null)}
+              className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                lingChapter === null
+                  ? "bg-purple-600 text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              All
+            </button>
+            {linguisticsChapters.map((ch) => (
+              <button
+                key={ch.id}
+                onClick={() => setLingChapter(lingChapter === ch.id ? null : ch.id)}
+                className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                  lingChapter === ch.id
+                    ? "bg-purple-600 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {ch.icon} <span className="hidden sm:inline">{ch.name}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Cards List */}
+          <div className="px-6 pb-6 space-y-3">
+            {(() => {
+              let filtered = linguisticsCards;
+              if (lingChapter) filtered = filtered.filter((c) => c.chapterId === lingChapter);
+              if (lingSearch.trim()) {
+                const q = lingSearch.toLowerCase();
+                filtered = filtered.filter(
+                  (c) =>
+                    c.concept.toLowerCase().includes(q) ||
+                    c.whatIsIt.toLowerCase().includes(q) ||
+                    c.arabicSupport.includes(q)
+                );
+              }
+              if (filtered.length === 0) {
+                return (
+                  <div className="text-center py-10 text-gray-400 text-sm">
+                    No concepts found. Try a different search.
+                  </div>
+                );
+              }
+              return filtered.map((card) => {
+                const ch = linguisticsChapters.find((c) => c.id === card.chapterId);
+                return (
+                  <button
+                    key={card.id}
+                    onClick={() => {
+                      setSelectedLingCard(card);
+                      setLingDetailOpen(true);
+                    }}
+                    className="w-full text-left bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-md transition-all duration-150 cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-medium text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">#{card.id}</span>
+                        <span className="text-xs text-gray-400">{ch?.icon} {ch?.name}</span>
+                      </div>
+                      <ArrowRight className="size-3.5 text-gray-300 group-hover:text-purple-500 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-sm group-hover:text-purple-700 transition-colors">{card.concept}</h3>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">{card.whatIsIt}</p>
+                  </button>
+                );
+              });
+            })()}
+          </div>
+
+          {/* Brand Line */}
+          <div className="border-t border-gray-100 px-6 py-4 text-center">
+            <p className="text-xs font-bold bg-gradient-to-r from-purple-600 to-amber-500 bg-clip-text text-transparent">
+              Master English. Stay Rooted.
+            </p>
+            <p className="text-[10px] text-gray-400 mt-1">75 linguistics concepts for Jordanian &amp; Arab ESL learners</p>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      {/* Linguistics Card Detail */}
+      <Sheet open={lingDetailOpen} onOpenChange={setLingDetailOpen}>
+        <SheetContent className="w-full sm:max-w-lg overflow-y-auto">
+          {selectedLingCard && (() => {
+            const card = selectedLingCard;
+            const ch = linguisticsChapters.find((c) => c.id === card.chapterId);
+            return (
+              <>
+                <SheetHeader>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant="secondary" className="text-xs">#{card.id}</Badge>
+                    <Badge variant="outline" className="text-xs border-purple-200 bg-purple-50 text-purple-800">
+                      {ch?.icon} {ch?.name}
+                    </Badge>
+                  </div>
+                  <SheetTitle className="text-2xl font-bold mt-2">{card.concept}</SheetTitle>
+                </SheetHeader>
+                <div className="mt-6 space-y-5 pr-6">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-purple-600" /><h3 className="font-semibold text-sm">What Is It?</h3></div>
+                    <p className="text-sm text-gray-600 leading-relaxed">{card.whatIsIt}</p>
+                  </div>
+                  <Separator />
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><Lightbulb className="h-4 w-4 text-amber-600" /><h3 className="font-semibold text-sm">Why Should I Care?</h3></div>
+                    <p className="text-sm text-gray-600 leading-relaxed">{card.whyShouldICare}</p>
+                  </div>
+                  <Separator />
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><MapPin className="h-4 w-4 text-green-600" /><h3 className="font-semibold text-sm">Nibras Moment <span className="text-base">🇯🇴</span></h3></div>
+                    <div className="rounded-lg bg-green-50 border border-green-200 p-3">
+                      <p className="text-sm text-green-900 whitespace-pre-line leading-relaxed">{card.nibrasMoment}</p>
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><Sparkles className="h-4 w-4 text-purple-600" /><h3 className="font-semibold text-sm">Memory Hook</h3></div>
+                    <p className="text-sm text-gray-600 leading-relaxed">{card.memoryHook}</p>
+                  </div>
+                  <Separator />
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><Globe className="h-4 w-4 text-sky-600" /><h3 className="font-semibold text-sm">Arabic Support</h3></div>
+                    <p className="text-lg font-medium text-sky-900 text-right" dir="rtl">{card.arabicSupport}</p>
+                  </div>
+                  <Separator />
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2"><Palette className="h-4 w-4 text-rose-600" /><h3 className="font-semibold text-sm">Visual Idea</h3></div>
+                    <p className="text-sm text-gray-600 leading-relaxed">{card.visualIdea}</p>
+                  </div>
+                </div>
+              </>
+            );
+          })()}
+        </SheetContent>
+      </Sheet>
 
       {/* IELTS Lab */}
       <IELTSLabSheet
