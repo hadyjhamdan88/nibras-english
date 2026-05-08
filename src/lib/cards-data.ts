@@ -54,7 +54,7 @@ export const allCards: LinguisticsCard[] = [
     chapterId: 1,
     whatIsIt: "A speech sound made with open airflow — the tongue and lips shape the sound but never fully block it.",
     whyShouldICare: "Changing a vowel can completely change meaning. English has more vowel sounds than Arabic, making them tricky for Arabic speakers.",
-    nibrasMoment: "A student says:\n\"seat\"\n\nbut mispronounces the vowel and says 'sit' in class 😅\n\n'Take a seat' sounds very different from 'Take a sit.'",
+    nibrasMoment: "A student says:\n\"dead\"\n\nbut mispronounces the vowel and says 'did' in class 😅\n\nThe /e/ in 'dead' and the /ɪ/ in 'did' are easily confused by Arabic speakers.",
     memoryHook: "Vowels = open sounds.",
     arabicSupport: "حرف متحرك",
   },
