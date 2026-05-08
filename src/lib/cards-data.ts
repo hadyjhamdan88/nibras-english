@@ -8,7 +8,6 @@ export interface LinguisticsCard {
   nibrasMoment: string;
   memoryHook: string;
   arabicSupport: string;
-  visualIdea: string;
 }
 
 export const allCards: LinguisticsCard[] = [
@@ -25,7 +24,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student says:\n\"I think it will rain today.\"\n\n…but says 'sink' instead of 'think' 😅\n\nOne sound changed EVERYTHING.",
     memoryHook: "Phonetics = the sounds of language.",
     arabicSupport: "علم الأصوات",
-    visualIdea: "Sound waves coming from a mouth.",
   },
   {
     id: 2,
@@ -37,7 +35,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student keeps saying:\n\"bery good\"\n\ninstead of:\n\"very good\"\n\nbecause the lips and teeth are not positioned correctly for /v/.",
     memoryHook: "Articulation = how your mouth builds sounds.",
     arabicSupport: "إنتاج الأصوات",
-    visualIdea: "Close-up of tongue and lip positions.",
   },
   {
     id: 3,
@@ -49,7 +46,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student says:\n\"pine\" instead of \"vine\"\n\nduring a presentation 😅\n\nThe /p/ and /v/ sounds are easily confused by Arabic speakers.",
     memoryHook: "Consonants = sound blockers.",
     arabicSupport: "حرف ساكن",
-    visualIdea: "Air hitting an obstacle in the mouth.",
   },
   {
     id: 4,
@@ -61,7 +57,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student says:\n\"seat\"\n\nbut mispronounces the vowel and says 'sit' in class 😅\n\n'Take a seat' sounds very different from 'Take a sit.'",
     memoryHook: "Vowels = open sounds.",
     arabicSupport: "حرف متحرك",
-    visualIdea: "Smooth flowing air path.",
   },
   {
     id: 5,
@@ -73,7 +68,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Your friend says:\n\"Wow… great job.\"\n\nDepending on tone:\n— it may be praise,\n— OR pure sarcasm 😅",
     memoryHook: "Intonation = voice melody.",
     arabicSupport: "نبرة الصوت",
-    visualIdea: "Wavy sound line over speech.",
   },
   {
     id: 6,
@@ -85,7 +79,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Students ask:\n\"Doctor… why is knife pronounced without the K?!\"",
     memoryHook: "Pronunciation written scientifically.",
     arabicSupport: "الكتابة الصوتية",
-    visualIdea: "IPA symbols floating beside words.",
   },
   {
     id: 7,
@@ -97,7 +90,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "An Arabic speaker may struggle with:\n\"street\"\n\nand accidentally say:\n\"istreeet\"\n\nbecause Arabic does not start words with that consonant cluster.",
     memoryHook: "Phonology = sound rules.",
     arabicSupport: "علم أنظمة الأصوات",
-    visualIdea: "Connected sound network.",
   },
   {
     id: 8,
@@ -109,7 +101,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "During IELTS speaking:\n\"bat\"\nvs\n\"pat\"\n\nOne phoneme difference, completely different words.",
     memoryHook: "Tiny sound, huge difference.",
     arabicSupport: "فونيم",
-    visualIdea: "One sound tile changing color.",
   },
   {
     id: 9,
@@ -121,7 +112,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student says:\n\"de-VE-lop-ment\"\n\nwith strange stress 😅\n\nThe correct pattern is \"de-VEL-op-ment\".",
     memoryHook: "Syllables = word beats.",
     arabicSupport: "مقطع صوتي",
-    visualIdea: "Clapping rhythm icons.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 2: MORPHOLOGY
@@ -136,7 +126,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student sees:\n\"unhelpful\"\n\nEven without knowing the word fully:\n— un = not\n— help\n— ful = full of",
     memoryHook: "Morphology = LEGO blocks of language.",
     arabicSupport: "علم بناء الكلمات",
-    visualIdea: "Word LEGO pieces joining together.",
   },
   {
     id: 11,
@@ -148,7 +137,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "WhatsApp message:\n\"re-upload\"\n\nStudents instantly recognise:\n— re = again",
     memoryHook: "Morphemes = tiny meaning units.",
     arabicSupport: "أصغر وحدة تحمل معنى",
-    visualIdea: "Mini meaning blocks.",
   },
   {
     id: 12,
@@ -160,7 +148,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Words like:\n— book\n— fast\n— coffee\n\ncan stand independently. No attachment needed.",
     memoryHook: "Free morphemes live alone.",
     arabicSupport: "مورفيم حر",
-    visualIdea: "Single LEGO block standing freely.",
   },
   {
     id: 13,
@@ -172,7 +159,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Students know:\n\"unhappy\"\n\n…but \"un\" alone means nothing in English.\n\nIt must attach to a word.",
     memoryHook: "Bound morphemes need company.",
     arabicSupport: "مورفيم مقيد",
-    visualIdea: "Puzzle piece attaching to another.",
   },
   {
     id: 14,
@@ -184,7 +170,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student sees:\n\"inactive\"\n\nEven without a dictionary:\n— in = not\n— active",
     memoryHook: "Prefix = before the word.",
     arabicSupport: "سابقة",
-    visualIdea: "Arrow added before a word.",
   },
   {
     id: 15,
@@ -196,7 +181,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "teach → teacher\n\nThe action becomes a person.\n\nOne suffix changed everything.",
     memoryHook: "Suffix = after the word.",
     arabicSupport: "لاحقة",
-    visualIdea: "Puzzle piece attached to word ending.",
   },
   {
     id: 16,
@@ -208,7 +192,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "motivate\n→ motivation\n→ motivational\n\nOne root, three words, three different uses.",
     memoryHook: "Derivation = word transformation.",
     arabicSupport: "الاشتقاق",
-    visualIdea: "Word evolving into multiple forms.",
   },
   {
     id: 17,
@@ -220,7 +203,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student writes:\n\"Yesterday I walk to university.\"\n\ninstead of:\n\"walked\"",
     memoryHook: "Inflection = grammar adjustment.",
     arabicSupport: "التصريف",
-    visualIdea: "Word changing shape slightly.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 3: SYNTAX
@@ -235,7 +217,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Very I like mansaf.\" 😅\n\nCorrect:\n\"I really like mansaf.\"\n\nSame words, different order, completely different impression.",
     memoryHook: "Syntax = sentence architecture.",
     arabicSupport: "تركيب الجملة",
-    visualIdea: "Sentence blocks forming a building.",
   },
   {
     id: 19,
@@ -247,7 +228,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "— in the library\n— after the lecture\n— very hungry\n\nStudents use phrases constantly without realising they are linguistic units.",
     memoryHook: "Phrase = word team.",
     arabicSupport: "عبارة",
-    visualIdea: "Words grouped together inside a frame.",
   },
   {
     id: 20,
@@ -259,7 +239,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Because I was tired.\"\n\nThe teacher says:\n\"This is incomplete.\"\n\nIt is a dependent clause — it needs a main clause to stand.",
     memoryHook: "Clause = mini sentence engine.",
     arabicSupport: "جملة جزئية",
-    visualIdea: "Mini sentence block connected to another.",
   },
   {
     id: 21,
@@ -271,7 +250,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"The cat chased the mouse.\"\n\"The mouse was chased by the cat.\"\n\nDifferent surface structures, same deep meaning.\n\nOne active, one passive — but the event is identical.",
     memoryHook: "Deep structure = the real meaning hiding underneath.",
     arabicSupport: "البنية العميقة",
-    visualIdea: "An iceberg — the visible tip is surface, the massive hidden part is deep structure.",
   },
   {
     id: 22,
@@ -283,7 +261,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student writes:\n\"I wrote the essay.\"\n\nThe teacher suggests:\n\"The essay was written by me.\"\n\nSame meaning, different surface form.",
     memoryHook: "Surface structure = what you actually say or write.",
     arabicSupport: "البنية السطحية",
-    visualIdea: "The visible part of an iceberg above water.",
   },
   {
     id: 23,
@@ -295,7 +272,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Active: \"The teacher corrected the homework.\"\n\nPassive: \"The homework was corrected by the teacher.\"\n\nOne transformation, two useful sentence forms.",
     memoryHook: "Transformation = sentence reshaping rules.",
     arabicSupport: "التحويل",
-    visualIdea: "A shape morphing from one form into another.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 4: SEMANTICS
@@ -310,7 +286,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student asks:\n\"What is the difference between 'big' and 'large'?\"\n\nBoth mean the same… but we say 'big brother' and 'large family', not the other way around. Semantics explains why.",
     memoryHook: "Semantics = the study of meaning.",
     arabicSupport: "علم الدلالة",
-    visualIdea: "A word connecting to multiple meaning branches like a tree.",
   },
   {
     id: 25,
@@ -322,7 +297,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Horse\" = a large four-legged animal.\n\nThat is its lexical meaning. It does not change whether you are in Amman or London.",
     memoryHook: "Lexical meaning = dictionary definition.",
     arabicSupport: "المعنى المعجمي",
-    visualIdea: "An open dictionary showing a word entry.",
   },
   {
     id: 26,
@@ -334,7 +308,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Woman\" conceptually means:\n— human\n— adult\n— female\n\nThese features do not change from Jordan to Canada.",
     memoryHook: "Conceptual meaning = the universal core of a word.",
     arabicSupport: "المعنى المفاهيمي",
-    visualIdea: "A Venn diagram showing essential features of a concept.",
   },
   {
     id: 27,
@@ -346,7 +319,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Home\" in English has warm, safe associations.\n\nIn Arabic, \"بيت\" (bayt) carries even deeper family and belonging associations.\n\nThe conceptual meaning is the same, but the associative meaning is deeply cultural.",
     memoryHook: "Associative meaning = the feelings a word brings.",
     arabicSupport: "المعنى الترابطي",
-    visualIdea: "A word surrounded by floating emotion bubbles.",
   },
   {
     id: 28,
@@ -358,7 +330,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student writes:\n\"I bought a cheap car.\"\n\nBut in a formal essay:\n\"I purchased an affordable vehicle.\"\n\nSame idea, better word choice using synonyms.",
     memoryHook: "Synonymy = similar meaning siblings.",
     arabicSupport: "ترادف",
-    visualIdea: "Two overlapping circles with similar words inside.",
   },
   {
     id: 29,
@@ -370,7 +341,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"The desert is hot, but the mountains are cold.\"\n\nWithout antonyms, you cannot express contrast effectively.",
     memoryHook: "Antonymy = opposite twins.",
     arabicSupport: "تضاد",
-    visualIdea: "Two arrows pointing in opposite directions.",
   },
   {
     id: 30,
@@ -382,7 +352,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Head\" = the body part on your neck.\n\"Head\" = the leader of a company.\n\"Head\" = the top of a mountain.\n\nAll related to 'the top' — that is polysemy.",
     memoryHook: "Polysemy = one word, many connected meanings.",
     arabicSupport: "تعدد المعاني",
-    visualIdea: "One word branching into multiple connected meaning paths.",
   },
   {
     id: 31,
@@ -394,7 +363,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Bat\" = the flying animal.\n\"Bat\" = the sports equipment.\n\nCompletely unrelated meanings that share the same form.",
     memoryHook: "Homonymy = accidental twins.",
     arabicSupport: "متشابهات اللفظ",
-    visualIdea: "Two identical-looking words pointing to completely different images.",
   },
   {
     id: 32,
@@ -406,7 +374,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Time is money.\"\n\"He has a heart of stone.\"\n\"The classroom was a zoo.\"\n\nWe use metaphors every day without noticing.",
     memoryHook: "Metaphor = understanding X through Y.",
     arabicSupport: "استعارة",
-    visualIdea: "One object transforming into another.",
   },
   {
     id: 33,
@@ -418,7 +385,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"The White House announced...\"\n\nThe building did not speak — the government did.\n\nThat is metonymy: the place stands for the institution.",
     memoryHook: "Metonymy = close substitute.",
     arabicSupport: "مجاز مرسل",
-    visualIdea: "A crown representing a king.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 5: PRAGMATICS
@@ -433,7 +399,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Can you pass the salt?\"\n\nLiterally: a question about ability.\nPragmatically: a polite request.\n\nThe meaning is in the context, not the words.",
     memoryHook: "Pragmatics = meaning in context.",
     arabicSupport: "علم التداول",
-    visualIdea: "Words changing meaning based on surrounding context bubbles.",
   },
   {
     id: 35,
@@ -445,7 +410,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"It is cold in here.\"\n\nSaid at home → a simple observation.\nSaid by a guest to a host → a polite request to close the window.\n\nSame words, different context, different meaning.",
     memoryHook: "Context = the stage where meaning performs.",
     arabicSupport: "السياق",
-    visualIdea: "A stage with spotlights showing different settings.",
   },
   {
     id: 36,
@@ -457,7 +421,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"I am here now.\"\n\nIf Nibras says it in Amman, \"I\" = Nibras, \"here\" = Amman.\nIf Ahmad says it in Irbid, \"I\" = Ahmad, \"here\" = Irbid.\n\nSame words, different reference.",
     memoryHook: "Deixis = context-dependent pointers.",
     arabicSupport: "الإحالة",
-    visualIdea: "A pointing hand with arrows showing 'this' and 'that' shifting.",
   },
   {
     id: 37,
@@ -469,7 +432,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"When did you stop procrastinating?\"\n\nThis question presupposes that you DID procrastinate.\n\nWhether you answer or not, the assumption is already planted.",
     memoryHook: "Presupposition = hidden assumption behind the sentence.",
     arabicSupport: "افتراض ضمني",
-    visualIdea: "An iceberg — the visible sentence above, the hidden assumption below.",
   },
   {
     id: 38,
@@ -481,7 +443,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student asks:\n\"Is there any labneh left?\"\n\nMother replies:\n\"Your brother came home hungry.\"\n\nShe never said 'no' — but the implicature is clear.",
     memoryHook: "Implicature = reading between the lines.",
     arabicSupport: "تضمين",
-    visualIdea: "A speech bubble with visible words and invisible meaning trails behind it.",
   },
   {
     id: 39,
@@ -493,7 +454,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"I promise to call you tomorrow.\"\n\nSaying this is not just describing a promise — it IS the act of promising.\n\nThe words create the commitment.",
     memoryHook: "Speech act = words as actions.",
     arabicSupport: "الفعل الكلامي",
-    visualIdea: "Words transforming into action icons (a key unlocking a door).",
   },
   {
     id: 40,
@@ -505,7 +465,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Sit down.\" → Command (imperative form)\n\"What time is it?\" → Question (interrogative form)\n\nThe form and function match perfectly.",
     memoryHook: "Direct speech act = what you see is what you get.",
     arabicSupport: "فعل كلامي مباشر",
-    visualIdea: "A straight arrow from form to function.",
   },
   {
     id: 41,
@@ -517,7 +476,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Could you help me with this?\"\n\nForm: Question about ability.\nFunction: Request for help.\n\nIndirect because you are not really asking if they CAN — you want them TO.",
     memoryHook: "Indirect speech act = saying one thing, meaning another.",
     arabicSupport: "فعل كلامي غير مباشر",
-    visualIdea: "A curved arrow from form to function, going around a corner.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 6: DISCOURSE ANALYSIS
@@ -532,7 +490,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student can understand every word in a lecture but still miss the main point.\n\nWhy? Because understanding individual sentences is not the same as understanding discourse — the connected flow of ideas.",
     memoryHook: "Discourse = language beyond sentences.",
     arabicSupport: "الخطاب",
-    visualIdea: "Multiple sentences linked together in a flowing chain.",
   },
   {
     id: 43,
@@ -544,7 +501,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Ahmad loves football. He plays it every weekend.\"\n\n\"He\" and \"it\" are cohesive ties — they connect back to Ahmad and football.\n\nWithout them, the text would feel robotic.",
     memoryHook: "Cohesion = the glue of text.",
     arabicSupport: "التماسك النصي",
-    visualIdea: "Sentences connected by visible link chains.",
   },
   {
     id: 44,
@@ -556,7 +512,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"It was raining. I opened my umbrella.\"\n\nNo explicit connectors — but perfectly coherent.\n\nThe reader understands the logical relationship between the sentences.",
     memoryHook: "Coherence = the logic of text.",
     arabicSupport: "التكامل النصي",
-    visualIdea: "Ideas flowing smoothly like a river from one point to another.",
   },
   {
     id: 45,
@@ -568,7 +523,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "In a group discussion:\nStudent A finishes speaking → small pause → Student B begins.\n\nThat natural switch is turn-taking in action. Interrupting without signals is considered rude in most cultures.",
     memoryHook: "Turn-taking = conversation traffic rules.",
     arabicSupport: "تبادل الأدوار في الحديث",
-    visualIdea: "A tennis rally — the ball passes back and forth between speakers.",
   },
   {
     id: 46,
@@ -580,7 +534,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"How are you?\" → \"Fine, thank you.\"\n\"Good morning!\" → \"Good morning!\"\n\"Thank you!\" → \"You are welcome.\"\n\nDisrupting the pair feels strange.",
     memoryHook: "Adjacency pairs = conversational handshake.",
     arabicSupport: "أزواج المجاورة",
-    visualIdea: "Two puzzle pieces fitting perfectly together.",
   },
   {
     id: 47,
@@ -592,7 +545,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"This might be the best solution.\"\n\nvs.\n\n\"This IS the best solution.\"\n\nThe first sounds thoughtful. The second sounds aggressive. Hedges matter.",
     memoryHook: "Hedges = softening cushions for language.",
     arabicSupport: "المهملات اللغوية",
-    visualIdea: "Words wrapped in soft cushions that absorb impact.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 7: NEUROLINGUISTICS
@@ -607,7 +559,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "When a student learns a new word, millions of neurons fire in specific brain regions.\n\nLanguage is not just a skill — it is a biological process happening inside your skull.",
     memoryHook: "Neurolinguistics = brain meets language.",
     arabicSupport: "علم الأعصاب اللغوي",
-    visualIdea: "A brain with language areas glowing in different colors.",
   },
   {
     id: 49,
@@ -619,7 +570,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "After a stroke, a brilliant professor may struggle to say simple words.\n\nTheir intelligence is unchanged, but their language system is damaged.\n\nThat is aphasia.",
     memoryHook: "Aphasia = language loss, not mind loss.",
     arabicSupport: "الحبسة",
-    visualIdea: "A broken line from thought to speech.",
   },
   {
     id: 50,
@@ -631,7 +581,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A patient with Broca's aphasia might say:\n\"Walk… doctor… uh… hospital… day.\"\n\nThey know what they want to say, but cannot form smooth sentences.\n\nUnderstanding is much better than speaking.",
     memoryHook: "Broca's = trouble speaking, understanding OK.",
     arabicSupport: "حبسة بروكا",
-    visualIdea: "A brain with Broca's area highlighted near the front.",
   },
   {
     id: 51,
@@ -643,7 +592,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A patient with Wernicke's aphasia speaks fluently:\n\"The flim is on the gart and the bingle is…\"\n\nSounds smooth, but makes no sense.\n\nThey also cannot understand what others say to them.",
     memoryHook: "Wernicke's = fluent speech but no comprehension.",
     arabicSupport: "حبسة فيرنيكه",
-    visualIdea: "A brain with Wernicke's area highlighted near the back.",
   },
   {
     id: 52,
@@ -655,7 +603,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student meant to say:\n\"I need to go to the post office.\"\n\nBut accidentally said:\n\"I need to go to the ghost office.\" 😅\n\nThe brain swapped 'p' and 'gh' — a classic spoonerism.",
     memoryHook: "Slip of the tongue = brain glitch revealing speech planning.",
     arabicSupport: "زللة لسان",
-    visualIdea: "Words tumbling and swapping positions on a conveyor belt.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 8: LANGUAGE ACQUISITION
@@ -670,7 +617,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A Jordanian baby hears Arabic at home and within two years is speaking in sentences.\n\nNo grammar lessons. No textbooks. No exams.\n\nThat is the incredible power of language acquisition.",
     memoryHook: "Language acquisition = natural language learning.",
     arabicSupport: "اكتساب اللغة",
-    visualIdea: "A baby surrounded by floating words being absorbed.",
   },
   {
     id: 54,
@@ -682,7 +628,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A mother says to her toddler:\n\"Look! A kitty! Nice kitty!\"\n\nShort sentences. Clear pronunciation. Repetition.\n\nThis is not random — it is perfectly designed teaching.",
     memoryHook: "Caregiver speech = the child's first classroom.",
     arabicSupport: "خطاب مقدم الرعاية",
-    visualIdea: "An adult bending down, speaking to a child with word bubbles.",
   },
   {
     id: 55,
@@ -694,7 +639,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A baby in Amman says:\n\"ba-ba-ba-ba\"\n\nThe parents get excited:\n\"She said baba!\"\n\nIt might not mean 'father' yet — but it is a crucial language milestone.",
     memoryHook: "Babbling = speech practice mode.",
     arabicSupport: "المناغاة",
-    visualIdea: "Sound waves with 'ba-ba-ma-ma' patterns.",
   },
   {
     id: 56,
@@ -706,7 +650,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A child says:\n\"I goed to school.\"\n\nNot because they heard it — but because they learned the '-ed' rule and applied it everywhere.\n\nThe error shows active learning.",
     memoryHook: "Overgeneralization = rule applied too widely.",
     arabicSupport: "الإفراط في التعميم",
-    visualIdea: "A grammar rule stamp being pressed onto words that resist it.",
   },
   {
     id: 57,
@@ -718,7 +661,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A family moves from Jordan to Canada when their child is 5.\n\nWithin a year, the child speaks fluent English.\n\nThe parents, despite studying for years, still struggle with accent and grammar.\n\nThe critical period makes the difference.",
     memoryHook: "Critical period = nature's language learning deadline.",
     arabicSupport: "الفترة الحرجة",
-    visualIdea: "A clock with a window closing slowly.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 9: SOCIOLINGUISTICS
@@ -733,7 +675,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student from Irbid and a student from Aqaba meet at the University of Jordan.\n\nThey speak English differently — not because of ability, but because of their social and regional backgrounds.",
     memoryHook: "Sociolinguistics = language meets society.",
     arabicSupport: "علم اللغة الاجتماعي",
-    visualIdea: "A Venn diagram where language and society overlap.",
   },
   {
     id: 59,
@@ -745,7 +686,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Jordanian Arabic has multiple dialects:\n— Ammani (urban)\n— Baladi (rural)\n— Bedouin\n\nEach has its own grammar and vocabulary.\n\nNone is 'better' — they are all legitimate dialects.",
     memoryHook: "Dialect = a language's family member.",
     arabicSupport: "لهجة",
-    visualIdea: "A tree with branches, each branch labeled as a different dialect.",
   },
   {
     id: 60,
@@ -757,7 +697,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A student says:\n\"I want to sound British.\"\n\nBut their Jordanian accent is perfectly valid.\n\nAccents reflect identity, not intelligence or language ability.",
     memoryHook: "Accent = pronunciation fingerprint.",
     arabicSupport: "لكنة",
-    visualIdea: "Sound waves with different patterns for different accents.",
   },
   {
     id: 61,
@@ -769,7 +708,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "A Jordanian student studies engineering in English, texts friends in Arabic, and watches Turkish dramas with Arabic subtitles.\n\nThat is real-world bilingualism — and it is a superpower.",
     memoryHook: "Bilingualism = two language superpowers.",
     arabicSupport: "ثنائية اللغة",
-    visualIdea: "Two language paths running parallel, connected by a bridge.",
   },
   {
     id: 62,
@@ -781,7 +719,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "\"Ana ba7eb the new Marvel movie, kano really impressive.\"\n\nMixing Arabic and English in one sentence is not 'broken' language — it is skilled code-switching used by millions of bilinguals daily.",
     memoryHook: "Code-switching = language dance between worlds.",
     arabicSupport: "تبديل الكود",
-    visualIdea: "Two languages flowing together like intertwined rivers.",
   },
   {
     id: 63,
@@ -793,7 +730,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Same person, different registers:\n\nTo a professor: \"I would appreciate your guidance regarding my research.\"\nTo a friend: \"Yo, can you check my essay real quick?\"\n\nSame need, completely different language.",
     memoryHook: "Register = the right language for the right occasion.",
     arabicSupport: "مستوى اللغة",
-    visualIdea: "A dial or slider from 'casual' to 'formal'.",
   },
   {
     id: 64,
@@ -805,7 +741,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "In many Arab countries, speaking with a 'Khaleeji' or 'American' accent is often associated with higher social prestige.\n\nBut this is a social attitude, not a linguistic fact.\n\nLinguistically, all accents are equal.",
     memoryHook: "Prestige = the social badge of a language variety.",
     arabicSupport: "الهيبة اللغوية",
-    visualIdea: "A crown placed above certain dialects and not others.",
   },
   {
     id: 65,
@@ -817,7 +752,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "The way you speak to your grandmother is different from the way you speak to your classmates.\n\nNeither is your 'real' way of speaking — both are real.\n\nThat is style-shifting.",
     memoryHook: "Style-shifting = social chameleon in language.",
     arabicSupport: "تبديل الأسلوب",
-    visualIdea: "A person whose speech bubble changes color for different listeners.",
   },
   {
     id: 66,
@@ -829,7 +763,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Arabic has one word for 'uncle' — 'ammo' (paternal) and 'khal' (maternal).\n\nEnglish just says 'uncle'.\n\nDoes Arabic make family relationships more specific in the speaker's mind? That is linguistic relativity.",
     memoryHook: "Linguistic relativity = your language shapes your world.",
     arabicSupport: "النسبية اللغوية",
-    visualIdea: "Different-colored glasses, each representing a different language.",
   },
   {
     id: 67,
@@ -841,7 +774,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "In English: 'uncle'\nIn Arabic: ammo, khal, 3ammo, khali — all different.\n\nIn English: 'cousin'\nIn Arabic: ibn 3amm, ibn khal, bint 3amm, bint khal — all specific.\n\nArabic encodes family precision that English does not.",
     memoryHook: "Kinship terms = family vocabulary as cultural mirror.",
     arabicSupport: "مصطلحات القرابة",
-    visualIdea: "A family tree with labels in different languages.",
   },
   {
     id: 68,
@@ -853,7 +785,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "In Arabic, we use classifiers subtly:\n«قطيع» (flock) for sheep\n«صف» (row) for students\n\nSome languages like Mandarin and Thai require a classifier for EVERY counted noun.\n\nIt is a window into how different minds organise the world.",
     memoryHook: "Classifiers = counting categories that reveal cultural thinking.",
     arabicSupport: "المصنفات اللغوية",
-    visualIdea: "Objects grouped into labeled categories.",
   },
   {
     id: 69,
@@ -865,7 +796,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Research shows women tend to use more hedge words:\n\"I think maybe we could possibly…\"\n\nWhile men tend to use more direct forms:\n\"We should do this.\"\n\nThese are tendencies, not rules — but they affect perception.",
     memoryHook: "Gendered speech = how gender shapes language choices.",
     arabicSupport: "الكلام المفند بالجنس",
-    visualIdea: "Two speech bubbles, one with softer edges, one with sharper edges.",
   },
   // ═══════════════════════════════════════════════════
   // CHAPTER 10: HISTORICAL LINGUISTICS
@@ -880,7 +810,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Your grandparents say:\n«هيك» (heik)\n\nYounger Jordanians might say:\n«كده» (keda)\n\nEven within one generation, Arabic is shifting — that is language change in action.",
     memoryHook: "Language change = language's slow evolution.",
     arabicSupport: "تغير اللغة",
-    visualIdea: "A timeline showing Old English → Modern English with arrows.",
   },
   {
     id: 71,
@@ -892,7 +821,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Why is 'knight' pronounced 'nite'?\n\nBecause hundreds of years ago, the 'k' and 'gh' were actually pronounced.\n\nSound change made them silent — but spelling kept the old forms.",
     memoryHook: "Sound change = pronunciation evolving over time.",
     arabicSupport: "التغير الصوتي",
-    visualIdea: "A word morphing through time periods.",
   },
   {
     id: 72,
@@ -904,7 +832,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "English words from Arabic:\n— algebra (الجبر)\n— algorithm (الخوارزمي)\n— coffee (قهوة)\n— magazine (مخزن)\n\nThese are not just loanwords — they are cultural bridges.",
     memoryHook: "Borrowing = language's cultural exchange program.",
     arabicSupport: "الاستعارة اللغوية",
-    visualIdea: "Words traveling between language borders on a map.",
   },
   {
     id: 73,
@@ -916,7 +843,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Arabic «مدينة» (madina) and English 'medicine' share an ancient Semitic root related to healing.\n\nNot exact cognates, but deeply connected — showing how languages are more related than we think.",
     memoryHook: "Cognate = language cousins sharing family resemblance.",
     arabicSupport: "كلمات مشتركة الأصل",
-    visualIdea: "A family tree connecting words across different languages.",
   },
   {
     id: 74,
@@ -928,7 +854,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Proto-Arabic was spoken thousands of years ago but never written.\n\nBy comparing modern Arabic dialects and Semitic languages, linguists reconstruct what it might have sounded like.\n\nIt is language archaeology.",
     memoryHook: "Reconstruction = linguistic time travel.",
     arabicSupport: "إعادة البناء اللغوي",
-    visualIdea: "A backward-pointing timeline reconstructing an ancient language from fragments.",
   },
   {
     id: 75,
@@ -940,7 +865,6 @@ export const allCards: LinguisticsCard[] = [
     nibrasMoment: "Proto-Semitic was spoken around 4,000 BCE.\n\nFrom it came Arabic, Hebrew, Aramaic, Amharic, and more.\n\nA Jordanian student, a Lebanese student, and an Ethiopian student all speak languages that share one ancient mother tongue.",
     memoryHook: "Proto-language = the ancient mother of a language family.",
     arabicSupport: "اللغة الأم",
-    visualIdea: "A tree trunk splitting into many branches, each a different modern language.",
   },
 ];
 

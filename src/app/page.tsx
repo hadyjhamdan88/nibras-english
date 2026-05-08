@@ -38,7 +38,6 @@ import {
   MapPin,
   Lightbulb,
   Globe,
-  Palette,
   Volume2,
 } from "lucide-react";
 
@@ -6844,11 +6843,6 @@ export default function Home() {
                   <div className="space-y-1.5">
                     <div className="flex items-center gap-2"><Globe className="h-4 w-4 text-sky-600" /><h3 className="font-semibold text-sm">Arabic Support</h3></div>
                     <p className="text-lg font-medium text-sky-900 text-right" dir="rtl">{card.arabicSupport}</p>
-                  </div>
-                  <Separator />
-                  <div className="space-y-1.5">
-                    <div className="flex items-center gap-2"><Palette className="h-4 w-4 text-rose-600" /><h3 className="font-semibold text-sm">Visual Idea</h3></div>
-                    <p className="text-sm text-gray-600 leading-relaxed">{card.visualIdea}</p>
                   </div>
                 </div>
               </>
