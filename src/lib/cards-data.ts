@@ -43,7 +43,7 @@ export const allCards: LinguisticsCard[] = [
     chapterId: 1,
     whatIsIt: "A speech sound made with blocked or restricted airflow through the vocal tract.",
     whyShouldICare: "Consonants shape words clearly and give English its distinct rhythm. Mispronouncing them can cause confusion.",
-    nibrasMoment: "A student says:\n\"pine\" instead of \"vine\"\n\nduring a presentation 😅\n\nThe /p/ and /v/ sounds are easily confused by Arabic speakers.",
+    nibrasMoment: "A student says:\n\"cub\" instead of \"cup\"\n\nduring a presentation 😅\n\nThe /b/ and /p/ sounds are easily confused by Arabic speakers because /p/ does not exist in Arabic.",
     memoryHook: "Consonants = sound blockers.",
     arabicSupport: "حرف ساكن",
   },
